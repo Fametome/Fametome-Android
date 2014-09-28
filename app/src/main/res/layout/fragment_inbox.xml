@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!--com.fametome.widget.AnimatedExpandableListView-->
+    <ListView
+        android:id="@+id/messagesList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:divider="@color/invisible"
+        android:dividerHeight="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/emptyView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="8dp"
+        android:background="@drawable/block_background"
+        android:orientation="vertical">
+
+        <com.fametome.widget.SquareImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dialog_medium"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="@string/inbox_message_empty"
+            style="@style/gravure"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/inbox_message_refresh"
+            android:background="@color/background"
+            style="@style/gravure"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/networklessView"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="8dp"
+        android:background="@drawable/block_background"
+        android:orientation="vertical">
+
+        <com.fametome.widget.SquareImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/tag_medium"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="@string/inbox_no_network_description"
+            style="@style/gravure"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:text="@string/inbox_no_network_retry"
+            android:background="@color/background"
+            style="@style/gravure"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

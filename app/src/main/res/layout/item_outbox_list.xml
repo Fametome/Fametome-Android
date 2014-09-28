@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <RelativeLayout
+	    android:id="@+id/relative"
+	    android:layout_width="match_parent"
+	    android:layout_height="48dp"
+	    android:background="@color/white" >
+
+	   <AutoCompleteTextView
+	    	android:id="@+id/text"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="40dp"
+	    	android:layout_toLeftOf="@+id/picture"
+	    	android:layout_centerVertical="true"
+	    	android:layout_margin="8dp"
+            android:textColor="@color/gravure"
+	    	android:inputType="text"
+	    	android:maxLength="40"
+            android:completionThreshold="1"
+            android:textColorHint="@color/grey"
+            android:focusableInTouchMode="true"
+            android:clickable="false"
+            android:focusable="true"
+	    	android:background="#FFFFFF" />
+
+	   	<ImageButton
+	        android:id="@+id/picture"
+	        android:layout_width="44dp"
+	        android:layout_height="44dp"
+	        android:layout_marginTop="2dp"
+	        android:layout_marginBottom="2dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+			android:textSize="12sp"
+			android:src="@drawable/picture_mini"
+            android:background="@color/invisible"/>
+
+	</RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/register_background" >
+
+    <com.fametome.widget.TitleTextView
+        android:text="@string/signUp"
+        style="@style/registerTitle" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="8dp"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/username"
+            android:hint="@string/register_hint_username"
+            style="@style/registerFieldTop" />
+        
+        <EditText
+            android:id="@+id/password"
+            android:hint="@string/register_hint_password"
+            android:inputType="textPassword"
+            style="@style/registerFieldCenter" />
+
+        <EditText
+            android:id="@+id/email"
+            android:hint="@string/register_hint_email"
+            style="@style/registerFieldCenter" />
+
+        <com.fametome.widget.LoadingButton
+            android:id="@+id/proceed"
+            android:text="@string/register_signup_register"
+            style="@style/registerButtonConfirm"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

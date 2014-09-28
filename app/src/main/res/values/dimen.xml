@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="register_title_text_size">48sp</dimen>
+    <dimen name="register_title_margin_top">32dp</dimen>
+    <dimen name="register_field_space">4dp</dimen>
+    <dimen name="register_field_heigth">40dp</dimen>
+    <dimen name="register_text_size">24sp</dimen>
+    <dimen name="register_copyright_margin_bottom">16dp</dimen>
+
+    <dimen name="classic_text_size">20dp</dimen>
+
+    <dimen name="register_form_radius">8dp</dimen>
+
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
+    <dimen name="friends_grid_spacing_horizontal">4dp</dimen>
+    <dimen name="friends_grid_spacing_vertical">4dp</dimen>
+
+    <dimen name="face_grid_spacing">4dp</dimen>
+
+    <dimen name="outbox_flash_list_divider_height">8dp</dimen>
+
+</resources>

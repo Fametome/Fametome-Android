@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Fametome</string>
+    <string name="navigation_drawer_open">Ouvrir le navigation drawer</string>
+    <string name="navigation_drawer_close">Fermer le navigation drawer</string>
+
+    <string name="register_hint_username">Pseudo</string>
+    <string name="register_hint_password">Mot de passe</string>
+    <string name="register_hint_email">Email</string>
+    <string name="register_hint_phone">Telephone</string>
+    <string name="register_login_error_title">Erreur</string>
+    <string name="register_login_error_message">Impossible de se connecter, vos identifiants sont incorrects.</string>
+    <string name="register_login_without_network_title">Aucun réseau</string>
+    <string name="register_login_without_network_message">Vous n\'êtes pas connectés à internet</string>
+    <string name="register_step_1_empty_username_title">Pseudo</string>
+    <string name="register_step_1_empty_username_message">Vous n\'avez pas entré votre pseudo.</string>
+    <string name="register_step_1_empty_password_title">Mot de passe</string>
+    <string name="register_step_1_empty_password_message">Vous n\'avez pas entré votre mot de passe.</string>
+    <string name="register_step_1_empty_email_title">Email</string>
+    <string name="register_step_1_empty_email_message">Vous n\'avez pas entré votre email.</string>
+    <string name="register_step_1_register_without_network_title">Aucun réseau</string>
+    <string name="register_step_1_register_without_network_message">Vous n\'êtes pas connectés à internet</string>
+
+    <string name="register_error_title">Erreur</string>
+    <string name="register_error_message">Impossible de vous inscrire, votre nom d\'utilisateur ou votre email est déjà pris</string>
+
+    <string name="signIn">Se connecter</string>
+    <string name="register_login_register">S\'inscrire</string>
+    <string name="register_signup_register">S\'inscrire</string>
+    <string name="signUp">Inscription</string>
+    <string name="proceed">Continuer</string>
+    <string name="loading">Chargement…</string>
+
+    <string name="more">+</string>
+    
+    <string name="cancel">Annuler</string>
+    <string name="confirm">Confirmer</string>
+    <string name="search">Chercher</string>
+
+    <string name="account_title">Mon profil</string>
+    <string name="account_face_pager_title">Mes faces</string>
+    <string name="account_face_pager_delete_message">Etes vous sûr de vouloir supprimer cette face ?</string>
+    <string name="account_face_album_title">Mes faces</string>
+    <string name="account_all_faces">Toutes mes faces</string>
+    <string name="account_empty_face">Aucune faces</string>
+    <string name="account_face_add">Ajouter une face</string>
+    <string name="account_face_delete">Supprimer</string>
+    <string name="account_add_face_title">Ajouter une face</string>
+    <string name="account_add_face_button">Ajouter</string>
+    <string name="account_add_face_without_wifi_title">Aucun réseau</string>
+    <string name="account_add_face_without_wifi_message">Vous ne pouvez pas ajouter de faces sans réseau.</string>
+    <string name="account_change_avatar_without_wifi_title">Aucun réseau</string>
+    <string name="account_change_avatar_without_wifi_message">Vous ne pouvez pas changer votre photo de profil sans réseau.</string>
+    <string name="account_change_avatar_loading_title">Chargement</string>
+    <string name="account_change_avatar_loading_message">Chargement de l\'avatar</string>
+
+    <string name="settings_title">Options</string>
+    <string name="settings_separator_account">Mon compte</string>
+    <string name="settings_separator_about">A propos</string>
+    <string name="settings_separator_log_out">Deconnexion</string>
+    <string name="settings_terms_of_use">Conditions d\'utilisations</string>
+    <string name="settings_terms_of_use_title">Conditions d\'utilisations</string>
+    <string name="settings_terms_of_use_message">
+        Fametome est une application mobile disponible sur Android et iOS.
+        Il s\'agit d\'une messagerie. Les messages échangés sont composés de plusieurs élements appelés "Flash"
+        qui défilent succèsivement de gauche à droite lorsqu\'on les visionnent.
+        Une fois visionné, le message est détruit. Vous pouvez choisir à qui vous envoyez des messages et qui peut vous en envoyer également.
+        L\'anonymat est garanti par un pseudonyme dans toute l\'application.
+        Des règles de bases s\'appliquent lors de l\'utilisation du service Fametome à savoir:
+        ne pas échanger des messages irrespectueux ou incitant à la haine,
+        ne pas envoyer des images violentes ou obscènes  et ne pas tenter d\'abuser de la credulité d\'autres membres.
+        De manière plus générale, la loi Française s\'applique.
+    </string>
+    <string name="settings_privacy_policy">Politique de confidentialité</string>
+    <string name="settings_privacy_policy_title">Politique de confidentialité</string>
+    <string name="settings_privacy_policy_message">
+        L\'anonymat est garantit lors de l\'utilisation de Fametome.
+        L\'adresse e-mail et le numéro de téléphone que vous renseigner à l\'inscription n\'apparaît pas pour les autres utilisateurs,
+        même s\'ils sont dans votre liste d\'amis.
+        Ces informations nous sont indispensables pour garantir l\'unicité de votre compte et pour vous contacter en cas de perte de mot de passe.
+        Les seuls informations que vos amis peuvent voir sur vous sont votre pseudonyme ainsi que divers statistiques sur le nombre de message que vous avez envoyé,
+        ration image/sms... etc... A tout moment vous pouvez choisir d\'accepter ou de refuser une demande d\'amitié d\'un autre membre,
+        et vous pouvez également faire des demandes à n\'importe quel autre membre. Vous pouvez également vous désinscrire,
+        ce qui aura pour effet de supprimer l\'intégralité des données vous concernant de nos serveurs.
+    </string>
+    <string name="settings_sign_out">Se déconnecter</string>
+
+    <string name="menu_account_settings">Options</string>
+    <string name="menu_friends_search">Chercher</string>
+    <string name="menu_friends_request">Demande d\'amitiée</string>
+    <string name="menu_friends_requests_refresh">Rafraichir</string>
+    <string name="menu_inbox_refresh">Rafraichir</string>
+    <string name="menu_outbox_send">Envoyer</string>
+    <string name="menu_outbox_choose_recipient_send">Envoyer</string>
+
+    <string name="inbox_title">Reception</string>
+    <string name="inbox_item_description">%1$s vous a envoyé un flash</string>
+    <string name="inbox_show">Voir le flash</string>
+    <string name="inbox_message_empty">Vous n\'avez pas reçu de flashs</string>
+    <string name="inbox_message_refresh">Rafraichir</string>
+    <string name="inbox_no_network_description">Vous n\'êtes pas connecté à Internet</string>
+    <string name="inbox_no_network_retry">Réessayer</string>
+    <string name="inbox_refresh_dialog_title">Rafraichir</string>
+    <string name="inbox_refresh_dialog_message">Rafraichissement de vos flashs</string>
+    <string name="inbox_response_title">Répondre</string>
+    <string name="inbox_response_message">Voulez vous répondre à %1$s ?</string>
+    <string name="inbox_response_button">Répondre</string>
+
+    <string name="outbox_title">Envoi</string>
+    <string name="outbox_mono_destinataire_title">A %1$s</string>
+    <string name="outbox_button_add">Ajouter</string>
+    <string name="outbox_button_time">Temps</string>
+    <string name="outbox_send_without_friends_title">Aucun amis</string>
+    <string name="outbox_send_without_friends_message">Vous n\'avez pas d\'amis à qui envoyer le flash, ajoutez-en !</string>
+    <string name="outbox_send_with_empty_message_title">Flash vide</string>
+    <string name="outbox_send_with_empty_message_message">Vous ne pouvez pas envoyé de flash vide.</string>
+    <string name="outbox_send_choose_recipients_empty_title">Selection vide</string>
+    <string name="outbox_send_choose_recipients_empty_message">Vous devez choisir au moins un ami.</string>
+    <string name="outbox_send_message_without_wifi_title">Aucun réseau</string>
+    <string name="outbox_send_message_without_wifi_message">Vous ne pouvez pas envoyer de flash sans être connecté à Internet</string>
+    <string name="outbox_flash_text_when_picture">Photo</string>
+    <string name="outbox_choose_recipients_title">Destinataires</string>
+
+    <string name="friends_title">Amis</string>
+    <string name="friends_all">Tous mes amis</string>
+    <string name="friends_add">Ajouter un ami</string>
+    <string name="friends_search">Chercher un ami</string>
+    <string name="friends_grid_empty">Vous n\'avez pas d\'amis.</string>
+    <string name="friends_profil_title">Profil de %1$s</string>
+    <string name="friends_profil_all_faces">Toutes ses faces</string>
+    <string name="friends_profil_empty_face">Aucune face</string>
+    <string name="friends_face_album_title">Faces de %1$s</string>
+    <string name="friends_face_pager_title">Faces de %1$s</string>
+    <string name="friends_search_title">Chercher un ami</string>
+    <string name="friends_search_add">Ajouter à mes amis</string>
+    <string name="friends_search_himself">Désolé, vous ne pouvez pas être votre propre amis.</string>
+    <string name="friends_search_request_sended">Demande envoyée</string>
+    <string name="friends_search_request_in_progress">Demande en cours</string>
+    <string name="friends_search_already_friends">Vous êtes déjà amis.</string>
+    <string name="friends_search_inexistant_user">Cet utilisateur n\'existe pas.</string>
+    <string name="friends_search_sending_error">Erreur lors de l\'envoi de la demande</string>
+    <string name="friends_search_without_wifi_title">Aucun réseau</string>
+    <string name="friends_search_without_wifi_message">Vous ne pouvez pas chercher d\'amis sans réseau</string>
+    <string name="friends_request_title">Demande d\'amitiée</string>
+    <string name="friends_request_accept">Accepter</string>
+    <string name="friends_request_decline">Refuser</string>
+    <string name="friends_request_empty">Vous n\'avez aucune demande d\'amitiée en cours</string>
+    <string name="friends_request_description_sended">Vous avez en envoyé une demande à <b>%1$s</b>.</string>
+    <string name="friends_requests_refresh_dialog_title">Rafraichir</string>
+    <string name="friends_requests_refresh_dialog_message">Vos demandes d\'amitiées se rafraichissent.</string>
+
+    <string name="camera_error_title">Camera</string>
+    <string name="camera_error_message">Impossible d\'ouvrir la camera, une autre application l\'utilise.</string>
+    <string name="picture_take">Prendre une photo</string>
+
+    <string name="stats">Statistiques</string>
+
+    <string name="push_add_face_title">Face de %1$s</string>
+    <string name="push_add_face_message">%1$s a ajouté une face sur son profil</string>
+    <string name="push_send_request_title">Demande d\'amitiée de %1$s</string>
+    <string name="push_send_request_message">%1$s vous a envoyé une demande d\'amitiée</string>
+    <string name="push_accept_request_title">Acceptation de %1$s</string>
+    <string name="push_accept_request_message">%1$s a accepté votre demande d\'amitiée</string>
+    <string name="push_send_message_title">Flash de %1$s</string>
+    <string name="push_send_message_message">%1$s vous a envoyé un flash</string>
+
+
+</resources>

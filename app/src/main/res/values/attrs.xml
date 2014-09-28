@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoadingButton">
+        <attr name="loadingBackground" format="reference" />
+        <attr name="background" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SquareImageView">
+        <attr name="weight" format="float" />
+    </declare-styleable>
+    
+    <declare-styleable name="ImageLayout" >
+        <attr name="imageNumber" format="integer" />
+        <attr name="dividerWeight" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="VerticalSeekBar" >
+        <attr name="max" format="integer" />
+        <attr name="progress" format="integer" />
+    </declare-styleable>
+</resources>

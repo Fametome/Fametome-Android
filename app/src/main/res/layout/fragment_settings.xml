@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/accountSeparator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:textSize="18sp"
+        android:text="@string/settings_separator_account"/>
+
+    <ListView
+        android:id="@+id/accountList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountSeparator"
+        android:layout_margin="8dp"
+        android:enabled="false"
+        android:background="@drawable/block_background"/>
+
+    <TextView
+        android:id="@+id/aboutSeparator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountList"
+        android:layout_margin="4dp"
+        android:textSize="18sp"
+        android:text="@string/settings_separator_about"/>
+
+    <ListView
+        android:id="@+id/aboutList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/aboutSeparator"
+        android:layout_margin="8dp"
+        android:background="@drawable/block_background"/>
+
+    <TextView
+        android:id="@+id/logOutSeparator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/aboutList"
+        android:layout_margin="4dp"
+        android:textSize="18sp"
+        android:text="@string/settings_separator_log_out"/>
+
+    <ListView
+        android:id="@+id/logOutList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logOutSeparator"
+        android:layout_margin="8dp"
+        android:background="@drawable/block_background"/>
+
+</RelativeLayout>

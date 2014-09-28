@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/account_face_pager_delete"
+          android:title="@string/account_face_delete"
+          android:icon="@android:drawable/ic_menu_delete"
+          android:orderInCategory="100"
+          android:showAsAction="always" />
+
+</menu>

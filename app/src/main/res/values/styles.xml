@@ -1,0 +1,91 @@
+<resources>
+
+    <!-- THEMES -->
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+
+    </style>
+
+    <style name="LoginTheme" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="RegisterTheme" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="MemberTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/ActionBarColor</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="ActionBarColor" parent="@android:style/Widget.Holo.Light.ActionBar" >
+        <item name="android:background">@color/theme_orange</item>
+        <item name="android:titleTextStyle">@style/ActionBarTitleColor</item>
+    </style>
+
+
+    <style name="ActionBarTitleColor" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+
+    <!-- STYLES -->
+
+    <style name="registerTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/register_title_margin_top</item>
+        <item name="android:textSize">@dimen/register_title_text_size</item>
+    </style>
+
+    <style name="registerField">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/register_field_heigth</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="registerFieldTop" parent="registerField">
+        <item name="android:background">@drawable/register_field_top</item>
+        <item name="android:layout_marginBottom">@dimen/register_field_space</item>
+    </style>
+
+    <style name="registerFieldCenter" parent="registerField">
+        <item name="android:background">@drawable/register_field_center</item>
+        <item name="android:layout_marginBottom">@dimen/register_field_space</item>
+    </style>
+
+    <style name="registerFieldBottom" parent="registerField">
+        <item name="android:background">@drawable/register_field_bottom</item>
+    </style>
+
+    <style name="registerButtonConfirm">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/register_field_heigth</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/login_text</item>
+    </style>
+
+    <style name="statsText" >
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">33</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/classic_text_size</item>
+        <item name="android:textColor">@color/gravure</item>
+    </style>
+
+    <style name="gravure" >
+        <!--<item name="android:typeface">serif</item>-->
+        <!--<item name="android:textStyle">italic</item>-->
+        <item name="android:textSize">@dimen/classic_text_size</item>
+        <item name="android:textColor">@color/gravure</item>
+    </style>
+
+</resources>

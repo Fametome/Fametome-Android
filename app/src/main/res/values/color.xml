@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="login_text">#FFFFFF</color>
+
+    <color name="theme_orange">#FF8800</color>
+    <color name="register_background">#EFEDED</color>
+    <color name="light_orange">#FFB32A</color>
+
+    <color name="background">#E1E1E1</color>
+    <color name="block_background">#FFFFFF</color>
+
+    <color name="grey">#DDDDDD</color>
+    <color name="dark_grey">#AAAAAA</color>
+    <color name="gravure">#777777</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="invisible">#00000000</color>
+</resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fametome="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:padding="4dp"
+        android:background="@drawable/block_background">
+
+        <EditText
+            android:id="@+id/text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textSize="@dimen/classic_text_size"
+            android:hint="@string/register_hint_username"
+            android:background="@drawable/outbox_edit_text"/>
+
+        <com.fametome.widget.LoadingButton
+            android:id="@+id/search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text"
+            android:layout_marginTop="4dp"
+            android:textSize="@dimen/classic_text_size"
+            android:textColor="@color/gravure"
+            android:text="@string/search"
+            fametome:background="@color/grey"
+            fametome:loadingBackground="@color/white"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/userLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:visibility="gone"
+        android:padding="4dp"
+        android:weightSum="1"
+        android:background="@drawable/block_background">
+
+        <com.fametome.widget.SquareImageView
+            android:id="@+id/avatar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar_default"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.7">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
+                android:singleLine="true"
+                android:textSize="@dimen/classic_text_size"
+                android:textColor="#000000"
+                android:text="Pseudo"/>
+
+            <com.fametome.widget.LoadingButton
+                android:id="@+id/sendRequest"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_alignParentBottom="true"
+                android:singleLine="true"
+                android:textSize="@dimen/classic_text_size"
+                android:textColor="@color/gravure"
+                android:text="@string/friends_search_add"
+                fametome:background="@color/grey"
+                fametome:loadingBackground="@color/white"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

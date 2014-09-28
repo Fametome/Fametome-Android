@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fametome="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                android:weightSum="100" >
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="25" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50">
+
+                    <com.fametome.widget.ProfilView
+                        android:id="@+id/profil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/avatar_default" />
+
+                    <View
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/block_background"/>
+
+                    <View
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/ic_menu_add"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <!-- FACES -->
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:padding="4dp"
+                android:background="@drawable/block_background" >
+
+                <com.fametome.widget.ImageLayout
+                    android:id="@+id/facesLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    fametome:imageNumber="3" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/facesLayout"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/allFace"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="@string/account_all_faces"
+                        android:background="@color/background"
+                        style="@style/gravure"/>
+
+                    <com.fametome.widget.SquareButton
+                        android:id="@+id/addFace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:gravity="center"
+                        android:text="@string/more"
+                        android:background="@color/background"
+                        style="@style/gravure"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/addFaceWhenEmpty"
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/facesLayout"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="@string/account_face_add"
+                    android:background="@color/background"
+                    style="@style/gravure"/>
+
+
+            </RelativeLayout>
+
+            <!-- FRIENDS -->
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:padding="4dp"
+                android:orientation="vertical"
+                android:background="@drawable/block_background" >
+
+                <com.fametome.widget.ImageLayout
+                    android:id="@+id/friendsLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    fametome:imageNumber="3" />
+
+                <Button
+                    android:id="@+id/allFriend"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/friendsLayout"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="@string/friends_all"
+                    android:background="@color/background"
+                    style="@style/gravure"/>
+
+                <Button
+                    android:id="@+id/addFriendWhenEmpty"
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/friendsLayout"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="@string/friends_add"
+                    android:background="@color/background"
+                    style="@style/gravure"/>
+
+            </RelativeLayout>
+
+            <com.fametome.widget.StatsView
+                android:id="@+id/stats"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="32dp"
+                android:padding="8dp"
+                android:background="@drawable/block_background"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

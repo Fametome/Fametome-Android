@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fametome="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@color/background"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/userLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:weightSum="1"
+        android:background="@drawable/block_background">
+
+        <com.fametome.widget.SquareImageView
+            android:id="@+id/avatar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar_default"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.7">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_above="@+id/buttonLayout"
+                android:layout_marginLeft="4dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:text="Pseudo"
+                style="@style/gravure"/>
+
+            <LinearLayout
+                android:id="@+id/buttonLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:weightSum="1">
+
+                <com.fametome.widget.LoadingButton
+                    android:id="@+id/accept"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:maxHeight="40dp"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textSize="@dimen/classic_text_size"
+                    android:text="@string/friends_request_accept"
+                    fametome:background="@color/grey"
+                    fametome:loadingBackground="@color/white"
+                    style="@style/gravure"/>
+
+                <com.fametome.widget.LoadingButton
+                    android:id="@+id/decline"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:maxHeight="40dp"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textSize="@dimen/classic_text_size"
+                    android:text="@string/friends_request_decline"
+                    fametome:background="@color/grey"
+                    fametome:loadingBackground="@color/white"
+                    style="@style/gravure"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

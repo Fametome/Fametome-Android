@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/friends_request"
+          android:title="@string/menu_friends_request"
+          android:icon="@drawable/ic_menu_friends"
+          android:showAsAction="always" />
+
+    <item android:id="@+id/friends_search"
+          android:title="@string/menu_friends_search"
+          android:icon="@android:drawable/ic_menu_search"
+          android:showAsAction="always" />
+
+</menu>

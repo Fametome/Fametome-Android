@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fametome="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                android:weightSum="100" >
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="25" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:orientation="vertical" >
+
+                    <com.fametome.widget.ProfilView
+                        android:id="@+id/profil"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageButton
+                        android:id="@+id/sendMessage"
+                        android:layout_width="fill_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_outbox_shadow"
+                        android:background="@drawable/rounded_orange"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:padding="4dp"
+                android:orientation="vertical"
+                android:background="@drawable/block_background" >
+
+                <com.fametome.widget.ImageLayout
+                    android:id="@+id/facesLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    fametome:imageNumber="3" />
+
+                <Button
+                    android:id="@+id/allFace"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/facesLayout"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textSize="22dp"
+                    android:textColor="@color/gravure"
+                    android:text="@string/friends_profil_all_faces"
+                    android:background="@color/background"/>
+
+                <TextView
+                    android:id="@+id/emptyFace"
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/facesLayout"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:textSize="22dp"
+                    android:textColor="@color/gravure"
+                    android:text="@string/friends_profil_empty_face" />
+
+            </RelativeLayout>
+
+            <com.fametome.widget.StatsView
+                android:id="@+id/stats"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/block_background"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
