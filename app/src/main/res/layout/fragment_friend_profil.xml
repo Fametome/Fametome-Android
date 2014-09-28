@@ -9,14 +9,29 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:paddingBottom="32dp"
             android:orientation="vertical">
 
+            <!-- COVER -->
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignBottom="@+id/profilLayout"
+                android:src="@drawable/cover"
+                android:scaleType="fitXY"/>
+
+            <!-- PROFIL -->
+
             <LinearLayout
+                android:id="@+id/profilLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -37,24 +52,42 @@
                     <com.fametome.widget.ProfilView
                         android:id="@+id/profil"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"/>
-
-                    <ImageButton
-                        android:id="@+id/sendMessage"
-                        android:layout_width="fill_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="16dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_outbox_shadow"
-                        android:background="@drawable/rounded_orange"/>
+                        android:layout_height="fill_parent"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/buttonLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/profilLayout"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                android:weightSum="100" >
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="25" />
+
+                <ImageButton
+                    android:id="@+id/sendMessage"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="50"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_outbox_shadow"
+                    android:background="@drawable/rounded_orange"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/facesLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buttonLayout"
                 android:layout_marginTop="32dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
@@ -63,7 +96,7 @@
                 android:background="@drawable/block_background" >
 
                 <com.fametome.widget.ImageLayout
-                    android:id="@+id/facesLayout"
+                    android:id="@+id/faces"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     fametome:imageNumber="3" />
@@ -72,7 +105,7 @@
                     android:id="@+id/allFace"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/facesLayout"
+                    android:layout_below="@id/faces"
                     android:layout_marginTop="4dp"
                     android:gravity="center"
                     android:textSize="22dp"
@@ -85,7 +118,7 @@
                     android:visibility="gone"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/facesLayout"
+                    android:layout_below="@id/faces"
                     android:layout_marginTop="4dp"
                     android:gravity="center"
                     android:textSize="22dp"
@@ -98,13 +131,14 @@
                 android:id="@+id/stats"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/facesLayout"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/block_background"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </ScrollView>
 

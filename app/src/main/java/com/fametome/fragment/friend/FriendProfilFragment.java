@@ -54,7 +54,7 @@ public class FriendProfilFragment extends FTFragment implements UserListener.onF
 
         profil = (ProfilView)rootView.findViewById(R.id.profil);
         sendMessage = (ImageButton)rootView.findViewById(R.id.sendMessage);
-        facesLayout = (ImageLayout)rootView.findViewById(R.id.facesLayout);
+        facesLayout = (ImageLayout)rootView.findViewById(R.id.faces);
         allFace = (Button)rootView.findViewById(R.id.allFace);
         emptyFace = (TextView)rootView.findViewById(R.id.emptyFace);
         stats = (StatsView)rootView.findViewById(R.id.stats);
