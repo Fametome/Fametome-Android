@@ -14,16 +14,34 @@
         revision="20.0.0"
         sha1="2a812174191af5a4513a873602a765b0171f252c"/>
     <item
+        dex="/Users/famille/AndroidstudioProjects/Fametome-Android/app/build/intermediates/pre-dexed/debug/classes-5eb2deee2f2e81cdabcb83d157ef1c15423ab842.jar"
+        jar="/Users/famille/AndroidstudioProjects/Fametome-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
         dex="/Users/famille/AndroidstudioProjects/Fametome/app/build/intermediates/pre-dexed/debug/classes-c017db99ac119c0afb6cf7fd132136e9052282e8.jar"
         jar="/Users/famille/AndroidstudioProjects/Fametome/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
     <item
+        dex="/Users/famille/AndroidstudioProjects/Fametome-Android/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-382414543b4e2f929cf2559704212781dd63faf1.jar"
+        jar="/Users/famille/AndroidstudioProjects/Fametome-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
         dex="/Users/famille/AndroidstudioProjects/Fametome/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-473e79b4b48738851b55affda50df013fc77fd49.jar"
         jar="/Users/famille/AndroidstudioProjects/Fametome/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="/Users/famille/AndroidstudioProjects/Fametome-Android/app/build/intermediates/pre-dexed/debug/Parse-1.6.0-ef77f7344ccc7e47432624d0fe5cb042ee5c01c7.jar"
+        jar="/Users/famille/AndroidstudioProjects/Fametome-Android/app/libs/Parse-1.6.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2a812174191af5a4513a873602a765b0171f252c"/>
 
 </pre-dex-items>

@@ -70,8 +70,8 @@ public class AccountFragment extends FTFragment implements UserListener.onUserLo
         View rootView = inflater.inflate(R.layout.fragment_account, container, false);
 
         profil = (ProfilView)rootView.findViewById(R.id.profil);
-        facesLayout = (ImageLayout)rootView.findViewById(R.id.facesLayout);
-        friendsLayout = (ImageLayout)rootView.findViewById(R.id.friendsLayout);
+        facesLayout = (ImageLayout)rootView.findViewById(R.id.faces);
+        friendsLayout = (ImageLayout)rootView.findViewById(R.id.friends);
         allFace = (Button)rootView.findViewById(R.id.allFace);
         addFace = (Button)rootView.findViewById(R.id.addFace);
         addFaceWhenEmpty = (Button)rootView.findViewById(R.id.addFaceWhenEmpty);
