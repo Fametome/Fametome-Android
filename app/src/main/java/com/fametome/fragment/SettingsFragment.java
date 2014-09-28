@@ -22,6 +22,7 @@ import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.activity.register.RegisterLoginActivity;
 import com.fametome.activity.register.RegisterStep1Activity;
+import com.fametome.adapter.DisabledListArrayAdapter;
 import com.fametome.fragment.account.AccountFragment;
 import com.fametome.object.User;
 import com.fametome.util.ParseConsts;
@@ -66,7 +67,7 @@ public class SettingsFragment extends FTFragment {
                 getString(R.string.settings_sign_out)
         };
 
-        ArrayAdapter<String> accountListAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.item_settings_list, accountStrings);
+        DisabledListArrayAdapter<String> accountListAdapter = new DisabledListArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.item_settings_list, accountStrings);
         ArrayAdapter<String> aboutListAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.item_settings_list, aboutStrings);
         ArrayAdapter<String> logOutListAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.item_settings_list, logOutStrings);
 
