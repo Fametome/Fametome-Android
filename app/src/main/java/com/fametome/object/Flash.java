@@ -7,7 +7,7 @@ import com.fametome.util.FTBitmap;
 
 public class Flash {
 
-    private Face face;
+    private ParseFace face;
     private String text;
     private FTBitmap picture;
 
@@ -66,11 +66,11 @@ public class Flash {
         type = TYPE_PICTURE;
     }
 
-    public Face getFace(){
+    public ParseFace getFace(){
         return face;
     }
 
-    public void setFace(Face face){
+    public void setFace(ParseFace face){
         this.face = face;
         picture = null;
         text = "";

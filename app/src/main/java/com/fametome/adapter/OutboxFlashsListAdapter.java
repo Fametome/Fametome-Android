@@ -18,10 +18,12 @@ import com.fametome.listener.OnFaceClickListener;
 import com.fametome.object.Face;
 import com.fametome.object.Flash;
 import com.fametome.object.Message;
+import com.fametome.object.ParseFace;
 import com.fametome.object.ParseFlash;
 import com.fametome.object.User;
 import com.fametome.util.FTBitmap;
 import com.fametome.util.FTDefaultBitmap;
+import com.parse.Parse;
 
 public class OutboxFlashsListAdapter extends BaseAdapter {
 
@@ -69,7 +71,7 @@ public class OutboxFlashsListAdapter extends BaseAdapter {
 
             @Override
             public void onTextChanged(CharSequence currentText, int start, int before, int count) {
-                Face face = User.getInstance().getFaceWithText(currentText.toString());
+                ParseFace face = User.getInstance().getFaceWithText(currentText.toString());
 
                 if(face != null){
                     Log.d("OutboxFlashListAdapter", "getView - the face of item n°" + position + " is modified by the face with text : " + face.getText());
@@ -85,7 +87,7 @@ public class OutboxFlashsListAdapter extends BaseAdapter {
 
         autoCompleteAdapter.setFaceClickListener(new OnFaceClickListener() {
             @Override
-            public void onFaceClicked(Face face) {
+            public void onFaceClicked(ParseFace face) {
                 Log.d("OutboxFlashListAdapter", "getView - the face of item n°" + position + " is modified by the face with text : " + face.getText());
                 message.getFlash(position).setFace(face);
                 picture.setImageBitmap(face.getPicture().getBitmap());

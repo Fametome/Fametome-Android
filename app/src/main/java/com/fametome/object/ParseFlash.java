@@ -26,8 +26,7 @@ public class ParseFlash extends Flash {
         Log.d("ParseFlash", "ParseFlash - text : " + flashObject.getString(ParseConsts.FLASH_TEXT));
 
         if(flashObject.getString(ParseConsts.FLASH_FACE_ID) != null){
-            setFace(new ParseFace(flashObject));
-            flashListener.onFlashLoaded();
+            setFace(new ParseFace(flashObject, flashListener));
 
         }else if(flashObject.getString(ParseConsts.FLASH_TEXT) != null){
             setText(flashObject.getString(ParseConsts.FLASH_TEXT));

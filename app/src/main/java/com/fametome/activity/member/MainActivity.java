@@ -105,6 +105,11 @@ public class MainActivity extends Activity implements NavigationDrawerListener {
         getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 
+    public void showFragmentAtRoot(FTFragment fragment){
+        stackManager.clearAllFragments();
+        showFragment(fragment);
+    }
+
     public void replaceLastFragment(FTFragment fragment){
         stackManager.replaceLastFragment(fragment);
         getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();

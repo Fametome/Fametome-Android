@@ -18,13 +18,14 @@ import android.widget.TextView;
 import com.fametome.R;
 import com.fametome.listener.OnFaceClickListener;
 import com.fametome.object.Face;
+import com.fametome.object.ParseFace;
 import com.fametome.object.User;
 
 public class OutboxFlashsListAutoCompleteAdapter extends BaseAdapter implements Filterable{
 
     private OnFaceClickListener faceClickListener;
 
-	private List<Face> filteredFaces = null;
+	private List<ParseFace> filteredFaces = null;
 
     private FacesFilter facesFilter = null;
 
@@ -97,7 +98,7 @@ public class OutboxFlashsListAutoCompleteAdapter extends BaseAdapter implements 
 
 			Log.i("FlashAutoCompleteAdapter", "(FacesFilter > performFiltering) constraint : " + constraint);
 			
-			filteredFaces = new ArrayList<Face>();
+			filteredFaces = new ArrayList<ParseFace>();
 			
 			for(int i = 0; i < User.getInstance().getFacesNumber(); i++){
 				if(User.getInstance().getFace(i).getText().startsWith(constraint.toString())){
@@ -117,7 +118,7 @@ public class OutboxFlashsListAutoCompleteAdapter extends BaseAdapter implements 
 
 			Log.i("FlashAutoCompleteAdapter", "(FacesFilter > publishResults) constraint : " + (constraint == null ? "" : constraint) + " || results number : " + results.count);
 
-            filteredFaces = (List<Face>)results.values;
+            filteredFaces = (List<ParseFace>)results.values;
             notifyDataSetChanged();
 		}
 	}

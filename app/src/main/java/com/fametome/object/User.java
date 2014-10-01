@@ -31,8 +31,8 @@ public class User {
     private Bitmap avatar;
     private int messagesSendNumber;
 
-    private List<Face> faces;
-    private List<Friend> friends;
+    private List<ParseFace> faces;
+    private List<ParseFriend> friends;
     private List<FriendRequest> friendsRequests;
     private List<ParseMessage> messages;
 
@@ -93,21 +93,21 @@ public class User {
         }
 
         /* Récupération des faces de l'utilisateur */
-        faces = new ArrayList<Face>();
+        faces = new ArrayList<ParseFace>();
 
         ParseQuery<ParseObject> faceQuery = ParseQuery.getQuery(ParseConsts.FACE);
         faceQuery.whereEqualTo(ParseConsts.FACE_USER, ParseUser.getCurrentUser());
         faceQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
         faceQuery.orderByDescending(ParseConsts.CREATED_AT);
         faceQuery.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> faceList, ParseException e) {
+            public void done(List<ParseObject> facesObjects, ParseException e) {
                 if (e == null) {
-                    facesNumber = faceList.size();
+                    facesNumber = facesObjects.size();
                     facesLoadedNumber = 0;
                     if(facesNumber != 0) {
                         for (int i = 0; i < facesNumber; i++) {
-                            faces.add(new Face());
-                            final Face face = new Face(faceList.get(i));
+                            faces.add(new ParseFace());
+                            final ParseFace face = new ParseFace(facesObjects.get(i));
                             face.setFaceListener(onFaceLoaded);
                             faces.set(i, face);
 
@@ -273,15 +273,15 @@ public class User {
         return facesNumber;
     }
 
-    public List<Face> getFaces(){
+    public List<ParseFace> getFaces(){
         return faces;
     }
 
-    public Face getFace(int index){
+    public ParseFace getFace(int index){
         return faces.get(index);
     }
 
-    public void addFace(Face faceToAdd){
+    public void addFace(ParseFace faceToAdd){
         faceToAdd.setFaceListener(onFaceLoaded);
         facesNumber++;
         facesLoadedNumber++;
@@ -300,7 +300,7 @@ public class User {
         }
     }
 
-    public Face getFaceWithText(String text){
+    public ParseFace getFaceWithText(String text){
         for(int i = 0; i < getFacesNumber(); i++){
             if(getFace(i).getText().equals(text)){
                 return getFace(i);
@@ -314,7 +314,7 @@ public class User {
     /** FONCTIONS SUR LES FRIENDS **/
 
     public void refreshFriends(){
-        friends = new ArrayList<Friend>();
+        friends = new ArrayList<ParseFriend>();
 
         ParseQuery<ParseObject> senderToReceiverQuery = ParseQuery.getQuery(ParseConsts.RELATION);
         senderToReceiverQuery.whereEqualTo(ParseConsts.RELATION_SENDER, ParseUser.getCurrentUser().getObjectId());
@@ -343,7 +343,7 @@ public class User {
                     friendsLoadedNumber = 0;
                     if(friendsNumber != 0) {
                         for (ParseObject friendObject : friendsList) {
-                            final Friend friend = new Friend(friendObject);
+                            final ParseFriend friend = new ParseFriend(friendObject);
                             friend.setFriendListener(onFriendLoaded);
                             friends.add(friend);
 
@@ -372,7 +372,7 @@ public class User {
         return friendsNumber;
     }
 
-    public List<Friend> getFriends(){
+    public List<ParseFriend> getFriends(){
         return friends;
     }
 
@@ -380,7 +380,7 @@ public class User {
         return index < friendsNumber ? friends.get(index) : null;
     }
 
-    public void addFriend(Friend friendToAdd){
+    public void addFriend(ParseFriend friendToAdd){
         friendsNumber++;
         friendsLoadedNumber++;
         friends.add(0, friendToAdd);

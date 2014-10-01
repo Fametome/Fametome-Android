@@ -192,7 +192,7 @@ public class Friend {
 
                     if(facesNumber != 0) {
                         for (ParseObject faceObject : faceList) {
-                            final Face face = new Face(faceObject);
+                            final ParseFace face = new ParseFace(faceObject);
                             face.setFaceListener(new FaceListener() {
                                 @Override
                                 public void onFaceLoaded() {

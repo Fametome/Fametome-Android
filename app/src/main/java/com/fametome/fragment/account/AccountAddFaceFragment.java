@@ -20,6 +20,7 @@ import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.listener.CameraListener;
 import com.fametome.object.Face;
+import com.fametome.object.ParseFace;
 import com.fametome.object.User;
 import com.fametome.util.FTBitmap;
 import com.fametome.util.FTWifi;
@@ -39,7 +40,7 @@ public class AccountAddFaceFragment extends FTFragment implements CameraListener
     EditText text = null;
     LoadingButton addFace = null;
 
-    private FTBitmap picture;
+    private FTBitmap facePicture;
 
     public AccountAddFaceFragment(){
 
@@ -81,33 +82,38 @@ public class AccountAddFaceFragment extends FTFragment implements CameraListener
                 final String titlePush = getString(R.string.push_add_face_title, User.getInstance().getUsername());
                 final String messagePush = getString(R.string.push_add_face_message, User.getInstance().getUsername());
 
-                if (picture != null && text.getText().toString().length() > 0) {
+
+
+                if (facePicture != null && text.getText().toString().length() > 0) {
+
+                    final String faceText = text.getText().toString();
+
                     addFace.startLoading();
                     takePicture.setEnabled(false);
-                    takePicture.setUsername(text.getText().toString());
+                    takePicture.setUsername(faceText);
                     text.setVisibility(View.GONE);
 
-                    final ParseFile pictureFile = new ParseFile(User.getInstance().getUsername() + "_face", picture.getDatas());
+                    final ParseFile pictureFile = new ParseFile(User.getInstance().getUsername() + "_face", facePicture.getDatas());
                     pictureFile.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {
 
 
                             if (e == null) {
-                                final ParseObject face = new ParseObject(ParseConsts.FACE);
-                                face.put(ParseConsts.FACE_USER, ParseUser.getCurrentUser());
-                                face.put(ParseConsts.FACE_TEXT, text.getText().toString());
-                                face.put(ParseConsts.FACE_PICTURE, pictureFile);
-                                face.put(ParseConsts.FACE_PUBLIC, true);
+                                final ParseObject faceObject = new ParseObject(ParseConsts.FACE);
+                                faceObject.put(ParseConsts.FACE_USER, ParseUser.getCurrentUser());
+                                faceObject.put(ParseConsts.FACE_TEXT, text.getText().toString());
+                                faceObject.put(ParseConsts.FACE_PICTURE, pictureFile);
+                                faceObject.put(ParseConsts.FACE_PUBLIC, true);
 
-                                face.saveInBackground(new SaveCallback() {
+                                faceObject.saveInBackground(new SaveCallback() {
                                     @Override
                                     public void done(ParseException e) {
                                         if (e == null) {
 
                                             FTPush.sendPushToAllFriends(titlePush, messagePush);
 
-                                            User.getInstance().addFace(new Face(face, picture));
+                                            User.getInstance().addFace(new ParseFace(faceObject, facePicture, faceText));
                                             if(getActivity() != null) {
                                                 ((MainActivity) getActivity()).showPreviousFragment();
                                             }
@@ -144,9 +150,9 @@ public class AccountAddFaceFragment extends FTFragment implements CameraListener
     };
 
     @Override
-    public void onPictureTaken(FTBitmap picture) {
-        takePicture.setAvatar(picture.getBitmap());
-        this.picture = picture;
+    public void onPictureTaken(FTBitmap facePicture) {
+        takePicture.setAvatar(facePicture.getBitmap());
+        this.facePicture = facePicture;
         ((MainActivity)getActivity()).leaveCamera();
     }
 

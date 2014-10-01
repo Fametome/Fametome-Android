@@ -4,7 +4,7 @@ import com.fametome.util.ParseConsts;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-public class FriendRequest extends Friend{
+public class FriendRequest extends ParseFriend{
 
     ParseObject relationObject;
 

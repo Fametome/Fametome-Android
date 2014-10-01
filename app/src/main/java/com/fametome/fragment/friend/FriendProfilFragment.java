@@ -91,7 +91,7 @@ public class FriendProfilFragment extends FTFragment implements UserListener.onF
             OutboxFragment outboxFragment = new OutboxFragment();
             outboxFragment.setMessageType(OutboxFragment.TYPE_MONO_DESTINATAIRE);
             outboxFragment.setFriend(friend);
-            ((MainActivity)getActivity()).showFragment(outboxFragment);
+            ((MainActivity)getActivity()).showFragmentAtRoot(outboxFragment);
         }
     };
 
