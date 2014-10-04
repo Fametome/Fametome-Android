@@ -63,38 +63,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="item_inbox_show_flash.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_inbox_show_flash.xml">
+      <file leaf-file-name="Database.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/database/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.7777777" vertical-offset="0" max-vertical-offset="405">
-              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParseMessage.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/object/ParseMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5645161" vertical-offset="85" max-vertical-offset="705">
-              <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.36588922" vertical-offset="469" max-vertical-offset="1215">
+              <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
               <folding>
-                <element signature="method#ParseMessage#0;class#ParseMessage#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OutboxFlashsListAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/adapter/OutboxFlashsListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1005">
-              <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
-              <folding>
-                <element signature="method#getMessage#0;class#OutboxFlashsListAdapter#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1630#1631#0" expanded="true" />
+                <element signature="e#1699#1700#0" expanded="true" />
+                <element signature="e#1760#1761#0" expanded="true" />
+                <element signature="e#1809#1810#0" expanded="true" />
+                <element signature="method#onUpgrade#0;class#Database#0" expanded="true" />
+                <element signature="e#2026#2027#0" expanded="true" />
+                <element signature="e#2069#2070#0" expanded="true" />
+                <element signature="e#2159#2160#0" expanded="true" />
+                <element signature="e#2213#2214#0" expanded="true" />
+                <element signature="e#2257#2258#0" expanded="true" />
+                <element signature="e#2312#2313#0" expanded="true" />
+                <element signature="e#2358#2359#0" expanded="true" />
+                <element signature="e#2411#2412#0" expanded="true" />
+                <element signature="e#2454#2455#0" expanded="true" />
+                <element signature="e#2508#2509#0" expanded="true" />
+                <element signature="e#2552#2553#0" expanded="true" />
+                <element signature="e#2607#2608#0" expanded="true" />
+                <element signature="e#2652#2653#0" expanded="true" />
+                <element signature="e#2712#2713#0" expanded="true" />
+                <element signature="e#2763#2764#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -813,7 +808,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/fragment/inbox/InboxFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/Dialog/FTDialog.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/object/User.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/database/Database.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/activity/register/RegisterStep1Activity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/fragment/friend/FriendsRequestFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
@@ -832,8 +826,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/widget/RoundedCornerImageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/object/Friend.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/object/ParseFriend.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/FTPush.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/fragment/outbox/OutboxChooseRecipientsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/activity/register/RegisterSignUpActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/util/ParseConsts.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_inbox_response.xml" />
@@ -843,6 +835,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_inbox_show_flash.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/adapter/OutboxFlashsListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/object/ParseMessage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/FTPush.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/fragment/outbox/OutboxChooseRecipientsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/fametome/database/Database.java" />
       </list>
     </option>
   </component>
@@ -1579,7 +1574,7 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="ZH8000A44K" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="MaTablette" />
     <property name="last_opened_file_path" value="$USER_HOME$/martin/Fametome_apk" />
-    <property name="SearchEverywhereHistoryKey" value="fragment_inb&#9;FILE&#9;file:///Users/famille/AndroidstudioProjects/Fametome-Android/app/src/main/res/layout/fragment_inbox_show_flash.xml&#10;adapter&#9;FILE&#9;file:///Users/famille/AndroidstudioProjects/Fametome-Android/app/src/main/java/com/fametome/adapter/OutboxFlashsListAdapter.java" />
+    <property name="SearchEverywhereHistoryKey" value="FTPUSH&#9;FILE&#9;file:///Users/famille/AndroidstudioProjects/Fametome-Android/app/src/main/java/com/fametome/FTPush.java&#10;fragment_inb&#9;FILE&#9;file:///Users/famille/AndroidstudioProjects/Fametome-Android/app/src/main/res/layout/fragment_inbox_show_flash.xml&#10;adapter&#9;FILE&#9;file:///Users/famille/AndroidstudioProjects/Fametome-Android/app/src/main/java/com/fametome/adapter/OutboxFlashsListAdapter.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1776,8 +1771,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27586207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3427992" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27586207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3427992" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1888,13 +1883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05102041" vertical-offset="0" max-vertical-offset="588">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/object/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33673468" vertical-offset="3057" max-vertical-offset="3915">
@@ -1928,12 +1916,12 @@
         <state vertical-scroll-proportion="2.372449" vertical-offset="0" max-vertical-offset="1515">
           <caret line="158" column="5" selection-start-line="158" selection-start-column="5" selection-end-line="158" selection-end-column="5" />
           <folding>
-            <element signature="method#InboxFragment#0;class#InboxFragment#0" expanded="true" />
-            <element signature="method#onCreate#0;class#InboxFragment#0" expanded="true" />
-            <element signature="e#4146#4330#0" expanded="true" />
-            <element signature="e#4323#4324#0" expanded="true" />
-            <element signature="method#onOptionsItemSelected#0;class#InboxFragment#0" expanded="true" />
-            <element signature="method#onMessagesLoaded#0;class#InboxFragment#0" expanded="true" />
+            <element signature="method#InboxFragment#0;class#InboxFragment#0" expanded="false" />
+            <element signature="method#onCreate#0;class#InboxFragment#0" expanded="false" />
+            <element signature="e#4146#4330#0" expanded="false" />
+            <element signature="e#4323#4324#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#InboxFragment#0" expanded="false" />
+            <element signature="method#onMessagesLoaded#0;class#InboxFragment#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1957,6 +1945,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3112245" vertical-offset="102" max-vertical-offset="690">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#1498#1557#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2236,42 +2227,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/fragment/outbox/OutboxChooseRecipientsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63709676" vertical-offset="1765" max-vertical-offset="2385">
-          <caret line="212" column="97" selection-start-line="212" selection-start-column="97" selection-end-line="212" selection-end-column="97" />
-          <folding>
-            <element signature="method#sendMessage#0;class#OutboxChooseRecipientsFragment#0" expanded="true" />
-            <element signature="e#10163#10230#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/FTPush.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29032257" vertical-offset="0" max-vertical-offset="620">
-          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
-          <folding>
-            <element signature="method#sendPushToMultipleFriendsFrom#0;class#FTPush#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_inbox_show_flash.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2529511" vertical-offset="0" max-vertical-offset="593">
           <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_inbox_show_flash.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7777777" vertical-offset="0" max-vertical-offset="405">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -2291,10 +2250,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/object/ParseMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5645161" vertical-offset="85" max-vertical-offset="705">
-          <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="705">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
           <folding>
             <element signature="method#ParseMessage#0;class#ParseMessage#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/FTPush.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+          <folding>
+            <element signature="method#sendPushToMultipleFriends#0;class#FTPush#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/fragment/outbox/OutboxChooseRecipientsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6938776" vertical-offset="1699" max-vertical-offset="2385">
+          <caret line="213" column="40" selection-start-line="213" selection-start-column="40" selection-end-line="213" selection-end-column="40" />
+          <folding>
+            <element signature="method#sendMessage#0;class#OutboxChooseRecipientsFragment#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_inbox_show_flash.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1138088" vertical-offset="0" max-vertical-offset="659">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/fametome/database/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36588922" vertical-offset="469" max-vertical-offset="1215">
+          <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1630#1631#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#1809#1810#0" expanded="true" />
+            <element signature="method#onUpgrade#0;class#Database#0" expanded="true" />
+            <element signature="e#2026#2027#0" expanded="true" />
+            <element signature="e#2069#2070#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+            <element signature="e#2213#2214#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
+            <element signature="e#2312#2313#0" expanded="true" />
+            <element signature="e#2358#2359#0" expanded="true" />
+            <element signature="e#2411#2412#0" expanded="true" />
+            <element signature="e#2454#2455#0" expanded="true" />
+            <element signature="e#2508#2509#0" expanded="true" />
+            <element signature="e#2552#2553#0" expanded="true" />
+            <element signature="e#2607#2608#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
+            <element signature="e#2712#2713#0" expanded="true" />
+            <element signature="e#2763#2764#0" expanded="true" />
           </folding>
         </state>
       </provider>

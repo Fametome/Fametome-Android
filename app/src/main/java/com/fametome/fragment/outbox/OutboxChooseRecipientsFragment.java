@@ -211,7 +211,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
     private static void sendPush(Context context, String senderUsername, List<String> recipientsIds){
         String titlePush = context.getString(R.string.push_send_message_title, senderUsername);
         String messagePush = context.getString(R.string.push_send_message_message, senderUsername);
-        FTPush.sendPushToMultipleFriendsFrom(recipientsIds, titlePush, messagePush);
+        FTPush.sendPushToMultipleFriends(recipientsIds, titlePush, messagePush);
     }
 
     @Override
