@@ -25,14 +25,6 @@ public class FTFragment extends Fragment {
         return parseMessage;
     }
 
-    public void setMessage(Message message){
-        this.message = message;
-    }
-
-    public Message getMessage(){
-        return message;
-    }
-
     public void setFriend(Friend friend){
         this.friend = friend;
     }

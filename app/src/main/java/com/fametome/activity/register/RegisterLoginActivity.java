@@ -92,7 +92,7 @@ public class RegisterLoginActivity extends Activity{
     private View.OnClickListener clickRegister = new View.OnClickListener(){
         @Override
         public void onClick(View v){
-            startActivity(new Intent(RegisterLoginActivity.this, RegisterStep1Activity.class));
+            startActivity(new Intent(RegisterLoginActivity.this, RegisterSignUpActivity.class));
             finish();
         }
     };

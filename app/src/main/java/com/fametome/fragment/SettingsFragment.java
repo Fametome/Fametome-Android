@@ -2,7 +2,6 @@ package com.fametome.fragment;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,15 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.activity.register.RegisterLoginActivity;
-import com.fametome.activity.register.RegisterStep1Activity;
 import com.fametome.adapter.DisabledListArrayAdapter;
 import com.fametome.fragment.account.AccountFragment;
 import com.fametome.object.User;

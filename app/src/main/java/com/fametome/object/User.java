@@ -495,7 +495,7 @@ public class User {
                         if(messagesNumber != 0){
                             for (int i = 0; i < messagesNumber; i++) {
                                 final ParseMessage message = new ParseMessage();
-                                message.load(messageList.get(i), onMessageLoaded);
+                                message.loadMessage(messageList.get(i), onMessageLoaded);
                                 messages.add(message);
 
                             }

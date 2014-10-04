@@ -27,9 +27,9 @@ public class Friend {
 
     private ParseUser friendUser;
 
-    private FTBitmap avatar;
-    private String username;
-    private String id;
+    protected FTBitmap avatar;
+    protected String username;
+    protected String id;
 
     private List<Face> faces;
     private int facesNumber;
@@ -47,7 +47,7 @@ public class Friend {
         doFriendQuery(null);
     }
 
-    /* WHEN ADD FRIEND FOR MESSAGE */
+    /* WHEN ADD FRIEND FOR MESSAGE ON INBOX */
     public Friend(String id, MessageListener messageListener){
         this.id = id;
         doFriendQuery(messageListener);

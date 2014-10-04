@@ -22,6 +22,7 @@ import com.fametome.adapter.FriendsGridAdapter;
 import com.fametome.fragment.NavigationDrawerFragment;
 import com.fametome.object.Flash;
 import com.fametome.object.Message;
+import com.fametome.object.ParseMessage;
 import com.fametome.object.User;
 import com.fametome.util.FTInteger;
 import com.fametome.util.FTWifi;
@@ -83,12 +84,12 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
         }
     };
 
-    public static void sendMessage(final Context context, Message message, byte messageType, final List<String> friendsIds){
+    public static void sendMessage(final Context context, final ParseMessage message, byte messageType, final List<String> recipientsIds){
         if(FTWifi.isNetworkAvailable(context)) {
 
             ParseObject messageObject = new ParseObject(ParseConsts.MESSAGE);
-            messageObject.put(ParseConsts.MESSAGE_AUTHOR_ID, ParseUser.getCurrentUser().getObjectId());
-            messageObject.addAllUnique(ParseConsts.MESSAGE_RECIPIENT_ID_ARRAY, friendsIds);
+            messageObject.put(ParseConsts.MESSAGE_AUTHOR_ID, message.getAuthor().getId());
+            messageObject.addAllUnique(ParseConsts.MESSAGE_RECIPIENT_ID_ARRAY, recipientsIds);
             messageObject.put(ParseConsts.MESSAGE_ANIMATION, 0);
             messageObject.put(ParseConsts.MESSAGE_SEEN, false);
             messageObject.put(ParseConsts.MESSAGE_TIME, 0);
@@ -101,16 +102,12 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
 
                 if (currentFlash.getType() != Flash.NO_TYPE) {
 
-                    final ParseObject flash = new ParseObject(ParseConsts.FLASH);
+                    final ParseObject flash = currentFlash.toParseObject();
                     flash.put(ParseConsts.FLASH_MESSAGE, messageObject);
                     flash.put(ParseConsts.FLASH_INDEX, i);
 
                     if (currentFlash.getType() == Flash.TYPE_FACE) {
                         Log.i("OutboxChooseRecipientsFragment", "onOptionsItemSelected - the flash n°" + i + " is a face ! : " + currentFlash.getFace().getText());
-
-                        flash.put(ParseConsts.FLASH_FACE_ID, currentFlash.getFace().getId());
-                        flash.put(ParseConsts.FLASH_TEXT, JSONObject.NULL);
-                        flash.put(ParseConsts.FLASH_PICTURE, JSONObject.NULL);
 
                         flash.saveInBackground(new SaveCallback() {
                             @Override
@@ -123,7 +120,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                 }
                                 flashsSendedNumber.increment();
                                 if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                    sendPush(context, friendsIds);
+                                    sendPush(context, message.getAuthor().getUsername(), recipientsIds);
                                 }
                             }
                         });
@@ -133,10 +130,6 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                     } else if (currentFlash.getType() == Flash.TYPE_TEXT) {
                         Log.i("OutboxChooseRecipientsFragment", "onOptionsItemSelected - the flash n°" + i + " is a text ! : " + currentFlash.getText());
 
-                        flash.put(ParseConsts.FLASH_FACE_ID, JSONObject.NULL);
-                        flash.put(ParseConsts.FLASH_TEXT, currentFlash.getText());
-                        flash.put(ParseConsts.FLASH_PICTURE, JSONObject.NULL);
-
                         flash.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
@@ -148,7 +141,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                 }
                                 flashsSendedNumber.increment();
                                 if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                    sendPush(context, friendsIds);
+                                    sendPush(context, message.getAuthor().getUsername(), recipientsIds);
                                 }
                             }
                         });
@@ -165,8 +158,6 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                             public void done(ParseException e) {
                                 if (e == null) {
                                     ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_PICTURE_SEND_NUMBER);
-                                    flash.put(ParseConsts.FLASH_FACE_ID, JSONObject.NULL);
-                                    flash.put(ParseConsts.FLASH_TEXT, JSONObject.NULL);
                                     flash.put(ParseConsts.FLASH_PICTURE, pictureFile);
 
                                     flash.saveInBackground(new SaveCallback() {
@@ -180,7 +171,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                             }
                                             flashsSendedNumber.increment();
                                             if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                                sendPush(context, friendsIds);
+                                                sendPush(context, message.getAuthor().getUsername(), recipientsIds);
                                             }
                                         }
                                     });
@@ -195,7 +186,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                 } else {
                     flashsSendedNumber.increment();
                     if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                        sendPush(context, friendsIds);
+                        sendPush(context, message.getAuthor().getUsername(), recipientsIds);
                     }
                     Log.w("OutboxChooseRecipientsFragment", "onOptionsItemSelected - the flash n°" + i + " is empty");
                 }
@@ -204,7 +195,9 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
             ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_MESSAGE_SEND_NUMBER);
             ParseUser.getCurrentUser().saveInBackground();
 
-            ((MainActivity) context).selectItem(NavigationDrawerFragment.FRAGMENT_INBOX);
+            if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
+                ((MainActivity) context).selectItem(NavigationDrawerFragment.FRAGMENT_INBOX);
+            }
 
         }else{
             /* - Pas de wifi - */
@@ -215,10 +208,10 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
         }
     }
 
-    private static void sendPush(Context context, List<String> recipientsIds){
-        String titlePush = context.getString(R.string.push_send_message_title, User.getInstance().getUsername());
-        String messagePush = context.getString(R.string.push_send_message_message, User.getInstance().getUsername());
-        FTPush.sendPushToMultipleFriends(recipientsIds, titlePush, messagePush);
+    private static void sendPush(Context context, String senderUsername, List<String> recipientsIds){
+        String titlePush = context.getString(R.string.push_send_message_title, senderUsername);
+        String messagePush = context.getString(R.string.push_send_message_message, senderUsername);
+        FTPush.sendPushToMultipleFriendsFrom(recipientsIds, titlePush, messagePush);
     }
 
     @Override
@@ -248,7 +241,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                     friendsSelectedId.add(User.getInstance().getFriend(posInUserFriendList).getParseUser().getObjectId());
                 }
 
-                sendMessage(((MainActivity)getActivity()).getContext(), getMessage(), OutboxFragment.TYPE_PLURI_DESTINATAIRE, friendsSelectedId);
+                sendMessage(((MainActivity)getActivity()).getContext(), getParseMessage(), OutboxFragment.TYPE_PLURI_DESTINATAIRE, friendsSelectedId);
 
             }else{
                 /* - Aucun ami sélectionné - */

@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.fametome.Dialog.FTProgressDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
@@ -28,7 +29,7 @@ public class FriendsRequestFragment extends FTFragment implements UserListener.o
 
     private ListView requestList = null;
     private FriendsRequestListAdapter requestListAdapter = null;
-    private ProgressDialog refreshDialog;
+    private FTProgressDialog refreshDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -36,12 +37,9 @@ public class FriendsRequestFragment extends FTFragment implements UserListener.o
         setHasOptionsMenu(true);
         User.getInstance().addFriendsLoadedListener(this);
 
-        refreshDialog = new ProgressDialog(((MainActivity)getActivity()).getContext());
-        refreshDialog.setIndeterminate(true);
+        refreshDialog = new FTProgressDialog(((MainActivity)getActivity()).getContext());
         refreshDialog.setTitle(getString(R.string.friends_requests_refresh_dialog_title));
         refreshDialog.setMessage(getString(R.string.friends_requests_refresh_dialog_message));
-        refreshDialog.setCanceledOnTouchOutside(false);
-        refreshDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
     }
 
     @Override

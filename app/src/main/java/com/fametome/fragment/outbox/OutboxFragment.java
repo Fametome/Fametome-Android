@@ -34,6 +34,7 @@ public class OutboxFragment extends FTFragment {
     private byte type;
     public static final byte TYPE_PLURI_DESTINATAIRE = 0;
     public static final byte TYPE_MONO_DESTINATAIRE = 1;
+    public static final byte TYPE_DEMO_MESSAGE = 2;
 
     public OutboxFragment() {
 
@@ -112,7 +113,7 @@ public class OutboxFragment extends FTFragment {
                 if(listFlashsAdapter.getMessage() != null) {
                     if(type == TYPE_PLURI_DESTINATAIRE) {
                         final OutboxChooseRecipientsFragment chooseRecipientsFragment = new OutboxChooseRecipientsFragment();
-                        chooseRecipientsFragment.setMessage(listFlashsAdapter.getMessage());
+                        chooseRecipientsFragment.setParseMessage(listFlashsAdapter.getMessage());
                         ((MainActivity) getActivity()).showFragment(chooseRecipientsFragment);
 
                     }else if(type == TYPE_MONO_DESTINATAIRE){

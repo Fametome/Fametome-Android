@@ -34,7 +34,7 @@
         </activity>
 
         <activity
-            android:name=".activity.register.RegisterStep1Activity"
+            android:name=".activity.register.RegisterSignUpActivity"
             android:label="@string/app_name"
             android:theme="@style/RegisterTheme"
             android:screenOrientation="portrait" >

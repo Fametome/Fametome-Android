@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.fametome.Dialog.FTProgressDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
@@ -34,7 +35,7 @@ public class InboxFragment extends FTFragment implements UserListener.onMessages
     private View networklessView = null;
     private ListView listMessages = null;
 
-    private ProgressDialog refreshDialog = null;
+    private FTProgressDialog refreshDialog = null;
 
     public InboxFragment() {
 
@@ -46,12 +47,10 @@ public class InboxFragment extends FTFragment implements UserListener.onMessages
         setHasOptionsMenu(true);
         User.getInstance().addMessagesLoadedListener(this);
 
-        refreshDialog = new ProgressDialog(((MainActivity)getActivity()).getContext());
-        refreshDialog.setIndeterminate(true);
+        Log.d("InboxFragment", "onCreate - fragment is created");
+        refreshDialog = new FTProgressDialog(((MainActivity)getActivity()).getContext());
         refreshDialog.setTitle(R.string.inbox_refresh_dialog_title);
         refreshDialog.setMessage(getString(R.string.inbox_refresh_dialog_message));
-        refreshDialog.setCanceledOnTouchOutside(false);
-        refreshDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
     }
 
     @Override

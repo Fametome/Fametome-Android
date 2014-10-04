@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fametome="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/register_background" >
@@ -34,6 +35,8 @@
         <com.fametome.widget.LoadingButton
             android:id="@+id/proceed"
             android:text="@string/register_signup_register"
+            fametome:background="@drawable/register_button_confirm"
+            fametome:loadingBackground="@drawable/register_button_confirm_loading"
             style="@style/registerButtonConfirm"/>
 
     </LinearLayout>

@@ -28,7 +28,7 @@ public class FTPush {
         }
     }
 
-    public static void sendPushToMultipleFriends(List<String> friendsIds, String title, String message){
+    public static void sendPushToMultipleFriendsFrom(List<String> friendsIds, String title, String message){
 
         final int friendsNumber = friendsIds.size();
         for(int i = 0; i < friendsNumber; i++) {

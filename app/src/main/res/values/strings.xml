@@ -5,21 +5,28 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- TODO : TRADUIRE ICI LES POPUPS ET LE MESSAGE DE DEMO -->
+
     <string name="register_hint_username">Username</string>
     <string name="register_hint_password">Password</string>
     <string name="register_hint_email">Email</string>
     <string name="register_hint_phone">Phone</string>
-    <string name="register_login_error_title">Error</string>
+    <string name="register_login_error_title">Identifiers</string>
     <string name="register_login_error_message">Unable to log in, your identifiers are incorrect</string>
-    <string name="register_step_1_empty_username_title">Empty username</string>
-    <string name="register_step_1_empty_username_message">You must supply an username.</string>
-    <string name="register_step_1_empty_password_title">Empty password</string>
-    <string name="register_step_1_empty_password_message">You must supply a password.</string>
-    <string name="register_step_1_empty_email_title">Empty email</string>
-    <string name="register_step_1_empty_email_message">You must supply an email.</string>
-
-    <string name="register_error_title">Error</string>
-    <string name="register_error_message">Unable to sign in, your username or your email is already taken</string>
+    <string name="register_sign_up_empty_username_title">Empty username</string>
+    <string name="register_sign_up_empty_username_message">You must supply an username.</string>
+    <string name="register_sign_up_empty_password_title">Empty password</string>
+    <string name="register_sign_up_empty_password_message">You must supply a password.</string>
+    <string name="register_sign_up_empty_email_title">Empty email</string>
+    <string name="register_sign_up_empty_email_message">You must supply an email.</string>
+    <string name="register_sign_up_username_taken_title">Username</string>
+    <string name="register_sign_up_username_taken_message">Your username is already taken.</string>
+    <string name="register_sign_up_email_taken_title">Email</string>
+    <string name="register_sign_up_email_taken_message">Your email is already taken.</string>
+    <string name="register_sign_up_email_invalid_title">Email</string>
+    <string name="register_sign_up_email_invalid_message">Your email is invalid.</string>
+    <string name="register_sign_up_error_title">Error</string>
+    <string name="register_sign_up_error_message">Unable to sign in, there is an error.</string>
 
     <string name="signIn">Connect</string>
     <string name="register_login_register">Register</string>
@@ -104,6 +111,7 @@
     <string name="inbox_response_title">Answer</string>
     <string name="inbox_response_message">Do you want to answer to %1$s ?</string>
     <string name="inbox_response_button">Answer</string>
+    <string name="inbox_response_back">Back</string>
 
     <string name="outbox_title">Sending</string>
     <string name="outbox_mono_destinataire_title">To %1$s</string>
@@ -162,6 +170,5 @@
     <string name="push_accept_request_message">%1$s has accepted your friend request</string>
     <string name="push_send_message_title">Flash of %1$s</string>
     <string name="push_send_message_message">%1$s send you a flash</string>
-
 
 </resources>

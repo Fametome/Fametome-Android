@@ -31,6 +31,10 @@ public class ParseFace extends Face {
 
     }
 
+    public ParseFace(String faceId){
+        this.id = faceId;
+    }
+
     public ParseFace(ParseObject faceObject){
         ParseQuery<ParseObject> faceQuery = ParseQuery.getQuery(ParseConsts.FACE);
         faceQuery.setLimit(1);

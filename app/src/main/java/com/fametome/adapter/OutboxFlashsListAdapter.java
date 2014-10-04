@@ -20,10 +20,13 @@ import com.fametome.object.Flash;
 import com.fametome.object.Message;
 import com.fametome.object.ParseFace;
 import com.fametome.object.ParseFlash;
+import com.fametome.object.ParseFriend;
+import com.fametome.object.ParseMessage;
 import com.fametome.object.User;
 import com.fametome.util.FTBitmap;
 import com.fametome.util.FTDefaultBitmap;
 import com.parse.Parse;
+import com.parse.ParseUser;
 
 public class OutboxFlashsListAdapter extends BaseAdapter {
 
@@ -31,13 +34,18 @@ public class OutboxFlashsListAdapter extends BaseAdapter {
 
     private LayoutInflater inflater = null;
 
-    private Message message;
+    private ParseMessage message;
 
     public OutboxFlashsListAdapter(MainActivity activity){
         this.activity = activity;
         inflater = (LayoutInflater)activity.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        message = new Message();
+        ParseFriend author = new ParseFriend();
+        author.setId(ParseUser.getCurrentUser().getObjectId());
+        author.setUsername(User.getInstance().getUsername());
+
+        message = new ParseMessage();
+        message.setAuthor(author);
 
         message.addFlash(new ParseFlash());
         message.addFlash(new ParseFlash());
@@ -148,7 +156,7 @@ public class OutboxFlashsListAdapter extends BaseAdapter {
         return message.getFlashNumber();
     }
 
-    public Message getMessage(){
+    public ParseMessage getMessage(){
 
         boolean isMessageEmpty = true;
 

@@ -2,7 +2,7 @@
 <resources>
     <color name="login_text">#FFFFFF</color>
 
-    <color name="theme_orange">#FF8800</color>
+    <color name="theme_orange">#FF7D00</color>
     <color name="register_background">#EFEDED</color>
     <color name="light_orange">#FFB32A</color>
 

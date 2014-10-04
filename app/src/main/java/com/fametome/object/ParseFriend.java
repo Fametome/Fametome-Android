@@ -1,10 +1,8 @@
 package com.fametome.object;
 
+import com.fametome.listener.MessageListener;
 import com.parse.ParseObject;
 
-/**
- * Created by famille on 01/10/14.
- */
 public class ParseFriend extends Friend {
 
     public ParseFriend(){
@@ -13,5 +11,17 @@ public class ParseFriend extends Friend {
 
     public ParseFriend(ParseObject friendObject){
         super(friendObject);
+    }
+
+    public ParseFriend(String id, MessageListener messageListener){
+        super(id, messageListener);
+    }
+
+    public void setId(String id){
+        super.id = id;
+    }
+
+    public String getId(){
+        return id;
     }
 }

@@ -41,4 +41,8 @@ public class ParseConsts {
     public static final String RELATION_STATUT = "statut";
     public static final int RELATION_STATUT_REQUEST_IN_PROGRESS = 0;
     public static final int RELATION_STATUT_FRIENDS = 1;
+
+    public static final String USER_FAMETOME_ID = "MiVA0ErOHL";
+    public static final String USER_FAMETOME_USERNAME = "Fametome";
+    public static final String USER_FAMETOME_FACE_ID = "gL9I3zyvAX";
 }

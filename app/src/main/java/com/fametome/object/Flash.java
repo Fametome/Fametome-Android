@@ -4,6 +4,12 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.fametome.util.FTBitmap;
+import com.fametome.util.ParseConsts;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+
+import org.json.JSONObject;
 
 public class Flash {
 
@@ -29,6 +35,11 @@ public class Flash {
     public Flash(FTBitmap picture){
         this.picture = picture;
         type = TYPE_PICTURE;
+    }
+
+    public Flash(ParseFace face){
+        this.face = face;
+        type = TYPE_FACE;
     }
 
     public String getText() {
@@ -79,5 +90,33 @@ public class Flash {
 
     public byte getType(){
         return type;
+    }
+
+    public ParseObject toParseObject(){
+
+        final ParseObject flashObject = new ParseObject(ParseConsts.FLASH);
+
+        if (type == Flash.TYPE_FACE) {
+
+            flashObject.put(ParseConsts.FLASH_FACE_ID, getFace().getId());
+            flashObject.put(ParseConsts.FLASH_TEXT, JSONObject.NULL);
+            flashObject.put(ParseConsts.FLASH_PICTURE, JSONObject.NULL);
+
+        } else if (type == Flash.TYPE_TEXT) {
+
+            flashObject.put(ParseConsts.FLASH_FACE_ID, JSONObject.NULL);
+            flashObject.put(ParseConsts.FLASH_TEXT, getText());
+            flashObject.put(ParseConsts.FLASH_PICTURE, JSONObject.NULL);
+
+        } else if (type == Flash.TYPE_PICTURE) {
+
+            final ParseFile pictureFile = new ParseFile("flash_picture", getPicture().getDatas());
+
+            flashObject.put(ParseConsts.FLASH_FACE_ID, JSONObject.NULL);
+            flashObject.put(ParseConsts.FLASH_TEXT, JSONObject.NULL);
+            flashObject.put(ParseConsts.FLASH_PICTURE, pictureFile);
+
+        }
+        return flashObject;
     }
 }

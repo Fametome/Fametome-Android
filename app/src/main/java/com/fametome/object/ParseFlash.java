@@ -1,6 +1,5 @@
 package com.fametome.object;
 
-import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.fametome.listener.FlashListener;
@@ -17,6 +16,18 @@ public class ParseFlash extends Flash {
 
     public ParseFlash(){
 
+    }
+
+    public ParseFlash(String text){
+        super(text);
+    }
+
+    public ParseFlash(FTBitmap picture){
+        super(picture);
+    }
+
+    public ParseFlash(ParseFace face){
+        super(face);
     }
 
     public ParseFlash(ParseObject flashObject, final FlashListener flashListener){

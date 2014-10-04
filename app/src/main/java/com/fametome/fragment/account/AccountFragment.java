@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.fametome.Dialog.FTDialog;
+import com.fametome.Dialog.FTProgressDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
@@ -139,12 +140,9 @@ public class AccountFragment extends FTFragment implements UserListener.onUserLo
             public void onPictureTaken(final FTBitmap picture) {
             ((MainActivity)getActivity()).leaveCamera();
 
-            final ProgressDialog avatarLoadingDialog = new ProgressDialog(((MainActivity)getActivity()).getContext());
-            avatarLoadingDialog.setIndeterminate(true);
+            final FTProgressDialog avatarLoadingDialog = new FTProgressDialog(((MainActivity)getActivity()).getContext());
             avatarLoadingDialog.setTitle(R.string.account_change_avatar_loading_title);
             avatarLoadingDialog.setMessage(getString(R.string.account_change_avatar_loading_message));
-            avatarLoadingDialog.setCanceledOnTouchOutside(false);
-            avatarLoadingDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
             avatarLoadingDialog.show();
 
             final ParseFile file = new ParseFile(User.getInstance().getUsername() + "_avatar.png", picture.getDatas());

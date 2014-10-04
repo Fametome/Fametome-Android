@@ -21,7 +21,7 @@ public class ParseMessage extends Message {
     private MessageListener messageListener;
 
     private ParseObject messageObject;
-    private Friend author;
+    private ParseFriend author;
 
     private boolean isFlashsLoaded = false;
     private int flashsLoadedNumber = 0;
@@ -32,13 +32,13 @@ public class ParseMessage extends Message {
     }
 
     public ParseMessage(ParseObject messageObject, MessageListener messageListener){
-        load(messageObject, messageListener);
+        loadMessage(messageObject, messageListener);
     }
 
-    public void load(ParseObject messageObject, MessageListener messageListener){
+    public void loadMessage(ParseObject messageObject, MessageListener messageListener){
         this.messageListener = messageListener;
         this.messageObject = messageObject;
-        this.author = new Friend(messageObject.getString(ParseConsts.MESSAGE_AUTHOR_ID), messageListener);
+        this.author = new ParseFriend(messageObject.getString(ParseConsts.MESSAGE_AUTHOR_ID), messageListener);
         loadFlashs();
     }
 
@@ -82,7 +82,11 @@ public class ParseMessage extends Message {
         return messageObject;
     }
 
-    public Friend getAuthor(){
+    public void setAuthor(ParseFriend author){
+        this.author = author;
+    }
+
+    public ParseFriend getAuthor(){
         return author;
     }
 

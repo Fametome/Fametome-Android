@@ -53,14 +53,24 @@ public class InboxResponseFragment extends FTFragment {
 
         handleMessageDestruction();
 
-        if(getParseMessage().getAuthor().getAvatar() != null) {
+        if (getParseMessage().getAuthor().getAvatar() != null) {
             avatar.setImageBitmap(getParseMessage().getAuthor().getAvatar().getBitmap());
-        }else{
+        } else {
             avatar.setImageBitmap(FTDefaultBitmap.getInstance().getDefaultAvatar());
         }
-        text.setText(getString(R.string.inbox_response_message, getParseMessage().getAuthor().getUsername()));
 
-        answer.setOnClickListener(clickAnswer);
+        if(!getParseMessage().getAuthor().getId().equals(ParseConsts.USER_FAMETOME_ID)){
+
+            text.setText(getString(R.string.inbox_response_message, getParseMessage().getAuthor().getUsername()));
+            answer.setOnClickListener(clickAnswer);
+
+        }else {
+
+            text.setVisibility(View.INVISIBLE);
+            answer.setText(getString(R.string.inbox_response_back));
+            answer.setOnClickListener(clickBack);
+
+        }
 
         User.getInstance().refreshMessages();
 
@@ -115,6 +125,13 @@ public class InboxResponseFragment extends FTFragment {
             outboxFragment.setFriend(getParseMessage().getAuthor());
             ((MainActivity)getActivity()).showFragment(outboxFragment);
             ((MainActivity)getActivity()).setSelectedItem(NavigationDrawerFragment.FRAGMENT_OUTBOX);
+        }
+    };
+
+    private View.OnClickListener clickBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ((MainActivity)getActivity()).selectItem(NavigationDrawerFragment.FRAGMENT_INBOX);
         }
     };
 

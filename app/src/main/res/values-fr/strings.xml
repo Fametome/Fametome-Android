@@ -5,25 +5,41 @@
     <string name="navigation_drawer_open">Ouvrir le navigation drawer</string>
     <string name="navigation_drawer_close">Fermer le navigation drawer</string>
 
+    <string name="demo_message_flash_1">Bienvenu sur Fametome !</string>
+    <string name="demo_message_flash_2">Ceci est un flash. Il peut être composé de sms, de photos et de faces !</string>
+    <string name="demo_message_flash_3">Vous allez voir un sms, une photo et une face.</string>
+    <string name="demo_message_flash_4">Un sms !</string>
+    <string name="demo_message_flash_7">Ajoutez vos amis et envoyer leur des flashs !</string>
+    <string name="demo_popup_profil_title">Bienvenu sur Fametome !</string>
+    <string name="demo_popup_profil_message">
+        Cette partie vous permet d\'ajouter et de consulter vos faces. Elles vous permettenr de créer des smileys
+        personnalisés avec votre visage. Vous pouvez également changer votre avatar en cliquant dessus.
+    </string>
+
     <string name="register_hint_username">Pseudo</string>
     <string name="register_hint_password">Mot de passe</string>
     <string name="register_hint_email">Email</string>
     <string name="register_hint_phone">Telephone</string>
-    <string name="register_login_error_title">Erreur</string>
+    <string name="register_login_error_title">Identifiants</string>
     <string name="register_login_error_message">Impossible de se connecter, vos identifiants sont incorrects.</string>
     <string name="register_login_without_network_title">Aucun réseau</string>
     <string name="register_login_without_network_message">Vous n\'êtes pas connectés à internet</string>
-    <string name="register_step_1_empty_username_title">Pseudo</string>
-    <string name="register_step_1_empty_username_message">Vous n\'avez pas entré votre pseudo.</string>
-    <string name="register_step_1_empty_password_title">Mot de passe</string>
-    <string name="register_step_1_empty_password_message">Vous n\'avez pas entré votre mot de passe.</string>
-    <string name="register_step_1_empty_email_title">Email</string>
-    <string name="register_step_1_empty_email_message">Vous n\'avez pas entré votre email.</string>
-    <string name="register_step_1_register_without_network_title">Aucun réseau</string>
-    <string name="register_step_1_register_without_network_message">Vous n\'êtes pas connectés à internet</string>
-
-    <string name="register_error_title">Erreur</string>
-    <string name="register_error_message">Impossible de vous inscrire, votre nom d\'utilisateur ou votre email est déjà pris</string>
+    <string name="register_sign_up_empty_username_title">Pseudo</string>
+    <string name="register_sign_up_empty_username_message">Vous n\'avez pas entré votre pseudo.</string>
+    <string name="register_sign_up_empty_password_title">Mot de passe</string>
+    <string name="register_sign_up_empty_password_message">Vous n\'avez pas entré votre mot de passe.</string>
+    <string name="register_sign_up_empty_email_title">Email</string>
+    <string name="register_sign_up_empty_email_message">Vous n\'avez pas entré votre email.</string>
+    <string name="register_sign_up_register_without_network_title">Aucun réseau</string>
+    <string name="register_sign_up_register_without_network_message">Vous n\'êtes pas connectés à internet</string>
+    <string name="register_sign_up_username_taken_title">Pseudo</string>
+    <string name="register_sign_up_username_taken_message">Votre pseudo est déjà pris.</string>
+    <string name="register_sign_up_email_taken_title">Email</string>
+    <string name="register_sign_up_email_taken_message">Votre adresse email est déjà prise.</string>
+    <string name="register_sign_up_email_invalid_title">Email</string>
+    <string name="register_sign_up_email_invalid_message">Votre adresse email n\'est pas valide.</string>
+    <string name="register_sign_up_error_title">Erreur</string>
+    <string name="register_sign_up_error_message">Impossible de vous inscrire. Il y a une erreur.</string>
 
     <string name="signIn">Se connecter</string>
     <string name="register_login_register">S\'inscrire</string>
@@ -106,13 +122,14 @@
     <string name="inbox_response_title">Répondre</string>
     <string name="inbox_response_message">Voulez vous répondre à %1$s ?</string>
     <string name="inbox_response_button">Répondre</string>
+    <string name="inbox_response_back">Retour</string>
 
     <string name="outbox_title">Envoi</string>
     <string name="outbox_mono_destinataire_title">A %1$s</string>
     <string name="outbox_button_add">Ajouter</string>
     <string name="outbox_button_time">Temps</string>
     <string name="outbox_send_without_friends_title">Aucun amis</string>
-    <string name="outbox_send_without_friends_message">Vous n\'avez pas d\'amis à qui envoyer le flash, ajoutez-en !</string>
+    <string name="outbox_send_without_friends_message">Vous n\'avez pas encore d\'amis à qui envoyer vos flashs, ajoutez-en !</string>
     <string name="outbox_send_with_empty_message_title">Flash vide</string>
     <string name="outbox_send_with_empty_message_message">Vous ne pouvez pas envoyé de flash vide.</string>
     <string name="outbox_send_choose_recipients_empty_title">Selection vide</string>
@@ -126,7 +143,7 @@
     <string name="friends_all">Tous mes amis</string>
     <string name="friends_add">Ajouter un ami</string>
     <string name="friends_search">Chercher un ami</string>
-    <string name="friends_grid_empty">Vous n\'avez pas d\'amis.</string>
+    <string name="friends_grid_empty">Vous n\'avez pas encore d\'amis.</string>
     <string name="friends_profil_title">Profil de %1$s</string>
     <string name="friends_profil_all_faces">Toutes ses faces</string>
     <string name="friends_profil_empty_face">Aucune face</string>
@@ -164,6 +181,5 @@
     <string name="push_accept_request_message">%1$s a accepté votre demande d\'amitiée</string>
     <string name="push_send_message_title">Flash de %1$s</string>
     <string name="push_send_message_message">%1$s vous a envoyé un flash</string>
-
 
 </resources>
