@@ -63,7 +63,7 @@ public class NavigationDrawerListAdapter extends BaseAdapter {
             RoundedCornerImageView avatar = (RoundedCornerImageView)convertView.findViewById(R.id.avatar);
             text = (TextView)convertView.findViewById(R.id.text);
 
-            text.setText(User.getInstance().getUsername());
+            /* text.setText(User.getInstance().getUsername()); */
 
             if(User.getInstance().getAvatar() != null){
                 avatar.setImageBitmap(User.getInstance().getAvatar());

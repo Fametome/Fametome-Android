@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.fametome.Dialog.FTDialog;
+import com.fametome.Dialog.FTProgressDialog;
 import com.fametome.FTFragment;
 import com.fametome.FTPush;
 import com.fametome.R;
@@ -40,9 +41,9 @@ import java.util.List;
 
 public class OutboxChooseRecipientsFragment extends FTFragment {
 
-    GridView friendsGrid;
+    private GridView friendsGrid;
 
-    ArrayList<Integer> friendsSelectedPos;
+    private ArrayList<Integer> friendsSelectedPos;
 
     public OutboxChooseRecipientsFragment(){
 
@@ -54,11 +55,10 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
         setHasOptionsMenu(true);
 
         View rootView = inflater.inflate(R.layout.fragment_outbox_choose_recipient, container, false);
-
-        friendsSelectedPos = new ArrayList<Integer>();
-
         friendsGrid = (GridView)rootView.findViewById(R.id.friendsGrid);
 
+
+        friendsSelectedPos = new ArrayList<Integer>();
         friendsGrid.setAdapter(new FriendsGridAdapter(getActivity().getApplicationContext()));
 
         friendsGrid.setOnItemClickListener(clickItemFriendsGrid);
@@ -94,6 +94,15 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
             messageObject.put(ParseConsts.MESSAGE_SEEN, false);
             messageObject.put(ParseConsts.MESSAGE_TIME, 0);
 
+            final FTProgressDialog progressDialog = new FTProgressDialog(context);
+            progressDialog.setTitle(R.string.outbox_send_message_progress_title);
+            progressDialog.setMessage(R.string.outbox_send_message_progress_message);
+
+            if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
+                progressDialog.show();
+
+            }
+
             final int flashsNumber = message.getFlashNumber();
             final FTInteger flashsSendedNumber = new FTInteger(0);
             for (int i = 0; i < flashsNumber; i++) {
@@ -120,7 +129,8 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                 }
                                 flashsSendedNumber.increment();
                                 if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                    sendPush(context, message.getAuthor().getUsername(), recipientsIds);
+                                    messageSended(context, message.getAuthor().getUsername(), recipientsIds);
+                                    progressDialog.cancel();
                                 }
                             }
                         });
@@ -143,7 +153,8 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                 }
                                 flashsSendedNumber.increment();
                                 if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                    sendPush(context, message.getAuthor().getUsername(), recipientsIds);
+                                    messageSended(context, message.getAuthor().getUsername(), recipientsIds);
+                                    progressDialog.cancel();
                                 }
                             }
                         });
@@ -179,7 +190,8 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                             }
                                             flashsSendedNumber.increment();
                                             if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                                sendPush(context, message.getAuthor().getUsername(), recipientsIds);
+                                                messageSended(context, message.getAuthor().getUsername(), recipientsIds);
+                                                progressDialog.cancel();
                                             }
                                         }
                                     });
@@ -194,7 +206,8 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                 } else {
                     flashsSendedNumber.increment();
                     if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                        sendPush(context, message.getAuthor().getUsername(), recipientsIds);
+                        messageSended(context, message.getAuthor().getUsername(), recipientsIds);
+                        progressDialog.cancel();
                     }
                     Log.w("OutboxChooseRecipientsFragment", "onOptionsItemSelected - the flash n°" + i + " is empty");
                 }
@@ -216,7 +229,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
         }
     }
 
-    private static void sendPush(Context context, String senderUsername, List<String> recipientsIds){
+    private static void messageSended(Context context, String senderUsername, List<String> recipientsIds){
         String titlePush = context.getString(R.string.push_send_message_title, senderUsername);
         String messagePush = context.getString(R.string.push_send_message_message, senderUsername);
         FTPush.sendPushToMultipleFriends(recipientsIds, titlePush, messagePush);

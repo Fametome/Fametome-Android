@@ -22,6 +22,7 @@
         android:layout_alignTop="@id/avatar"
         android:layout_alignBottom="@id/avatar"
         android:gravity="center_vertical"
+        android:text="@string/navigation_drawer_account"
         style="@style/gravure"/>
 
 </RelativeLayout>

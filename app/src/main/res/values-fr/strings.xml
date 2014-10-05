@@ -81,6 +81,7 @@
     <string name="confirm">Confirmer</string>
     <string name="search">Chercher</string>
 
+    <string name="navigation_drawer_account">Profil</string>
     <string name="account_title">Mon profil</string>
     <string name="account_face_pager_title">Mes faces</string>
     <string name="account_face_pager_delete_message">Etes vous sûr de vouloir supprimer cette face ?</string>
@@ -155,6 +156,8 @@
     <string name="outbox_mono_destinataire_title">A %1$s</string>
     <string name="outbox_button_add">Ajouter</string>
     <string name="outbox_button_time">Temps</string>
+    <string name="outbox_send_message_progress_title">Envoie</string>
+    <string name="outbox_send_message_progress_message">Envoi de votre flash en cours.</string>
     <string name="outbox_send_without_friends_title">Aucun amis</string>
     <string name="outbox_send_without_friends_message">Vous n\'avez pas encore d\'amis à qui envoyer vos flashs, ajoutez-en !</string>
     <string name="outbox_send_with_empty_message_title">Flash vide</string>
@@ -162,7 +165,7 @@
     <string name="outbox_send_choose_recipients_empty_title">Selection vide</string>
     <string name="outbox_send_choose_recipients_empty_message">Vous devez choisir au moins un ami.</string>
     <string name="outbox_send_message_without_wifi_title">Aucun réseau</string>
-    <string name="outbox_send_message_without_wifi_message">Vous ne pouvez pas envoyer de flash sans être connecté à Internet</string>
+    <string name="outbox_send_message_without_wifi_message">Vous ne pouvez pas envoyer de flash sans être connecté à Internet.</string>
     <string name="outbox_flash_text_when_picture">Photo</string>
     <string name="outbox_choose_recipients_title">Destinataires</string>
 

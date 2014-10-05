@@ -88,6 +88,9 @@ public class FriendSearchFragment extends FTFragment {
             Log.d("FriendSearchFragment", "|" + searchedUsername + "|" + searchText.getText() + "|");
 
             if(searchedUsername.isEmpty()){
+                FTDialog dialog = new FTDialog(((MainActivity)getActivity()).getContext());
+                dialog.setMessage(getString(R.string.friends_search_inexistant_user));
+                dialog.show();
                 return;
             }
 

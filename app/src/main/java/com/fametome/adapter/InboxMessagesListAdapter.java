@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fametome.R;
@@ -48,7 +49,7 @@ public class InboxMessagesListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.item_inbox_messages_list, parent, false);
 
-        SquareImageView avatarView = (SquareImageView)convertView.findViewById(R.id.avatar);
+        ImageView avatarView = (ImageView)convertView.findViewById(R.id.avatar);
         TextView usernameView = (TextView)convertView.findViewById(R.id.username);
 
         if(User.getInstance().getMessages().size() != 0) {

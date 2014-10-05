@@ -17,6 +17,7 @@
         android:layout_height="fill_parent"
         android:gravity="center"
         android:padding="8dp"
+        android:textSize="@dimen/classic_text_size"
         style="@style/gravure"/>
 
 </RelativeLayout>

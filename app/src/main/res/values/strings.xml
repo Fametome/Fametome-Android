@@ -2,173 +2,214 @@
 <resources>
 
     <string name="app_name">Fametome</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Ouvrir le navigation drawer</string>
+    <string name="navigation_drawer_close">Fermer le navigation drawer</string>
 
-    <!-- TODO : TRADUIRE ICI LES POPUPS ET LE MESSAGE DE DEMO -->
+    <string name="demo_message_flash_1">Bienvenu sur Fametome !</string>
+    <string name="demo_message_flash_2">Ceci est un flash. Il peut être composé de sms, de photos et de faces !</string>
+    <string name="demo_message_flash_3">Vous allez voir un sms, une photo et une face.</string>
+    <string name="demo_message_flash_4">Un sms !</string>
+    <string name="demo_message_flash_7">Ajoutez vos amis et envoyer leur des flashs !</string>
+    <string name="demo_popup_account_title">Bienvenu sur Fametome !</string>
+    <string name="demo_popup_account_message">
+        Cette partie vous permet d\'ajouter et de consulter vos faces. Elles vous permettenr de créer des smileys
+        personnalisés avec votre visage. Vous pouvez également changer votre avatar en cliquant dessus.
+    </string>
+    <string name="demo_popup_add_face_title">Ajouter une face</string>
+    <string name="demo_popup_add_face_message">
+        Cette partie vous permet d\'ajouter une face, c\'est à dire un smiley personnalisé avec votre visage.
+        Par exemple, prenez une photo de vous en souriant et associez lui le texte \' :) \'.
+    </string>
+    <string name="demo_popup_inbox_title">Boîte de réception</string>
+    <string name="demo_popup_inbox_message">
+        C\'est ici que vous pouvez consulter vos flashs. Pour voir un flash, cliquez dessus et regardez-le défiler.
+        Une fois terminé, il est définitivement supprimé.
+    </string>
+    <string name="demo_popup_outbox_title">Envoie de flashs</string>
+    <string name="demo_popup_outbox_message">
+        C\'est ici que vous écrivez vos flashs, écrivez un simple sms ou envoyez une face en écrivant le
+        texte qui y est associé. Vous pouvez aussi envoyer des photos en appuyant sur l\'image à droite.
+        Les flashs sont limités à 7 éléments, remplissez-les comme vous voulez ! Choisissez ensuite les destinataires
+        en appuyant sur la flèche en haut à droite
+    </string>
+    <string name="demo_popup_friends_title">Mes amis</string>
+    <string name="demo_popup_friends_message">
+        Consultez le profil de vos amis en cliquant sur leur avatar. Pour chercher de nouveaux amis, appuyez
+        sur la loupe en haut à droite. Pour consulter vos demandes d\'amitiés, appuyez sur l\'îcone à gauche de la loupe.
+    </string>
 
-    <string name="register_hint_username">Username</string>
-    <string name="register_hint_password">Password</string>
+    <string name="demo_popup_friend_search_title">Chercher des amis</string>
+    <string name="demo_popup_friend_search_message">
+        Chercher vos amis en saisissant leur pseudo puis en appuyant sur "Chercher".
+    </string>
+
+    <string name="register_hint_username">Pseudo</string>
+    <string name="register_hint_password">Mot de passe</string>
     <string name="register_hint_email">Email</string>
-    <string name="register_hint_phone">Phone</string>
-    <string name="register_login_error_title">Identifiers</string>
-    <string name="register_login_error_message">Unable to log in, your identifiers are incorrect</string>
-    <string name="register_sign_up_empty_username_title">Empty username</string>
-    <string name="register_sign_up_empty_username_message">You must supply an username.</string>
-    <string name="register_sign_up_empty_password_title">Empty password</string>
-    <string name="register_sign_up_empty_password_message">You must supply a password.</string>
-    <string name="register_sign_up_empty_email_title">Empty email</string>
-    <string name="register_sign_up_empty_email_message">You must supply an email.</string>
-    <string name="register_sign_up_username_taken_title">Username</string>
-    <string name="register_sign_up_username_taken_message">Your username is already taken.</string>
+    <string name="register_hint_phone">Telephone</string>
+    <string name="register_login_error_title">Identifiants</string>
+    <string name="register_login_error_message">Impossible de se connecter, vos identifiants sont incorrects.</string>
+    <string name="register_login_without_network_title">Aucun réseau</string>
+    <string name="register_login_without_network_message">Vous n\'êtes pas connectés à internet</string>
+    <string name="register_sign_up_empty_username_title">Pseudo</string>
+    <string name="register_sign_up_empty_username_message">Vous n\'avez pas entré votre pseudo.</string>
+    <string name="register_sign_up_empty_password_title">Mot de passe</string>
+    <string name="register_sign_up_empty_password_message">Vous n\'avez pas entré votre mot de passe.</string>
+    <string name="register_sign_up_empty_email_title">Email</string>
+    <string name="register_sign_up_empty_email_message">Vous n\'avez pas entré votre email.</string>
+    <string name="register_sign_up_register_without_network_title">Aucun réseau</string>
+    <string name="register_sign_up_register_without_network_message">Vous n\'êtes pas connectés à internet</string>
+    <string name="register_sign_up_username_taken_title">Pseudo</string>
+    <string name="register_sign_up_username_taken_message">Votre pseudo est déjà pris.</string>
     <string name="register_sign_up_email_taken_title">Email</string>
-    <string name="register_sign_up_email_taken_message">Your email is already taken.</string>
+    <string name="register_sign_up_email_taken_message">Votre adresse email est déjà prise.</string>
     <string name="register_sign_up_email_invalid_title">Email</string>
-    <string name="register_sign_up_email_invalid_message">Your email is invalid.</string>
-    <string name="register_sign_up_error_title">Error</string>
-    <string name="register_sign_up_error_message">Unable to sign in, there is an error.</string>
+    <string name="register_sign_up_email_invalid_message">Votre adresse email n\'est pas valide.</string>
+    <string name="register_sign_up_error_title">Erreur</string>
+    <string name="register_sign_up_error_message">Impossible de vous inscrire. Il y a une erreur.</string>
 
-    <string name="signIn">Connect</string>
-    <string name="register_login_register">Register</string>
-    <string name="register_signup_register">Register</string>
-    <string name="signUp">Register</string>
-    <string name="proceed">Continue</string>
-    <string name="loading">Loading…</string>
+    <string name="signIn">Se connecter</string>
+    <string name="register_login_register">S\'inscrire</string>
+    <string name="register_signup_register">S\'inscrire</string>
+    <string name="signUp">Inscription</string>
+    <string name="proceed">Continuer</string>
+    <string name="loading">Chargement…</string>
 
     <string name="more">+</string>
-    
-    <string name="cancel">Cancel</string>
-    <string name="confirm">Confirm</string>
-    <string name="search">Search</string>
 
-    <string name="account_title">Account</string>
-    <string name="account_face_pager_title">My faces</string>
-    <string name="account_face_pager_delete_message">Are you sure to delete this face ?</string>
-    <string name="account_face_album_title">My faces</string>
-    <string name="account_all_faces">All faces</string>
-    <string name="account_empty_face">No faces</string>
-    <string name="account_face_add">Add a face</string>
-    <string name="account_face_delete">Delete</string>
-    <string name="account_add_face_title">Add face</string>
-    <string name="account_add_face_button">Add</string>
-    <string name="account_add_face_without_wifi_title">No network</string>
-    <string name="account_add_face_without_wifi_message">You can\'t add face without network.</string>
-    <string name="account_change_avatar_without_wifi_title">No network</string>
-    <string name="account_change_avatar_without_wifi_message">You can\'t change your avatar without network.</string>
-    <string name="account_change_avatar_loading_title">Loading</string>
-    <string name="account_change_avatar_loading_message">Upload of your avatar</string>
+    <string name="cancel">Annuler</string>
+    <string name="confirm">Confirmer</string>
+    <string name="search">Chercher</string>
 
-    <string name="register_step_1_register_without_network_title">No network</string>
-    <string name="register_step_1_register_without_network_message">You can\'t add face without network.</string>
+    <string name="navigation_drawer_account">Profil</string>
+    <string name="account_title">Mon profil</string>
+    <string name="account_face_pager_title">Mes faces</string>
+    <string name="account_face_pager_delete_message">Etes vous sûr de vouloir supprimer cette face ?</string>
+    <string name="account_face_album_title">Mes faces</string>
+    <string name="account_all_faces">Toutes mes faces</string>
+    <string name="account_empty_face">Aucune faces</string>
+    <string name="account_face_add">Ajouter une face</string>
+    <string name="account_face_delete">Supprimer</string>
+    <string name="account_add_face_title">Ajouter une face</string>
+    <string name="account_add_face_button">Ajouter</string>
+    <string name="account_add_face_without_wifi_title">Aucun réseau</string>
+    <string name="account_add_face_without_wifi_message">Vous ne pouvez pas ajouter de faces sans réseau.</string>
+    <string name="account_change_avatar_without_wifi_title">Aucun réseau</string>
+    <string name="account_change_avatar_without_wifi_message">Vous ne pouvez pas changer votre photo de profil sans réseau.</string>
+    <string name="account_change_avatar_loading_title">Chargement</string>
+    <string name="account_change_avatar_loading_message">Chargement de l\'avatar</string>
 
-    <string name="settings_title">Settings</string>
-    <string name="settings_separator_account">My account</string>
-    <string name="settings_separator_about">About</string>
-    <string name="settings_separator_log_out">Log out</string>
-    <string name="settings_terms_of_use">Terms of use</string>
-    <string name="settings_terms_of_use_title">Terms of use</string>
+    <string name="settings_title">Options</string>
+    <string name="settings_separator_account">Mon compte</string>
+    <string name="settings_separator_about">A propos</string>
+    <string name="settings_separator_log_out">Deconnexion</string>
+    <string name="settings_terms_of_use">Conditions d\'utilisations</string>
+    <string name="settings_terms_of_use_title">Conditions d\'utilisations</string>
     <string name="settings_terms_of_use_message">
-        This is a messaging. The exchanged messages are composed of several elements called "Flash"
-         parading successively from left to right when are watching.
-         When viewed, the message is destroyed. You can choose who you send messages and can send you also.
-         Anonymity is guaranteed by a pseudonym throughout the application.
-         Basic rules apply when using the service Fametome namely:
-         not exchange messages disrespectful or hate,
-         do not post violent or obscene images and not try to abuse the credulity other members.
-         More generally, the French law applies.
+        Fametome est une application mobile disponible sur Android et iOS.
+        Il s\'agit d\'une messagerie. Les messages échangés sont composés de plusieurs élements appelés "Flash"
+        qui défilent succèsivement de gauche à droite lorsqu\'on les visionnent.
+        Une fois visionné, le message est détruit. Vous pouvez choisir à qui vous envoyez des messages et qui peut vous en envoyer également.
+        L\'anonymat est garanti par un pseudonyme dans toute l\'application.
+        Des règles de bases s\'appliquent lors de l\'utilisation du service Fametome à savoir:
+        ne pas échanger des messages irrespectueux ou incitant à la haine,
+        ne pas envoyer des images violentes ou obscènes  et ne pas tenter d\'abuser de la credulité d\'autres membres.
+        De manière plus générale, la loi Française s\'applique.
     </string>
-    <string name="settings_privacy_policy">Privacy policy</string>
-    <string name="settings_privacy_policy_title">Privacy policy</string>
+    <string name="settings_privacy_policy">Politique de confidentialité</string>
+    <string name="settings_privacy_policy_title">Politique de confidentialité</string>
     <string name="settings_privacy_policy_message">
-        Anonymity is guaranteed when using Fametome.
-        The email address and phone number you provide information for inclusion does not appear to other users,
-        even if they are in your friends list.
-        Such information is essential to ensure the uniqueness of your account and to contact you if you lose your password.
-        The only information that your friends can see about you is your nickname and various statistics on the number of messages you have sent,
-        ration image / sms ... etc ... At any time you can choose to accept or refuse a friend request of another member,
-        and you can also make requests to any other member.
-        You can also unsubscribe, which will effectively delete all of your data from our servers.
+        L\'anonymat est garantit lors de l\'utilisation de Fametome.
+        L\'adresse e-mail et le numéro de téléphone que vous renseigner à l\'inscription n\'apparaît pas pour les autres utilisateurs,
+        même s\'ils sont dans votre liste d\'amis.
+        Ces informations nous sont indispensables pour garantir l\'unicité de votre compte et pour vous contacter en cas de perte de mot de passe.
+        Les seuls informations que vos amis peuvent voir sur vous sont votre pseudonyme ainsi que divers statistiques sur le nombre de message que vous avez envoyé,
+        ration image/sms... etc... A tout moment vous pouvez choisir d\'accepter ou de refuser une demande d\'amitié d\'un autre membre,
+        et vous pouvez également faire des demandes à n\'importe quel autre membre. Vous pouvez également vous désinscrire,
+        ce qui aura pour effet de supprimer l\'intégralité des données vous concernant de nos serveurs.
     </string>
-    <string name="settings_sign_out">Sign out</string>
+    <string name="settings_sign_out">Se déconnecter</string>
 
-    <string name="menu_account_settings">Settings</string>
-    <string name="menu_friends_search">Search</string>
-    <string name="menu_friends_request">Request</string>
-    <string name="menu_friends_requests_refresh">Refresh</string>
-    <string name="menu_inbox_refresh">Refresh</string>
-    <string name="menu_outbox_send">Send</string>
-    <string name="menu_outbox_choose_recipient_send">Send</string>
+    <string name="menu_account_settings">Options</string>
+    <string name="menu_friends_search">Chercher</string>
+    <string name="menu_friends_request">Demande d\'amitiée</string>
+    <string name="menu_friends_requests_refresh">Rafraichir</string>
+    <string name="menu_inbox_refresh">Rafraichir</string>
+    <string name="menu_outbox_send">Envoyer</string>
+    <string name="menu_outbox_choose_recipient_send">Envoyer</string>
 
-    <string name="inbox_title">Inbox</string>
-    <string name="inbox_item_description">%1$s send you a flash</string>
-    <string name="inbox_message_empty">You don\'t have any flash</string>
-    <string name="inbox_show">Show the flash</string>
-    <string name="inbox_message_refresh">Refresh</string>
-    <string name="inbox_no_network_description">You are not connected to the Internet</string>
-    <string name="inbox_no_network_retry">Retry</string>
-    <string name="inbox_refresh_dialog_title">Refresh</string>
-    <string name="inbox_refresh_dialog_message">Your messages are refreshing</string>
-    <string name="inbox_response_title">Answer</string>
-    <string name="inbox_response_message">Do you want to answer to %1$s ?</string>
-    <string name="inbox_response_button">Answer</string>
-    <string name="inbox_response_back">Back</string>
+    <string name="inbox_title">Reception</string>
+    <string name="inbox_item_description">%1$s vous a envoyé un flash</string>
+    <string name="inbox_show">Voir le flash</string>
+    <string name="inbox_message_empty">Vous n\'avez pas reçu de flashs</string>
+    <string name="inbox_message_refresh">Rafraichir</string>
+    <string name="inbox_no_network_description">Vous n\'êtes pas connecté à Internet</string>
+    <string name="inbox_no_network_retry">Réessayer</string>
+    <string name="inbox_refresh_dialog_title">Rafraichir</string>
+    <string name="inbox_refresh_dialog_message">Rafraichissement de vos flashs</string>
+    <string name="inbox_response_title">Répondre</string>
+    <string name="inbox_response_message">Voulez vous répondre à %1$s ?</string>
+    <string name="inbox_response_button">Répondre</string>
+    <string name="inbox_response_back">Retour</string>
 
-    <string name="outbox_title">Sending</string>
-    <string name="outbox_mono_destinataire_title">To %1$s</string>
-    <string name="outbox_button_add">Add</string>
-    <string name="outbox_button_time">Time</string>
-    <string name="outbox_send_without_friends_title">No friends</string>
-    <string name="outbox_send_without_friends_message">You don\'t have any friends to send the flash, add a friend !</string>
-    <string name="outbox_send_with_empty_message_title">Empty flash</string>
-    <string name="outbox_send_with_empty_message_message">You can\'t send an empty flash !</string>
-    <string name="outbox_send_choose_recipients_empty_title">Empty selection</string>
-    <string name="outbox_send_choose_recipients_empty_message">You must choose 1 friend at minimum</string>
-    <string name="outbox_send_message_without_wifi_title">No network</string>
-    <string name="outbox_send_message_without_wifi_message">You can\'t send flash without internet access</string>
-    <string name="outbox_flash_text_when_picture">Picture</string>
-    <string name="outbox_choose_recipients_title">Recipients</string>
+    <string name="outbox_title">Envoi</string>
+    <string name="outbox_mono_destinataire_title">A %1$s</string>
+    <string name="outbox_button_add">Ajouter</string>
+    <string name="outbox_button_time">Temps</string>
+    <string name="outbox_send_message_progress_title">Envoie</string>
+    <string name="outbox_send_message_progress_message">Envoi de votre flash en cours.</string>
+    <string name="outbox_send_without_friends_title">Aucun amis</string>
+    <string name="outbox_send_without_friends_message">Vous n\'avez pas encore d\'amis à qui envoyer vos flashs, ajoutez-en !</string>
+    <string name="outbox_send_with_empty_message_title">Flash vide</string>
+    <string name="outbox_send_with_empty_message_message">Vous ne pouvez pas envoyé de flash vide.</string>
+    <string name="outbox_send_choose_recipients_empty_title">Selection vide</string>
+    <string name="outbox_send_choose_recipients_empty_message">Vous devez choisir au moins un ami.</string>
+    <string name="outbox_send_message_without_wifi_title">Aucun réseau</string>
+    <string name="outbox_send_message_without_wifi_message">Vous ne pouvez pas envoyer de flash sans être connecté à Internet.</string>
+    <string name="outbox_flash_text_when_picture">Photo</string>
+    <string name="outbox_choose_recipients_title">Destinataires</string>
 
-    <string name="friends_title">Friends</string>
-    <string name="friends_all">All friends</string>
-    <string name="friends_add">Add friend</string>
-    <string name="friends_search">Search a friend</string>
-    <string name="friends_grid_empty">You don\'t have any friend.</string>
-    <string name="friends_profil_title">%1$s\'s profile</string>
-    <string name="friends_profil_all_faces">All faces</string>
-    <string name="friends_profil_empty_face">No faces</string>
-    <string name="friends_face_album_title">%1$s\'s faces</string>
-    <string name="friends_face_pager_title">%1$s\'s faces</string>
-    <string name="friends_search_title">Search friends</string>
-    <string name="friends_search_add">Add to my friends</string>
-    <string name="friends_search_himself">Sorry, you can\'t be your own friend.</string>
-    <string name="friends_search_request_sended">Request sended</string>
-    <string name="friends_search_request_in_progress">Request in progress</string>
-    <string name="friends_search_already_friends">You are already friends</string>
-    <string name="friends_search_inexistant_user">This user don\'t exist</string>
-    <string name="friends_search_sending_error">Error when sending friend request</string>
-    <string name="friends_search_without_wifi_title">No network</string>
-    <string name="friends_search_without_wifi_message">You can\'t search friend without network</string>
-    <string name="friends_request_title">Friends Requests</string>
-    <string name="friends_request_accept">Accept</string>
-    <string name="friends_request_decline">Decline</string>
-    <string name="friends_request_empty">There isn\'t friends requests</string>
-    <string name="friends_request_description_sended">You have sended a request to <b>%1$s</b>.</string>
-    <string name="friends_requests_refresh_dialog_title">Refresh</string>
-    <string name="friends_requests_refresh_dialog_message">Your friends requests are refreshing</string>
+    <string name="friends_title">Amis</string>
+    <string name="friends_all">Tous mes amis</string>
+    <string name="friends_add">Ajouter un ami</string>
+    <string name="friends_search">Chercher un ami</string>
+    <string name="friends_grid_empty">Vous n\'avez pas encore d\'amis.</string>
+    <string name="friends_profil_title">Profil de %1$s</string>
+    <string name="friends_profil_all_faces">Toutes ses faces</string>
+    <string name="friends_profil_empty_face">Aucune face</string>
+    <string name="friends_face_album_title">Faces de %1$s</string>
+    <string name="friends_face_pager_title">Faces de %1$s</string>
+    <string name="friends_search_title">Chercher un ami</string>
+    <string name="friends_search_add">Ajouter à mes amis</string>
+    <string name="friends_search_himself">Désolé, vous ne pouvez pas être votre propre amis.</string>
+    <string name="friends_search_request_sended">Demande envoyée</string>
+    <string name="friends_search_request_in_progress">Demande en cours</string>
+    <string name="friends_search_already_friends">Vous êtes déjà amis.</string>
+    <string name="friends_search_inexistant_user">Cet utilisateur n\'existe pas.</string>
+    <string name="friends_search_sending_error">Erreur lors de l\'envoi de la demande</string>
+    <string name="friends_search_without_wifi_title">Aucun réseau</string>
+    <string name="friends_search_without_wifi_message">Vous ne pouvez pas chercher d\'amis sans réseau</string>
+    <string name="friends_request_title">Demande d\'amitiée</string>
+    <string name="friends_request_accept">Accepter</string>
+    <string name="friends_request_decline">Refuser</string>
+    <string name="friends_request_empty">Vous n\'avez aucune demande d\'amitiée en cours</string>
+    <string name="friends_request_description_sended">Vous avez en envoyé une demande à <b>%1$s</b>.</string>
+    <string name="friends_requests_refresh_dialog_title">Rafraichir</string>
+    <string name="friends_requests_refresh_dialog_message">Vos demandes d\'amitiées se rafraichissent.</string>
 
     <string name="camera_error_title">Camera</string>
-    <string name="camera_error_message">Unable to launch camera, an other application is using it</string>
-    <string name="picture_take">Take picture</string>
+    <string name="camera_error_message">Impossible d\'ouvrir la camera, une autre application l\'utilise.</string>
+    <string name="picture_take">Prendre une photo</string>
 
-    <string name="stats">Stats</string>
+    <string name="stats">Statistiques</string>
 
-    <string name="push_add_face_title">Face from %1$s</string>
-    <string name="push_add_face_message">%1$s has added a face on is profil</string>
-    <string name="push_send_request_title">Friend request from %1$s</string>
-    <string name="push_send_request_message">%1$s send you a friend request</string>
-    <string name="push_accept_request_title">Acceptation of %1$s</string>
-    <string name="push_accept_request_message">%1$s has accepted your friend request</string>
-    <string name="push_send_message_title">Flash of %1$s</string>
-    <string name="push_send_message_message">%1$s send you a flash</string>
+    <string name="push_add_face_title">Face de %1$s</string>
+    <string name="push_add_face_message">%1$s a ajouté une face sur son profil</string>
+    <string name="push_send_request_title">Demande d\'amitiée de %1$s</string>
+    <string name="push_send_request_message">%1$s vous a envoyé une demande d\'amitiée</string>
+    <string name="push_accept_request_title">Acceptation de %1$s</string>
+    <string name="push_accept_request_message">%1$s a accepté votre demande d\'amitiée</string>
+    <string name="push_send_message_title">Flash de %1$s</string>
+    <string name="push_send_message_message">%1$s vous a envoyé un flash</string>
 
 </resources>

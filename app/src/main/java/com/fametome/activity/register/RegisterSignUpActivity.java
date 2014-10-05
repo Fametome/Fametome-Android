@@ -176,7 +176,7 @@ public class RegisterSignUpActivity extends Activity {
         message.addFlash(new ParseFlash(getString(R.string.demo_message_flash_2)));
         message.addFlash(new ParseFlash(getString(R.string.demo_message_flash_3)));
         message.addFlash(new ParseFlash(getString(R.string.demo_message_flash_4)));
-        message.addFlash(new ParseFlash(new FTBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.picture))));
+        message.addFlash(new ParseFlash(new FTBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.picture_medium))));
         message.addFlash(new ParseFlash(new ParseFace(ParseConsts.USER_FAMETOME_FACE_ID)));
         message.addFlash(new ParseFlash(getString(R.string.demo_message_flash_7)));
 
