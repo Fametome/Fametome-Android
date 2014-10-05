@@ -1,8 +1,6 @@
 package com.fametome.fragment.account;
 
 import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,22 +9,22 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 
+import com.fametome.Dialog.DialogManager;
 import com.fametome.Dialog.FTDialog;
 import com.fametome.Dialog.FTProgressDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.fragment.NavigationDrawerFragment;
-import com.fametome.fragment.SettingsFragment;
 import com.fametome.fragment.friend.FriendProfilFragment;
 import com.fametome.fragment.friend.FriendSearchFragment;
 import com.fametome.fragment.friend.FriendsRequestFragment;
 import com.fametome.listener.CameraListener;
 import com.fametome.listener.OnImageClickListener;
 import com.fametome.listener.UserListener;
+import com.fametome.object.Initialisation;
 import com.fametome.object.User;
 import com.fametome.util.FTBitmap;
 import com.fametome.util.FTDefaultBitmap;
@@ -79,6 +77,11 @@ public class AccountFragment extends FTFragment implements UserListener.onUserLo
         allFriend = (Button)rootView.findViewById(R.id.allFriend);
         addFriendWhenEmpty = (Button)rootView.findViewById(R.id.addFriendWhenEmpty);
         stats = (StatsView)rootView.findViewById(R.id.stats);
+
+        if(!Initialisation.getInstance().isAccount()){
+            DialogManager.showInitialisationAccountDialog(((MainActivity)getActivity()).getContext());
+            Initialisation.getInstance().setAccount(true);
+        }
 
         if(User.getInstance().isUserLoaded()){
             Log.d("AccountFragment", "onCreate - user is loaded");

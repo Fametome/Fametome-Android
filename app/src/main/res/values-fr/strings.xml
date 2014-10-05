@@ -10,10 +10,37 @@
     <string name="demo_message_flash_3">Vous allez voir un sms, une photo et une face.</string>
     <string name="demo_message_flash_4">Un sms !</string>
     <string name="demo_message_flash_7">Ajoutez vos amis et envoyer leur des flashs !</string>
-    <string name="demo_popup_profil_title">Bienvenu sur Fametome !</string>
-    <string name="demo_popup_profil_message">
+    <string name="demo_popup_account_title">Bienvenu sur Fametome !</string>
+    <string name="demo_popup_account_message">
         Cette partie vous permet d\'ajouter et de consulter vos faces. Elles vous permettenr de créer des smileys
         personnalisés avec votre visage. Vous pouvez également changer votre avatar en cliquant dessus.
+    </string>
+    <string name="demo_popup_add_face_title">Ajouter une face</string>
+    <string name="demo_popup_add_face_message">
+        Cette partie vous permet d\'ajouter une face, c\'est à dire un smiley personnalisé avec votre visage.
+        Par exemple, prenez une photo de vous en souriant et associez lui le texte \' :) \'.
+    </string>
+    <string name="demo_popup_inbox_title">Boîte de réception</string>
+    <string name="demo_popup_inbox_message">
+        C\'est ici que vous pouvez consulter vos flashs. Pour voir un flash, cliquez dessus et regardez-le défiler.
+        Une fois terminé, il est définitivement supprimé.
+    </string>
+    <string name="demo_popup_outbox_title">Envoie de flashs</string>
+    <string name="demo_popup_outbox_message">
+        C\'est ici que vous écrivez vos flashs, écrivez un simple sms ou envoyez une face en écrivant le
+        texte qui y est associé. Vous pouvez aussi envoyer des photos en appuyant sur l\'image à droite.
+        Les flashs sont limités à 7 éléments, remplissez-les comme vous voulez ! Choisissez ensuite les destinataires
+        en appuyant sur la flèche en haut à droite
+    </string>
+    <string name="demo_popup_friends_title">Mes amis</string>
+    <string name="demo_popup_friends_message">
+        Consultez le profil de vos amis en cliquant sur leur avatar. Pour chercher de nouveaux amis, appuyez
+        sur la loupe en haut à droite. Pour consulter vos demandes d\'amitiés, appuyez sur l\'îcone à gauche de la loupe.
+    </string>
+
+    <string name="demo_popup_friend_search_title">Chercher des amis</string>
+    <string name="demo_popup_friend_search_message">
+        Chercher vos amis en saisissant leur pseudo puis en appuyant sur "Chercher".
     </string>
 
     <string name="register_hint_username">Pseudo</string>

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.fametome.Dialog.DialogManager;
 import com.fametome.Dialog.FTDialog;
 import com.fametome.FTFragment;
 import com.fametome.FTPush;
@@ -20,6 +21,7 @@ import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.listener.CameraListener;
 import com.fametome.object.Face;
+import com.fametome.object.Initialisation;
 import com.fametome.object.ParseFace;
 import com.fametome.object.User;
 import com.fametome.util.FTBitmap;
@@ -56,6 +58,11 @@ public class AccountAddFaceFragment extends FTFragment implements CameraListener
         takePicture = (ProfilView)rootView.findViewById(R.id.take_picture);
         text = (EditText)rootView.findViewById(R.id.text);
         addFace = (LoadingButton)rootView.findViewById(R.id.addFace);
+
+        if(!Initialisation.getInstance().isAddFace()){
+            DialogManager.showInitialisationAddFaceDialog(((MainActivity) getActivity()).getContext());
+            Initialisation.getInstance().setAddFace(true);
+        }
 
         takePicture.setAvatar(BitmapFactory.decodeResource(getActivity().getApplicationContext().getResources(), R.drawable.picture));
         takePicture.setUsername(getActivity().getApplicationContext().getString(R.string.picture_take));

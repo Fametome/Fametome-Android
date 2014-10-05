@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.fametome.Dialog.FTDialog;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
+import com.fametome.database.DatabaseQuery;
 import com.fametome.util.FTWifi;
 import com.fametome.util.ParseConsts;
 import com.fametome.widget.LoadingButton;
@@ -65,6 +66,10 @@ public class RegisterLoginActivity extends Activity{
                             ParseInstallation currentInstallation = ParseInstallation.getCurrentInstallation();
                             currentInstallation.put(ParseConsts.INSTALLATION_USER, ParseUser.getCurrentUser());
                             currentInstallation.saveEventually();
+
+                            /* Create an initialisation with all at true for the user */
+                            final DatabaseQuery databaseQuery = new DatabaseQuery(RegisterLoginActivity.this);
+                            databaseQuery.createInitialisation(true);
 
                             startActivity(new Intent(RegisterLoginActivity.this, MainActivity.class));
                             finish();

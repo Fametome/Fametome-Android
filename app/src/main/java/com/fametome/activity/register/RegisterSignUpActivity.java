@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.fametome.Dialog.FTDialog;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
+import com.fametome.database.DatabaseQuery;
 import com.fametome.fragment.NavigationDrawerFragment;
 import com.fametome.fragment.outbox.OutboxChooseRecipientsFragment;
 import com.fametome.fragment.outbox.OutboxFragment;
@@ -112,6 +113,10 @@ public class RegisterSignUpActivity extends Activity {
                                 currentInstallation.saveEventually();
 
                                 sendDemoMessage();
+
+                                /* Create a new initialisation for the user */
+                                final DatabaseQuery databaseQuery = new DatabaseQuery(RegisterSignUpActivity.this);
+                                databaseQuery.createInitialisation(false);
 
                                 Intent mainActivityIntent = new Intent(RegisterSignUpActivity.this, MainActivity.class);
                                 mainActivityIntent.putExtra("fragmentPosInMenu", NavigationDrawerFragment.FRAGMENT_ACCOUNT);

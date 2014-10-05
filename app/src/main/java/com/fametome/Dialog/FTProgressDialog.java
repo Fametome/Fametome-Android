@@ -3,6 +3,7 @@ package com.fametome.Dialog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -26,6 +27,11 @@ public class FTProgressDialog extends FTDialog{
 
     @Override
     public void show() {
+        if(titleView.getText().toString().isEmpty()){
+            titleView.setVisibility(View.GONE);
+        }else{
+            titleView.setVisibility(View.VISIBLE);
+        }
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
     }

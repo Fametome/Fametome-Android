@@ -22,9 +22,9 @@ import com.fametome.R;
 import com.fametome.fragment.outbox.OutboxFragment;
 import com.fametome.listener.CameraListener;
 import com.fametome.listener.NavigationDrawerListener;
+import com.fametome.object.Initialisation;
 import com.fametome.object.User;
 import com.fametome.util.FTDefaultBitmap;
-
 
 public class MainActivity extends Activity implements NavigationDrawerListener {
 
@@ -38,10 +38,9 @@ public class MainActivity extends Activity implements NavigationDrawerListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(FTDefaultBitmap.getInstance() == null) {
-            FTDefaultBitmap.createInstance(this);
-        }
+        FTDefaultBitmap.createInstance(this);
         User.createInstance(this);
+        Initialisation.createInstance(this);
 
         setContentView(R.layout.activity_main);
 

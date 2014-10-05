@@ -16,11 +16,13 @@ import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.fametome.Dialog.DialogManager;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.adapter.FriendsGridAdapter;
 import com.fametome.listener.UserListener;
+import com.fametome.object.Initialisation;
 import com.fametome.object.User;
 
 import java.util.ArrayList;
@@ -48,20 +50,20 @@ public class FriendsFragment extends FTFragment implements UserListener.onFriend
 
         View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
 
+        friendsGrid = (GridView)rootView.findViewById(R.id.friendsGrid);
         final RelativeLayout emptyView = (RelativeLayout)rootView.findViewById(R.id.emptyView);
 
-        final Button search = (Button)emptyView.findViewById(R.id.search);
-        search.setOnClickListener(clickSearch);
-
-        //User.getInstance().refreshFriends();
-
-        friendsGrid = (GridView)rootView.findViewById(R.id.friendsGrid);
-        friendsGrid.setEmptyView(emptyView);
+        if(!Initialisation.getInstance().isFriends()){
+            DialogManager.showInitialisationFriendsDialog(((MainActivity) getActivity()).getContext());
+            Initialisation.getInstance().setFriends(true);
+        }
 
         friendsGridAdapter = new FriendsGridAdapter(getActivity().getApplicationContext());
         friendsGrid.setAdapter(new FriendsGridAdapter(getActivity().getApplicationContext()));
+        friendsGrid.setEmptyView(emptyView);
 
         friendsGrid.setOnItemClickListener(clickItemFriendsGrid);
+        emptyView.setOnClickListener(clickSearch);
 
         return rootView;
     }

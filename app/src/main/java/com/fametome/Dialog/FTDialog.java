@@ -64,6 +64,11 @@ public class FTDialog{
     }
 
     public void show() {
+        if(titleView.getText().toString().isEmpty()){
+            titleView.setVisibility(View.GONE);
+        }else{
+            titleView.setVisibility(View.VISIBLE);
+        }
         dialog.setCanceledOnTouchOutside(true);
         dialog.show();
     }

@@ -84,7 +84,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
         }
     };
 
-    public static void sendMessage(final Context context, final ParseMessage message, byte messageType, final List<String> recipientsIds){
+    public static void sendMessage(final Context context, final ParseMessage message, final byte messageType, final List<String> recipientsIds){
         if(FTWifi.isNetworkAvailable(context)) {
 
             ParseObject messageObject = new ParseObject(ParseConsts.MESSAGE);
@@ -125,8 +125,9 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                             }
                         });
 
-                        ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_FACE_SEND_NUMBER);
-
+                        if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
+                            ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_FACE_SEND_NUMBER);
+                        }
                     } else if (currentFlash.getType() == Flash.TYPE_TEXT) {
                         Log.i("OutboxChooseRecipientsFragment", "onOptionsItemSelected - the flash n°" + i + " is a text ! : " + currentFlash.getText());
 
@@ -134,8 +135,9 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                             @Override
                             public void done(ParseException e) {
                                 if (e == null) {
-                                    ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_FLASH_SEND_NUMBER);
-
+                                    if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
+                                        ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_FLASH_SEND_NUMBER);
+                                    }
                                 } else {
                                     Log.e("OutboxChooseRecipientsFragment", "onOptionsItemSelected - error when sending flash : " + e.getMessage());
                                 }
@@ -146,7 +148,9 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                             }
                         });
 
-                        ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_TEXT_SEND_NUMBER);
+                        if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
+                            ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_TEXT_SEND_NUMBER);
+                        }
 
                     } else if (currentFlash.getType() == Flash.TYPE_PICTURE) {
                         Log.i("OutboxChooseRecipientsFragment", "onOptionsItemSelected - the flash n°" + i + " is a picture !");
@@ -157,7 +161,9 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                             @Override
                             public void done(ParseException e) {
                                 if (e == null) {
-                                    ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_PICTURE_SEND_NUMBER);
+                                    if (messageType != OutboxFragment.TYPE_DEMO_MESSAGE){
+                                        ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_PICTURE_SEND_NUMBER);
+                                    }
                                     flash.put(ParseConsts.FLASH_PICTURE, pictureFile);
 
                                     flash.saveInBackground(new SaveCallback() {
@@ -165,7 +171,9 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                         public void done(ParseException e) {
                                             Log.i("OutboxChooseRecipientsFragment", "onOptionsItemSelected - a picture is saving");
                                             if (e == null) {
-                                                ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_FLASH_SEND_NUMBER);
+                                                if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
+                                                    ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_FLASH_SEND_NUMBER);
+                                                }
                                             } else {
                                                 Log.e("OutboxChooseRecipientsFragment", "onOptionsItemSelected - error when sending flash : " + e.getMessage());
                                             }
@@ -192,10 +200,10 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                 }
             }
 
-            ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_MESSAGE_SEND_NUMBER);
-            ParseUser.getCurrentUser().saveInBackground();
-
             if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
+                ParseUser.getCurrentUser().increment(ParseConsts.USER_STATS_MESSAGE_SEND_NUMBER);
+                ParseUser.getCurrentUser().saveInBackground();
+
                 ((MainActivity) context).selectItem(NavigationDrawerFragment.FRAGMENT_INBOX);
             }
 

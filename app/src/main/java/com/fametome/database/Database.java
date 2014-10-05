@@ -7,18 +7,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class Database extends SQLiteOpenHelper {
 
     /* TABLE DU PROCESSUS D'INITIALISATION */
-    private static final String INITIALISATION_ID = "INITIALISATION_ID";
-    private static final String INITIALISATION_PROFIL = "INITIALISATION_PROFIL";
-    private static final String INITIALISATION_ADD_FACE = "INITIALISATION_ADD_FACE";
-    private static final String INITIALISATION_INBOX = "INITIALISATION_INBOX";
-    private static final String INITIALISATION_OUTBOX = "INITIALISATION_OUTBOX";
-    private static final String INITIALISATION_FRIENDS = "INITIALISATION_FRIENDS";
-    private static final String INITIALISATION_FRIEND_SEARCH = "INITIALISATION_FRIEND_SEARCH";
-    private static final String TABLE_INITIALISATION = "TABLE_INITIALISATION";
-    private static final String CREATE_INITIALISATION =
+    public static final String INITIALISATION_ID = "INITIALISATION_ID";
+    public static final String INITIALISATION_ACCOUNT = "INITIALISATION_ACCOUNT";
+    public static final String INITIALISATION_ADD_FACE = "INITIALISATION_ADD_FACE";
+    public static final String INITIALISATION_INBOX = "INITIALISATION_INBOX";
+    public static final String INITIALISATION_OUTBOX = "INITIALISATION_OUTBOX";
+    public static final String INITIALISATION_FRIENDS = "INITIALISATION_FRIENDS";
+    public static final String INITIALISATION_FRIEND_SEARCH = "INITIALISATION_FRIEND_SEARCH";
+    public static final String TABLE_INITIALISATION = "TABLE_INITIALISATION";
+    public static final String CREATE_INITIALISATION =
             "CREATE TABLE " + TABLE_INITIALISATION + " (" +
                     INITIALISATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    INITIALISATION_PROFIL + " INTEGER, " +
+                    INITIALISATION_ACCOUNT + " INTEGER, " +
                     INITIALISATION_ADD_FACE + " INTEGER, " +
                     INITIALISATION_INBOX + " INTEGER, " +
                     INITIALISATION_OUTBOX + " INTEGER, " +
@@ -40,37 +40,5 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_INITIALISATION);
-    }
-
-    public static String getInitialisation() {
-        return TABLE_INITIALISATION;
-    }
-
-    public static String getInitialisationId() {
-        return INITIALISATION_ID;
-    }
-
-    public static String getInitialisationProfil() {
-        return INITIALISATION_PROFIL;
-    }
-
-    public static String getInitialisationAddFace() {
-        return INITIALISATION_ADD_FACE;
-    }
-
-    public static String getInitialisationInbox() {
-        return INITIALISATION_INBOX;
-    }
-
-    public static String getInitialisationOutbox() {
-        return INITIALISATION_OUTBOX;
-    }
-
-    public static String getInitialisationFriends() {
-        return INITIALISATION_FRIENDS;
-    }
-
-    public static String getInitialisationFriendSearch() {
-        return INITIALISATION_FRIEND_SEARCH;
     }
 }

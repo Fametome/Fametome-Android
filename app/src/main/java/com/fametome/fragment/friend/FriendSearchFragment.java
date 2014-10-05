@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.fametome.Dialog.DialogManager;
 import com.fametome.Dialog.FTDialog;
 import com.fametome.FTFragment;
 import com.fametome.FTPush;
@@ -25,6 +26,7 @@ import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.object.Friend;
 import com.fametome.object.FriendRequest;
+import com.fametome.object.Initialisation;
 import com.fametome.object.User;
 import com.fametome.util.FTDefaultBitmap;
 import com.fametome.util.FTWifi;
@@ -65,6 +67,11 @@ public class FriendSearchFragment extends FTFragment {
         username = (TextView)rootView.findViewById(R.id.username);
         sendRequest = (LoadingButton)rootView.findViewById(R.id.sendRequest);
 
+        if(!Initialisation.getInstance().isFriendSearch()){
+            DialogManager.showInitialisationFriendSearchDialog(((MainActivity) getActivity()).getContext());
+            Initialisation.getInstance().setFriendSearch(true);
+        }
+
         search.setOnClickListener(clickSearch);
         sendRequest.setOnClickListener(clickSendRequest);
 
@@ -80,10 +87,14 @@ public class FriendSearchFragment extends FTFragment {
             final String searchedUsername = searchText.getText().toString().trim();
             Log.d("FriendSearchFragment", "|" + searchedUsername + "|" + searchText.getText() + "|");
 
+            if(searchedUsername.isEmpty()){
+                return;
+            }
+
             if(searchedUsername.equals(User.getInstance().getUsername())){
-                new AlertDialog.Builder(((MainActivity)getActivity()).getContext())
-                        .setMessage(getString(R.string.friends_search_himself))
-                        .show();
+                FTDialog dialog = new FTDialog(((MainActivity)getActivity()).getContext());
+                dialog.setMessage(getString(R.string.friends_search_himself));
+                dialog.show();
             }else{
 
                 /* Le user a déja envoyé une relation à la personne recherchée ou vice-versa */

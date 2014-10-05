@@ -1,4 +1,4 @@
-package com.fametome.fragment;
+package com.fametome.fragment.account;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -14,11 +14,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.fametome.Dialog.FTDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.activity.register.RegisterLoginActivity;
 import com.fametome.adapter.DisabledListArrayAdapter;
+import com.fametome.database.DatabaseQuery;
 import com.fametome.fragment.account.AccountFragment;
 import com.fametome.object.User;
 import com.fametome.util.ParseConsts;
@@ -81,15 +83,17 @@ public class SettingsFragment extends FTFragment {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             if(position == 0){
-                new AlertDialog.Builder(((MainActivity)getActivity()).getContext())
-                        .setTitle(R.string.settings_privacy_policy_title)
-                        .setMessage(R.string.settings_privacy_policy_message)
-                        .show();
+                final FTDialog dialog = new FTDialog(((MainActivity)getActivity()).getContext());
+                dialog.setTitle(R.string.settings_privacy_policy_title);
+                dialog.setMessage(R.string.settings_privacy_policy_message);
+                dialog.show();
+
             }else if(position == 1){
-                new AlertDialog.Builder(((MainActivity)getActivity()).getContext())
-                        .setTitle(R.string.settings_terms_of_use_title)
-                        .setMessage(R.string.settings_terms_of_use_message)
-                        .show();
+
+                final FTDialog dialog = new FTDialog(((MainActivity)getActivity()).getContext());
+                dialog.setTitle(R.string.settings_terms_of_use_title);
+                dialog.setMessage(R.string.settings_terms_of_use_message);
+                dialog.show();
             }
         }
     };
@@ -105,6 +109,10 @@ public class SettingsFragment extends FTFragment {
                 getActivity().finish();
                 ParseInstallation.getCurrentInstallation().put(ParseConsts.INSTALLATION_USER, JSONObject.NULL);
                 ParseInstallation.getCurrentInstallation().saveEventually();
+
+                /* Clear the initialisation */
+                DatabaseQuery databaseQuery = new DatabaseQuery(getActivity().getApplicationContext());
+                databaseQuery.removeInitialisation();
             }
         }
     };

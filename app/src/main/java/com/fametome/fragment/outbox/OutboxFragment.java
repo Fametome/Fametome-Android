@@ -13,12 +13,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.fametome.Dialog.DialogManager;
 import com.fametome.Dialog.FTDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.adapter.OutboxFlashsListAdapter;
 import com.fametome.fragment.NavigationDrawerFragment;
+import com.fametome.object.Initialisation;
 import com.fametome.object.User;
 
 import java.util.ArrayList;
@@ -50,10 +52,17 @@ public class OutboxFragment extends FTFragment {
 
         listFlashs = (ListView)rootView.findViewById(R.id.list_flashs);
         addFlash = (Button)rootView.findViewById(R.id.addFlash);
-        addFlash.setOnClickListener(clickAddFlash);
+
+
+        if(!Initialisation.getInstance().isOutbox()){
+            DialogManager.showInitialisationOutboxDialog(((MainActivity) getActivity()).getContext());
+            Initialisation.getInstance().setOutbox(true);
+        }
 
         listFlashsAdapter = new OutboxFlashsListAdapter((MainActivity)getActivity());
         listFlashs.setAdapter(listFlashsAdapter);
+
+        addFlash.setOnClickListener(clickAddFlash);
 
         return rootView;
     }

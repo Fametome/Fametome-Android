@@ -16,12 +16,14 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.fametome.Dialog.DialogManager;
 import com.fametome.Dialog.FTProgressDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.adapter.InboxMessagesListAdapter;
 import com.fametome.listener.UserListener;
+import com.fametome.object.Initialisation;
 import com.fametome.object.User;
 import com.fametome.util.FTWifi;
 
@@ -65,6 +67,11 @@ public class InboxFragment extends FTFragment implements UserListener.onMessages
         emptyView = rootView.findViewById(R.id.emptyView);
         networklessView = rootView.findViewById(R.id.networklessView);
         listMessages = (ListView)rootView.findViewById(R.id.messagesList);
+
+        if(!Initialisation.getInstance().isInbox()){
+            DialogManager.showInitialisationInboxDialog(((MainActivity) getActivity()).getContext());
+            Initialisation.getInstance().setInbox(true);
+        }
 
         listMessages.setEmptyView(emptyView);
         listMessagesAdapter = new InboxMessagesListAdapter(getActivity().getApplicationContext(), this);
