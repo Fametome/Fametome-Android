@@ -97,7 +97,7 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
 
             final FTProgressDialog progressDialog = new FTProgressDialog(context);
             progressDialog.setTitle(R.string.outbox_send_message_progress_title);
-            progressDialog.setMessage(context.getString(R.string.outbox_send_message_progress_message) + "1/" + message.getFlashNumber());
+            progressDialog.setMessage(R.string.outbox_send_message_progress_message);
 
             if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
                 progressDialog.show();
