@@ -37,6 +37,8 @@ public class AutoScrollViewPager extends ViewPager{
 
     private void init(){
 
+
+
         try {
             Field mScroller = ViewPager.class.getDeclaredField("mScroller");
             mScroller.setAccessible(true);
@@ -46,10 +48,13 @@ public class AutoScrollViewPager extends ViewPager{
             Log.e("AutoScrollViewPager", "error of change scroller : " + e);
         }
 
+
         autoScrollTimer = new Timer(); // At this line a new Thread will be created
-        autoScrollTimer.scheduleAtFixedRate(new RemindTask(), FLASH_DURATION, FLASH_DURATION); // delay
+         autoScrollTimer.scheduleAtFixedRate(new RemindTask(), FLASH_DURATION, FLASH_DURATION); // delay
 
     }
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

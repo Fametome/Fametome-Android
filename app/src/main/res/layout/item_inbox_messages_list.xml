@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fametome="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:weightSum="100"
@@ -14,7 +15,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="25"
         android:scaleType="centerCrop"
-        android:src="@drawable/picture"/>
+        android:src="@drawable/picture_mini"/>
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -31,7 +32,8 @@
             android:textColor="#000000"
             android:text="-"/>
 
-        <TextView
+        <com.fametome.widget.LoadingButton
+            android:id="@+id/showFlash"
             android:layout_width="fill_parent"
             android:layout_height="32dp"
             android:layout_marginTop="8dp"
@@ -42,7 +44,8 @@
             android:textColor="@color/gravure"
             android:textSize="16sp"
             android:text="@string/inbox_show"
-            android:background="@color/background"/>
+            fametome:background="@color/background"
+            fametome:loadingBackground="@color/white"/>
 
     </RelativeLayout>
 

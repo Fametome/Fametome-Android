@@ -21,9 +21,13 @@ public class FTStackManager {
         fragments.set((fragments.size() - 1), fragment);
     }
 
+    public void removeLastFragment(){
+        fragments.remove(fragments.size() - 1);
+    }
+
     public FTFragment getPreviousFragment(){
         Log.d("FTStackManager", "getAndRemoveLastFragment - a fragment is removing");
-        fragments.remove(fragments.size() - 1);
+        removeLastFragment();
         return fragments.get(fragments.size() - 1);
     }
 

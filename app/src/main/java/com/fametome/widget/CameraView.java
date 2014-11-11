@@ -133,24 +133,41 @@ public class CameraView extends FrameLayout {
 
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
-            // Log.d("test", "picture taken, the weight of the picture is : " + (data.length / 1000) + " ko");
+            Log.d("test", "picture taken, the weight of the picture is : " + (data.length / 1000) + " ko");
 
-            final Bitmap bitmap = BitmapFactory.decodeByteArray(data , 0, data .length);
-            final Bitmap bmp = Bitmap.createScaledBitmap(bitmap, 480, 320, false);
+            final BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 1;
 
-            final Matrix matrix = new Matrix();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(data , 0, data .length, options);
+
+            Matrix matrix = new Matrix();
             matrix.postRotate(90);
             if(currentCameraId == Camera.CameraInfo.CAMERA_FACING_FRONT) {
                 matrix.preScale(-1.0f, 1.0f);
             }
 
-            final Bitmap finalBitmap = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+            Bitmap finalBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, false);
 
-            final ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
             finalBitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
             byte[] pictureData = stream.toByteArray();
 
-            // Log.d("test", "picture taken, the weight of the picture after inSampleSize is : " + (pictureData.length / 1000) + " ko");
+            Log.d("test", "picture taken, the final weight of the picture is : " + (pictureData.length / 1000) + " ko");
+
+            // si la photo est toujours supérieure à 200 ko
+            while(pictureData.length > 200000){
+                options.inSampleSize *= 2;
+
+                bitmap = BitmapFactory.decodeByteArray(data , 0, data .length, options);
+                finalBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, false);
+
+                stream = new ByteArrayOutputStream();
+                finalBitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+                pictureData = stream.toByteArray();
+
+            }
+
+            Log.d("test", "picture taken, the realy realy final weight of the picture is : " + (pictureData.length / 1000) + " ko");
 
             if(cameraListener != null) {
                 cameraListener.onPictureTaken(new FTBitmap(finalBitmap, pictureData));

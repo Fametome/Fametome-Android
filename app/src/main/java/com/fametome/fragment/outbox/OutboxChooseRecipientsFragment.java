@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.fametome.Dialog.DialogManager;
 import com.fametome.Dialog.FTDialog;
 import com.fametome.Dialog.FTProgressDialog;
 import com.fametome.FTFragment;
@@ -71,14 +72,14 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             for(int i = 0; i < friendsSelectedPos.size(); i++){
                 if(friendsSelectedPos.get(i) == position){
-                    Log.d("OutbioxChooseRecipientFragment", "clickItemFriendsGrid - " + User.getInstance().getFriend(position).getUsername() + " going to be deselected");
+                    Log.d("OutboxChooseRecipientFragment", "clickItemFriendsGrid - " + User.getInstance().getFriend(position).getUsername() + " going to be deselected");
                     friendsSelectedPos.remove(i);
                     view.setBackgroundColor(getResources().getColor(R.color.invisible));
                     return;
                 }
             }
 
-            Log.d("OutbioxChooseRecipientFragment", "clickItemFriendsGrid - " + User.getInstance().getFriend(position).getUsername() + " going to be selected");
+            Log.d("OutboxChooseRecipientFragment", "clickItemFriendsGrid - " + User.getInstance().getFriend(position).getUsername() + " going to be selected");
             friendsSelectedPos.add(position);
             view.setBackgroundColor(getResources().getColor(R.color.theme_orange));
         }
@@ -96,11 +97,10 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
 
             final FTProgressDialog progressDialog = new FTProgressDialog(context);
             progressDialog.setTitle(R.string.outbox_send_message_progress_title);
-            progressDialog.setMessage(R.string.outbox_send_message_progress_message);
+            progressDialog.setMessage(context.getString(R.string.outbox_send_message_progress_message) + "1/" + message.getFlashNumber());
 
             if(messageType != OutboxFragment.TYPE_DEMO_MESSAGE) {
                 progressDialog.show();
-
             }
 
             final int flashsNumber = message.getFlashNumber();
@@ -129,8 +129,9 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                 }
                                 flashsSendedNumber.increment();
                                 if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                    messageSended(context, message.getAuthor().getUsername(), recipientsIds);
                                     progressDialog.cancel();
+                                    messageSended(context, message.getAuthor().getUsername(), recipientsIds);
+                                    return;
                                 }
                             }
                         });
@@ -153,8 +154,8 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                 }
                                 flashsSendedNumber.increment();
                                 if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                    messageSended(context, message.getAuthor().getUsername(), recipientsIds);
                                     progressDialog.cancel();
+                                    messageSended(context, message.getAuthor().getUsername(), recipientsIds);
                                 }
                             }
                         });
@@ -190,13 +191,18 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                                             }
                                             flashsSendedNumber.increment();
                                             if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                                                messageSended(context, message.getAuthor().getUsername(), recipientsIds);
                                                 progressDialog.cancel();
+                                                messageSended(context, message.getAuthor().getUsername(), recipientsIds);
                                             }
                                         }
                                     });
                                 } else {
                                     Log.e("OutboxChooseRecipientsFragment", "onOptionsItemSelected - error when saving picture file : " + e.getMessage());
+                                    flashsSendedNumber.increment();
+                                    if(flashsSendedNumber.isEqualsTo(flashsNumber)){
+                                        progressDialog.cancel();
+                                        messageSended(context, message.getAuthor().getUsername(), recipientsIds);
+                                    }
                                 }
                             }
                         });
@@ -204,12 +210,12 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                     }
 
                 } else {
+                    Log.w("OutboxChooseRecipientsFragment", "onOptionsItemSelected - the flash n°" + i + " is empty");
                     flashsSendedNumber.increment();
                     if(flashsSendedNumber.isEqualsTo(flashsNumber)){
-                        messageSended(context, message.getAuthor().getUsername(), recipientsIds);
                         progressDialog.cancel();
+                        messageSended(context, message.getAuthor().getUsername(), recipientsIds);
                     }
-                    Log.w("OutboxChooseRecipientsFragment", "onOptionsItemSelected - the flash n°" + i + " is empty");
                 }
             }
 
@@ -222,14 +228,13 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
 
         }else{
             /* - Pas de wifi - */
-            FTDialog dialog = new FTDialog(context);
-            dialog.setTitle(context.getString(R.string.outbox_send_message_without_wifi_title));
-            dialog.setMessage(context.getString(R.string.outbox_send_message_without_wifi_message));
-            dialog.show();
+            DialogManager.showDialog(context, R.string.outbox_send_without_network_title, R.string.outbox_send_without_network_message);
+
         }
     }
 
     private static void messageSended(Context context, String senderUsername, List<String> recipientsIds){
+        Log.d("OutboxChooseRecipientFragment", "messageSended - sending the push");
         String titlePush = context.getString(R.string.push_send_message_title, senderUsername);
         String messagePush = context.getString(R.string.push_send_message_message, senderUsername);
         FTPush.sendPushToMultipleFriends(recipientsIds, titlePush, messagePush);
@@ -249,11 +254,12 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            final OutboxFragment outboxFragment = new OutboxFragment();
+            outboxFragment.setObject(getMessage());
+            ((MainActivity)getActivity()).showPreviousFragment(outboxFragment);
 
-        if (item.getItemId() == android.R.id.home) {
-            ((MainActivity)getActivity()).showPreviousFragment();
-            return true;
-        } else if(item.getItemId() == R.id.outbox_choose_recipient_send){
+        }else if(item.getItemId() == R.id.outbox_choose_recipient_send){
 
             if(friendsSelectedPos.size() > 0) {
 
@@ -262,14 +268,11 @@ public class OutboxChooseRecipientsFragment extends FTFragment {
                     friendsSelectedId.add(User.getInstance().getFriend(posInUserFriendList).getParseUser().getObjectId());
                 }
 
-                sendMessage(((MainActivity)getActivity()).getContext(), getParseMessage(), OutboxFragment.TYPE_PLURI_DESTINATAIRE, friendsSelectedId);
+                sendMessage(((MainActivity)getActivity()).getContext(), getMessage(), OutboxFragment.TYPE_PLURI_DESTINATAIRE, friendsSelectedId);
 
             }else{
                 /* - Aucun ami sélectionné - */
-                FTDialog dialog = new FTDialog(((MainActivity)getActivity()).getContext());
-                dialog.setTitle(getString(R.string.outbox_send_choose_recipients_empty_title));
-                dialog.setMessage(getString(R.string.outbox_send_choose_recipients_empty_message));
-                dialog.show();
+                DialogManager.showDialog(((MainActivity)getActivity()).getContext(), R.string.outbox_send_choose_recipients_empty_title, R.string.outbox_send_choose_recipients_empty_message);
             }
 
         }

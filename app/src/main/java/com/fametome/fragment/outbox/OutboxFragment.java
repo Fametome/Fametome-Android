@@ -22,6 +22,7 @@ import com.fametome.adapter.OutboxFlashsListAdapter;
 import com.fametome.fragment.NavigationDrawerFragment;
 import com.fametome.object.Initialisation;
 import com.fametome.object.User;
+import com.fametome.util.FTWifi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,11 @@ public class OutboxFragment extends FTFragment {
         }
 
         listFlashsAdapter = new OutboxFlashsListAdapter((MainActivity)getActivity());
+
+        if(getMessage() != null){
+            listFlashsAdapter.setMessage(getMessage());
+        }
+
         listFlashs.setAdapter(listFlashsAdapter);
 
         addFlash.setOnClickListener(clickAddFlash);
@@ -113,31 +119,30 @@ public class OutboxFragment extends FTFragment {
 
         if (item.getItemId() == R.id.outbox_send) {
 
-            if(User.getInstance().getFriendsNumber() == 0) {
-                FTDialog dialog = new FTDialog(((MainActivity) getActivity()).getContext());
-                dialog.setTitle(getString(R.string.outbox_send_without_friends_title));
-                dialog.setMessage(getString(R.string.outbox_send_without_friends_message));
-                dialog.show();
-            }else{
-                if(listFlashsAdapter.getMessage() != null) {
-                    if(type == TYPE_PLURI_DESTINATAIRE) {
-                        final OutboxChooseRecipientsFragment chooseRecipientsFragment = new OutboxChooseRecipientsFragment();
-                        chooseRecipientsFragment.setParseMessage(listFlashsAdapter.getMessage());
-                        ((MainActivity) getActivity()).showFragment(chooseRecipientsFragment);
+            if(FTWifi.isNetworkAvailable(getActivity().getApplicationContext())) {
 
-                    }else if(type == TYPE_MONO_DESTINATAIRE){
-                        final List<String> friendId = new ArrayList<String>();
-                        friendId.add(getFriend().getParseUser().getObjectId());
-                        OutboxChooseRecipientsFragment.sendMessage(((MainActivity) getActivity()).getContext(), listFlashsAdapter.getMessage(), TYPE_MONO_DESTINATAIRE, friendId);
+                if (User.getInstance().getFriendsNumber() == 0) {
+                    DialogManager.showDialog(((MainActivity)getActivity()).getContext(), R.string.outbox_send_without_friends_title, R.string.outbox_send_without_friends_message);
+                } else {
+                    if (listFlashsAdapter.getMessage() != null) {
+                        if (type == TYPE_PLURI_DESTINATAIRE) {
+                            final OutboxChooseRecipientsFragment chooseRecipientsFragment = new OutboxChooseRecipientsFragment();
+                            chooseRecipientsFragment.setObject(listFlashsAdapter.getMessage());
+                            ((MainActivity) getActivity()).showFragment(chooseRecipientsFragment);
 
+                        } else if (type == TYPE_MONO_DESTINATAIRE) {
+                            final List<String> friendId = new ArrayList<String>();
+                            friendId.add(getFriend().getParseUser().getObjectId());
+                            OutboxChooseRecipientsFragment.sendMessage(((MainActivity) getActivity()).getContext(), listFlashsAdapter.getMessage(), TYPE_MONO_DESTINATAIRE, friendId);
+
+                        }
+
+                    } else {
+                        DialogManager.showDialog(((MainActivity)getActivity()).getContext(), R.string.outbox_send_with_empty_message_title, R.string.outbox_send_with_empty_message_message);
                     }
-
-                }else{
-                    FTDialog dialog = new FTDialog(((MainActivity) getActivity()).getContext());
-                    dialog.setTitle(getString(R.string.outbox_send_with_empty_message_title));
-                    dialog.setMessage(getString(R.string.outbox_send_with_empty_message_message));
-                    dialog.show();
                 }
+            }else{
+                DialogManager.showDialog(((MainActivity)getActivity()).getContext(), R.string.outbox_send_without_network_title, R.string.outbox_send_without_network_message);
             }
 
             return true;

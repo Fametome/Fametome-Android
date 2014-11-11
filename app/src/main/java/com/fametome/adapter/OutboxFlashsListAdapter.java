@@ -81,14 +81,16 @@ public class OutboxFlashsListAdapter extends BaseAdapter {
             public void onTextChanged(CharSequence currentText, int start, int before, int count) {
                 ParseFace face = User.getInstance().getFaceWithText(currentText.toString());
 
-                if(face != null){
-                    Log.d("OutboxFlashListAdapter", "getView - the face of item n°" + position + " is modified by the face with text : " + face.getText());
-                    message.getFlash(position).setFace(face);
-                    picture.setImageBitmap(face.getPicture().getBitmap());
-                }else{
-                    Log.d("OutboxFlashListAdapter", "getView - the text of item n°" + position + " is modified by : " + currentText);
-                    message.getFlash(position).setText(currentText.toString());
-                    picture.setImageBitmap(FTDefaultBitmap.getInstance().getDefaultPicture());
+                if(message.getFlash(position).getType() != Flash.TYPE_PICTURE) {
+                    if (face != null) {
+                        Log.d("OutboxFlashListAdapter", "getView - the face of item n°" + position + " is modified by the face with text : " + face.getText());
+                        message.getFlash(position).setFace(face);
+                        picture.setImageBitmap(face.getPicture().getBitmap());
+                    } else {
+                        Log.d("OutboxFlashListAdapter", "getView - the text of item n°" + position + " is modified by : " + currentText);
+                        message.getFlash(position).setText(currentText.toString());
+                        picture.setImageBitmap(FTDefaultBitmap.getInstance().getDefaultPicture());
+                    }
                 }
             }
         });
@@ -116,6 +118,7 @@ public class OutboxFlashsListAdapter extends BaseAdapter {
                         message.getFlash(position).setPicture(takenPicture);
                         picture.setImageBitmap(takenPicture.getBitmap());
                         text.setHint(R.string.outbox_flash_text_when_picture);
+                        text.setText("");
                         text.setEnabled(false);
                     }
                 });
@@ -135,6 +138,12 @@ public class OutboxFlashsListAdapter extends BaseAdapter {
         }
 
         return convertView;
+    }
+
+    public void setMessage(ParseMessage message){
+        Log.v("OutboxFlashsListAdapter", "setMessage is called, the message is " + (message == null ? "null" : "not null") + ", there is " + message.getFlashNumber() + " flashs.");
+        this.message = message;
+        notifyDataSetChanged();
     }
 
     @Override

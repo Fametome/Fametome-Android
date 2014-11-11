@@ -106,6 +106,7 @@ public class MainActivity extends Activity implements NavigationDrawerListener {
 
     public void showFragmentAtRoot(FTFragment fragment){
         stackManager.clearAllFragments();
+        stackManager.addFragment(fragment);
         showFragment(fragment);
     }
 
@@ -129,7 +130,15 @@ public class MainActivity extends Activity implements NavigationDrawerListener {
         }else{
             navigationDrawerFragment.toggle();
         }
+    }
 
+    public void showPreviousFragment(FTFragment fragment){
+        if(stackManager.isPreviousFragment()) {
+            stackManager.removeLastFragment();
+        }
+
+        stackManager.replaceLastFragment(fragment);
+        getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 
     public void setNavigationDrawerEnabled(boolean enabled){
@@ -181,6 +190,11 @@ public class MainActivity extends Activity implements NavigationDrawerListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == android.R.id.home){
+            showPreviousFragment();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

@@ -25,6 +25,7 @@ import com.fametome.object.Initialisation;
 import com.fametome.object.ParseFace;
 import com.fametome.object.User;
 import com.fametome.util.FTBitmap;
+import com.fametome.util.FTDefaultBitmap;
 import com.fametome.util.FTWifi;
 import com.fametome.util.ParseConsts;
 import com.fametome.widget.LoadingButton;
@@ -64,7 +65,7 @@ public class AccountAddFaceFragment extends FTFragment implements CameraListener
             Initialisation.getInstance().setAddFace(true);
         }
 
-        takePicture.setAvatar(BitmapFactory.decodeResource(getActivity().getApplicationContext().getResources(), R.drawable.picture));
+        takePicture.setAvatar(FTDefaultBitmap.getInstance().getDefaultPicture());
         takePicture.setUsername(getActivity().getApplicationContext().getString(R.string.picture_take));
 
         takePicture.setOnClickListener(clickTakePicture);
@@ -171,15 +172,5 @@ public class AccountAddFaceFragment extends FTFragment implements CameraListener
         actionBar.setTitle(R.string.account_add_face_title);
 
         super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(item.getItemId() == android.R.id.home){
-            ((MainActivity) getActivity()).showPreviousFragment();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

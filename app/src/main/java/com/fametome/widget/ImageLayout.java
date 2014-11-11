@@ -83,7 +83,6 @@ public class ImageLayout extends LinearLayout{
         for(int i = 0; i < imageNumber; i++){
             images[i] = new SquareImageView(context);
             images[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
-            images[i].setImageBitmap(FTDefaultBitmap.getInstance().getDefaultPicture());
             images[i].setOnClickListener(new LocalOnImageClickListener(i));
 
             addView(images[i], imageParams);
@@ -101,7 +100,11 @@ public class ImageLayout extends LinearLayout{
 
     public void setImage(int index, Bitmap bitmap){
         if(index < imageNumber){
-            images[index].setImageBitmap(bitmap);
+            if(bitmap != null) {
+                images[index].setImageBitmap(bitmap);
+            }else{
+                images[index].setImageBitmap(FTDefaultBitmap.getInstance().getDefaultPicture());
+            }
         }
     }
 

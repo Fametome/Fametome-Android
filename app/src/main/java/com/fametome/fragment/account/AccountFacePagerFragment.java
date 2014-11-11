@@ -100,11 +100,7 @@ public class AccountFacePagerFragment extends FTFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(item.getItemId() == android.R.id.home){
-            ((MainActivity)getActivity()).showPreviousFragment();
-
-        }else if (item.getItemId() == R.id.account_face_pager_delete) {
+        if (item.getItemId() == R.id.account_face_pager_delete) {
             facePager.getCurrentItem();
 
             FTDialog dialog = new FTDialog(((MainActivity)getActivity()).getContext());

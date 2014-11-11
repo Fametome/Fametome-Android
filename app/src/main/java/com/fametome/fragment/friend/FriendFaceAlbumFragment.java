@@ -64,14 +64,4 @@ public class FriendFaceAlbumFragment extends FTFragment {
         actionBar.setTitle(getString(R.string.friends_face_album_title, User.getInstance().getFriend(getArguments().getInt("friendIndex")).getUsername()));
         super.onCreateOptionsMenu(menu, inflater);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(item.getItemId() == android.R.id.home){
-            ((MainActivity)getActivity()).showPreviousFragment();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 
 import com.fametome.R;
 import com.fametome.object.User;
+import com.fametome.util.FTDefaultBitmap;
 import com.fametome.widget.ProfilView;
 
 public class AccountFaceAlbumAdapter extends BaseAdapter {
@@ -29,7 +30,11 @@ public class AccountFaceAlbumAdapter extends BaseAdapter {
         View rootView = inflater.inflate(R.layout.item_account_face_album, parent, false);
 
         ProfilView face = (ProfilView)rootView.findViewById(R.id.face);
-        face.setAvatar(User.getInstance().getFace(position).getPicture().getBitmap());
+        if(User.getInstance().getFace(position).getPicture() != null) {
+            face.setAvatar(User.getInstance().getFace(position).getPicture().getBitmap());
+        }else{
+            face.setAvatar(FTDefaultBitmap.getInstance().getDefaultPicture());
+        }
         face.setUsername(User.getInstance().getFace(position).getText());
 
         return rootView;

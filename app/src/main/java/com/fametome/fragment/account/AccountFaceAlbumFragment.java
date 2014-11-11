@@ -16,13 +16,23 @@ import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
 import com.fametome.adapter.AccountFaceAlbumAdapter;
+import com.fametome.listener.UserListener;
+import com.fametome.object.User;
 
-public class AccountFaceAlbumFragment extends FTFragment {
+public class AccountFaceAlbumFragment extends FTFragment implements UserListener.onFacesLoadedListener {
 
     GridView faceGrid;
+    private AccountFaceAlbumAdapter gridAdapter;
 
     public AccountFaceAlbumFragment(){
 
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+        User.getInstance().addFacesLoadedListener(this);
     }
 
     @Override
@@ -34,7 +44,9 @@ public class AccountFaceAlbumFragment extends FTFragment {
 
         faceGrid = (GridView)rootView.findViewById(R.id.faceGrid);
 
-        faceGrid.setAdapter(new AccountFaceAlbumAdapter(getActivity().getApplicationContext()));
+        gridAdapter = new AccountFaceAlbumAdapter(getActivity().getApplicationContext());
+
+        faceGrid.setAdapter(gridAdapter);
 
         faceGrid.setOnItemClickListener(clickItemFaceAlbum);
 
@@ -68,9 +80,7 @@ public class AccountFaceAlbumFragment extends FTFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item.getItemId() == android.R.id.home){
-            ((MainActivity)getActivity()).showPreviousFragment();
-        }else if(item.getItemId() == R.id.account_face_album_add){
+        if(item.getItemId() == R.id.account_face_album_add){
 
             final AccountAddFaceFragment addFaceFragment = new AccountAddFaceFragment();
             ((MainActivity)getActivity()).showFragment(addFaceFragment);
@@ -79,4 +89,8 @@ public class AccountFaceAlbumFragment extends FTFragment {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFacesLoaded() {
+        gridAdapter.notifyDataSetChanged();
+    }
 }

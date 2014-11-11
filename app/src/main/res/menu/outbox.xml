@@ -4,6 +4,6 @@
     <item android:id="@+id/outbox_send"
           android:title="@string/menu_outbox_send"
           android:icon="@drawable/ic_menu_send"
-          android:showAsAction="always" />
+          android:showAsAction="always|withText" />
 
 </menu>

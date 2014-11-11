@@ -36,8 +36,4 @@ public class FTProgressDialog extends FTDialog{
         dialog.show();
     }
 
-    @Override
-    public void setMessage(String message) {
-        super.setMessage(message);
-    }
 }

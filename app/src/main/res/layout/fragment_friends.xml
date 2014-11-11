@@ -18,41 +18,38 @@
         android:horizontalSpacing="@dimen/friends_grid_spacing_horizontal"
         android:verticalSpacing="@dimen/friends_grid_spacing_horizontal"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/emptyView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:padding="8dp"
-        android:background="@drawable/block_background">
+        android:background="@drawable/block_background"
+        android:orientation="vertical">
 
         <com.fametome.widget.SquareImageView
-            android:id="@+id/book"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/book_medium"/>
 
         <TextView
-            android:id="@+id/text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/book"
             android:layout_marginBottom="16dp"
             android:layout_centerInParent="true"
-            android:textSize="18sp"
             android:gravity="center"
-            android:text="@string/friends_grid_empty"
-            style="@style/gravure"/>
+            android:textSize="22sp"
+            android:textColor="#000"
+            android:text="@string/friends_empty_title"/>
 
-        <Button
-            android:id="@+id/search"
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text"
             android:layout_margin="8dp"
-            android:text="@string/friends_search"
-            android:background="@color/background"
-            style="@style/gravure"/>
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/gravure"
+            android:text="@string/friends_empty_message"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

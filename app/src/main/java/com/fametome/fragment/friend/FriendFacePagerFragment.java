@@ -57,14 +57,4 @@ public class FriendFacePagerFragment extends FTFragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(item.getItemId() == android.R.id.home){
-            ((MainActivity)getActivity()).showPreviousFragment();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 }

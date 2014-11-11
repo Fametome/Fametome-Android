@@ -1,5 +1,6 @@
 package com.fametome.object;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -9,6 +10,7 @@ import com.fametome.listener.FriendListener;
 import com.fametome.listener.MessageListener;
 import com.fametome.listener.UserListener;
 import com.fametome.util.FTBitmap;
+import com.fametome.util.FTWifi;
 import com.fametome.util.ParseConsts;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
@@ -33,7 +35,6 @@ public class Friend {
 
     private List<Face> faces;
     private int facesNumber;
-    private int messagesSendNumber;
     private int friendsNumber;
     private int facesLoadedNumber;
     private boolean isFacesLoaded;
@@ -42,21 +43,18 @@ public class Friend {
 
     }
 
-    public Friend(ParseObject relationObject){
+    public Friend(Context context, ParseObject relationObject){
         loadRelation(relationObject);
-        doFriendQuery(null);
+        doFriendQuery(context, null);
     }
 
-    /* WHEN ADD FRIEND FOR MESSAGE ON INBOX */
-    public Friend(String id, MessageListener messageListener){
+    /* WHEN ADD FRIEND FOR THE AUTHOR OF A MESSAGE IN INBOX */
+    public Friend(Context context, String id, MessageListener messageListener){
         this.id = id;
-        doFriendQuery(messageListener);
+        doFriendQuery(context, messageListener);
     }
 
     protected void loadRelation(ParseObject relationObject){
-        if(relationObject == null){
-            Log.d("Friend", "Friend - WTF ?!!???! relationObject is null");
-        }
 
         Log.d("Friend", "Friend - user id : " + ParseUser.getCurrentUser().getObjectId());
         Log.d("Friend", "Friend - receiver id : " + relationObject.get(ParseConsts.RELATION_RECEIVER));
@@ -72,11 +70,15 @@ public class Friend {
         Log.d("Friend", "Friend ------------------------------- ");
     }
 
-    protected void doFriendQuery(final MessageListener messageListener){
+    protected void doFriendQuery(Context context, final MessageListener messageListener){
         Log.d("Friend", "doFriendQuery - start of the function");
 
         ParseQuery<ParseUser> friendQuery = ParseUser.getQuery();
-        friendQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+        if(FTWifi.isNetworkAvailable(context)) {
+            friendQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+        }else{
+            friendQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_ONLY);
+        }
         friendQuery.getInBackground(id, new GetCallback<ParseUser>() {
             @Override
             public void done(ParseUser friendUser, ParseException e) {
@@ -175,51 +177,61 @@ public class Friend {
         this.username = username;
     }
 
-    public void loadFaces(final UserListener.onFacesLoadedListener facesListener){
+    public void loadFaces(final Context context, final UserListener.onFacesLoadedListener facesListener){
         faces = new ArrayList<Face>();
 
-        ParseQuery<ParseObject> faceQuery = ParseQuery.getQuery(ParseConsts.FACE);
-        faceQuery.whereEqualTo(ParseConsts.FACE_USER, friendUser);
-        faceQuery.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ONLY);
-        faceQuery.orderByDescending(ParseConsts.CREATED_AT);
-        faceQuery.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> faceList, ParseException e) {
-                if (e == null) {
-                    facesNumber = faceList.size();
-                    facesLoadedNumber = 0;
+        if(FTWifi.isNetworkAvailable(context)) {
 
-                    Log.d("Friend", "loadFaces - " + username + " has " + facesNumber + " faces.");
+            ParseQuery<ParseObject> faceQuery = ParseQuery.getQuery(ParseConsts.FACE);
+            faceQuery.whereEqualTo(ParseConsts.FACE_USER, friendUser);
+            faceQuery.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ONLY);
+            faceQuery.orderByDescending(ParseConsts.CREATED_AT);
+            faceQuery.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> faceList, ParseException e) {
+                    if (e == null) {
+                        facesNumber = faceList.size();
+                        facesLoadedNumber = 0;
 
-                    if(facesNumber != 0) {
-                        for (ParseObject faceObject : faceList) {
-                            final ParseFace face = new ParseFace(faceObject);
-                            face.setFaceListener(new FaceListener() {
-                                @Override
-                                public void onFaceLoaded() {
-                                    Log.d("Friend", "loadFaces - a face is loaded");
-                                    facesLoadedNumber++;
-                                    Log.d("Friend", "loadFaces - faces listeners are called");
-                                    if(facesLoadedNumber == facesNumber) {
-                                        facesListener.onFacesLoaded();
-                                        isFacesLoaded = true;
+                        Log.d("Friend", "loadFaces - " + username + " has " + facesNumber + " faces.");
+
+                        if (facesNumber != 0) {
+                            for (ParseObject faceObject : faceList) {
+                                final ParseFace face = new ParseFace(context, faceObject);
+                                face.setFaceListener(new FaceListener() {
+                                    @Override
+                                    public void onFaceLoaded() {
+                                        Log.d("Friend", "loadFaces - a face is loaded");
+                                        facesLoadedNumber++;
+                                        Log.d("Friend", "loadFaces - faces listeners are called");
+                                        if (facesLoadedNumber == facesNumber) {
+                                            isFacesLoaded = true;
+                                            facesListener.onFacesLoaded();
+                                        }
                                     }
-                                }
-                            });
-                            faces.add(face);
+                                });
+                                faces.add(face);
 
+                            }
+                        } else {
+                            Log.i("Friend", "loadFaces - " + username + " has 0 face");
+                            isFacesLoaded = true;
+                            facesListener.onFacesLoaded();
                         }
-                    }else{
-                        Log.i("Friend", "loadFaces - " + username + " has 0 faces");
-                        facesListener.onFacesLoaded();
+                    } else {
+                        Log.e("Friend", "loadFaces - error when getting faces : " + e.getMessage());
                         facesNumber = 0;
                         facesLoadedNumber = 0;
                         isFacesLoaded = true;
+                        facesListener.onFacesLoaded();
                     }
-                } else {
-                    Log.e("Friend", "loadFaces - error when getting faces : " + e.getMessage());
                 }
-            }
-        });
+            });
+        }else{
+            facesListener.onFacesLoaded();
+            facesNumber = 0;
+            facesLoadedNumber = 0;
+            isFacesLoaded = true;
+        }
     }
 
     public boolean isFacesLoaded(){

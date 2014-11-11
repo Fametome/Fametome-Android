@@ -17,7 +17,7 @@ public class FTDefaultBitmap {
     public static void createInstance(Context context){
         instance = new FTDefaultBitmap();
 
-        picture_default = BitmapFactory.decodeResource(context.getResources(), R.drawable.picture);
+        picture_default = BitmapFactory.decodeResource(context.getResources(), R.drawable.picture_medium);
         take_picture_default = BitmapFactory.decodeResource(context.getResources(), R.drawable.picture_mini);
         avatar_default = BitmapFactory.decodeResource(context.getResources(), R.drawable.avatar_default);
     }

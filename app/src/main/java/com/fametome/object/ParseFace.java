@@ -1,5 +1,6 @@
 package com.fametome.object;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -7,6 +8,8 @@ import android.util.Log;
 import com.fametome.listener.FaceListener;
 import com.fametome.listener.FlashListener;
 import com.fametome.util.FTBitmap;
+import com.fametome.util.FTDefaultBitmap;
+import com.fametome.util.FTWifi;
 import com.fametome.util.ParseConsts;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
@@ -35,10 +38,14 @@ public class ParseFace extends Face {
         this.id = faceId;
     }
 
-    public ParseFace(ParseObject faceObject){
+    public ParseFace(Context context, ParseObject faceObject){
         ParseQuery<ParseObject> faceQuery = ParseQuery.getQuery(ParseConsts.FACE);
         faceQuery.setLimit(1);
-        faceQuery.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ONLY);
+        if(FTWifi.isNetworkAvailable(context)) {
+            faceQuery.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ONLY);
+        }else{
+            faceQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_ONLY);
+        }
         faceQuery.getInBackground(faceObject.getObjectId(), new GetCallback<ParseObject>() {
             public void done(ParseObject faceObject, ParseException e) {
                 if (e == null) {
@@ -59,12 +66,18 @@ public class ParseFace extends Face {
         faceQuery.getInBackground(flashObject.getString(ParseConsts.FLASH_FACE_ID), new GetCallback<ParseObject>() {
             public void done(ParseObject faceObject, ParseException e) {
                 if (e == null) {
-
                     loadFace(faceObject, flashListener);
-
 
                 } else {
                     Log.e("ParseFace", "ParseFace - error when getting faceObject : " + e.getMessage());
+                    picture = new FTBitmap(FTDefaultBitmap.getInstance().getDefaultPicture());
+                    text = "Face supprimée";
+                    if(faceListener != null) {
+                        faceListener.onFaceLoaded();
+                    }
+                    if(flashListener != null){
+                        flashListener.onFlashLoaded();
+                    }
                 }
             }
         });
@@ -78,6 +91,7 @@ public class ParseFace extends Face {
     }
 
     private void loadFace(ParseObject faceObject, final FlashListener flashListener){
+        this.faceObject = faceObject;
         id = faceObject.getObjectId();
         text = faceObject.getString(ParseConsts.FACE_TEXT);
         ((ParseFile)faceObject.get(ParseConsts.FACE_PICTURE)).getDataInBackground(new GetDataCallback() {

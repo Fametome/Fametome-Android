@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -51,7 +52,7 @@ public class FriendsFragment extends FTFragment implements UserListener.onFriend
         View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
 
         friendsGrid = (GridView)rootView.findViewById(R.id.friendsGrid);
-        final RelativeLayout emptyView = (RelativeLayout)rootView.findViewById(R.id.emptyView);
+        final LinearLayout emptyView = (LinearLayout)rootView.findViewById(R.id.emptyView);
 
         if(!Initialisation.getInstance().isFriends()){
             DialogManager.showInitialisationFriendsDialog(((MainActivity) getActivity()).getContext());

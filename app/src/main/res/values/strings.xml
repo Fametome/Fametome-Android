@@ -12,7 +12,7 @@
     <string name="demo_message_flash_7">Ajoutez vos amis et envoyer leur des flashs !</string>
     <string name="demo_popup_account_title">Bienvenu sur Fametome !</string>
     <string name="demo_popup_account_message">
-        Cette partie vous permet d\'ajouter et de consulter vos faces. Elles vous permettenr de créer des smileys
+        Cette partie vous permet d\'ajouter et de consulter vos faces. Elles vous permettent de créer des smileys
         personnalisés avec votre visage. Vous pouvez également changer votre avatar en cliquant dessus.
     </string>
     <string name="demo_popup_add_face_title">Ajouter une face</string>
@@ -76,7 +76,7 @@
     <string name="loading">Chargement…</string>
 
     <string name="more">+</string>
-
+    
     <string name="cancel">Annuler</string>
     <string name="confirm">Confirmer</string>
     <string name="search">Chercher</string>
@@ -95,7 +95,7 @@
     <string name="account_add_face_without_wifi_title">Aucun réseau</string>
     <string name="account_add_face_without_wifi_message">Vous ne pouvez pas ajouter de faces sans réseau.</string>
     <string name="account_change_avatar_without_wifi_title">Aucun réseau</string>
-    <string name="account_change_avatar_without_wifi_message">Vous ne pouvez pas changer votre photo de profil sans réseau.</string>
+    <string name="account_change_avatar_without_wifi_message">Vous ne pouvez pas changer votre photo de profil sans être connecté à Internet.</string>
     <string name="account_change_avatar_loading_title">Chargement</string>
     <string name="account_change_avatar_loading_message">Chargement de l\'avatar</string>
 
@@ -139,14 +139,14 @@
     <string name="menu_outbox_choose_recipient_send">Envoyer</string>
 
     <string name="inbox_title">Reception</string>
-    <string name="inbox_item_description">%1$s vous a envoyé un flash</string>
+    <string name="inbox_item_description">%1$s vous a envoyé un flash.</string>
     <string name="inbox_show">Voir le flash</string>
-    <string name="inbox_message_empty">Vous n\'avez pas reçu de flashs</string>
-    <string name="inbox_message_refresh">Rafraichir</string>
-    <string name="inbox_no_network_description">Vous n\'êtes pas connecté à Internet</string>
-    <string name="inbox_no_network_retry">Réessayer</string>
-    <string name="inbox_refresh_dialog_title">Rafraichir</string>
-    <string name="inbox_refresh_dialog_message">Rafraichissement de vos flashs</string>
+    <string name="inbox_empty_title">Aucun flashs</string>
+    <string name="inbox_empty_message">Appuyez sur l\'écran pour charger des flashs plus récents.</string>
+    <string name="inbox_no_network_title">Aucun réseau</string>
+    <string name="inbox_no_network_message">Vous n\'êtes pas connectés à Internet.</string>
+    <string name="inbox_refresh_dialog_title">Rafraichissement</string>
+    <string name="inbox_refresh_dialog_message">Rafraichissement de vos flashs.</string>
     <string name="inbox_response_title">Répondre</string>
     <string name="inbox_response_message">Voulez vous répondre à %1$s ?</string>
     <string name="inbox_response_button">Répondre</string>
@@ -156,7 +156,7 @@
     <string name="outbox_mono_destinataire_title">A %1$s</string>
     <string name="outbox_button_add">Ajouter</string>
     <string name="outbox_button_time">Temps</string>
-    <string name="outbox_send_message_progress_title">Envoie</string>
+    <string name="outbox_send_message_progress_title">Envoi</string>
     <string name="outbox_send_message_progress_message">Envoi de votre flash en cours.</string>
     <string name="outbox_send_without_friends_title">Aucun amis</string>
     <string name="outbox_send_without_friends_message">Vous n\'avez pas encore d\'amis à qui envoyer vos flashs, ajoutez-en !</string>
@@ -164,19 +164,21 @@
     <string name="outbox_send_with_empty_message_message">Vous ne pouvez pas envoyé de flash vide.</string>
     <string name="outbox_send_choose_recipients_empty_title">Selection vide</string>
     <string name="outbox_send_choose_recipients_empty_message">Vous devez choisir au moins un ami.</string>
-    <string name="outbox_send_message_without_wifi_title">Aucun réseau</string>
-    <string name="outbox_send_message_without_wifi_message">Vous ne pouvez pas envoyer de flash sans être connecté à Internet.</string>
+    <string name="outbox_send_without_network_title">Aucun réseau</string>
+    <string name="outbox_send_without_network_message">Vous ne pouvez pas envoyer de flash sans être connecté à Internet.</string>
     <string name="outbox_flash_text_when_picture">Photo</string>
     <string name="outbox_choose_recipients_title">Destinataires</string>
 
     <string name="friends_title">Amis</string>
     <string name="friends_all">Tous mes amis</string>
     <string name="friends_add">Ajouter un ami</string>
-    <string name="friends_search">Chercher un ami</string>
-    <string name="friends_grid_empty">Vous n\'avez pas encore d\'amis.</string>
+    <string name="friends_empty_title">Aucun amis</string>
+    <string name="friends_empty_message">Appuyez sur l\'écran pour rechercher des amis.</string>
     <string name="friends_profil_title">Profil de %1$s</string>
     <string name="friends_profil_all_faces">Toutes ses faces</string>
     <string name="friends_profil_empty_face">Aucune face</string>
+    <string name="friends_profil_without_network_title">Aucun réseau</string>
+    <string name="friends_profil_without_network_message">Vous ne pouvez pas voir les faces de vos amis ni leur nombre d\'amis lorsque vous n\'êtes pas connectés à Internet.</string>
     <string name="friends_face_album_title">Faces de %1$s</string>
     <string name="friends_face_pager_title">Faces de %1$s</string>
     <string name="friends_search_title">Chercher un ami</string>
@@ -188,12 +190,15 @@
     <string name="friends_search_inexistant_user">Cet utilisateur n\'existe pas.</string>
     <string name="friends_search_sending_error">Erreur lors de l\'envoi de la demande</string>
     <string name="friends_search_without_wifi_title">Aucun réseau</string>
-    <string name="friends_search_without_wifi_message">Vous ne pouvez pas chercher d\'amis sans réseau</string>
+    <string name="friends_search_without_wifi_message">Vous ne pouvez pas chercher d\'amis sans être connecté à Internet.</string>
     <string name="friends_request_title">Demande d\'amitiée</string>
     <string name="friends_request_accept">Accepter</string>
     <string name="friends_request_decline">Refuser</string>
-    <string name="friends_request_empty">Vous n\'avez aucune demande d\'amitiée en cours</string>
+    <string name="friends_request_empty_title">Aucune demande d\'amitiée</string>
+    <string name="friends_request_empty_message">Vous n\'avez aucune demande d\'amitiée en cours.</string>
     <string name="friends_request_description_sended">Vous avez en envoyé une demande à <b>%1$s</b>.</string>
+    <string name="friends_request_refresh_without_wifi_title">Aucun réseau</string>
+    <string name="friends_request_refresh_without_wifi_message">Vous n\'êtes pas connectés à Internet.</string>
     <string name="friends_requests_refresh_dialog_title">Rafraichir</string>
     <string name="friends_requests_refresh_dialog_message">Vos demandes d\'amitiées se rafraichissent.</string>
 

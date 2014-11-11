@@ -130,10 +130,7 @@ public class AccountFragment extends FTFragment implements UserListener.onUserLo
             if(FTWifi.isNetworkAvailable(getActivity().getApplicationContext())) {
                 ((MainActivity) getActivity()).showCamera(pictureListenerAvatar);
             }else{
-                FTDialog dialog = new FTDialog(((MainActivity)getActivity()).getContext());
-                dialog.setTitle(R.string.account_change_avatar_without_wifi_title);
-                dialog.setMessage(R.string.account_change_avatar_without_wifi_message);
-                dialog.show();
+                DialogManager.showDialog(((MainActivity)getActivity()).getContext(), R.string.account_change_avatar_without_wifi_title, R.string.account_change_avatar_without_wifi_message);
             }
         }
     };
@@ -261,6 +258,7 @@ public class AccountFragment extends FTFragment implements UserListener.onUserLo
             Log.d("AccountFragment", "setEmptyFaceLayout - there is no face, an appropriate layout will be setted");
             addFaceWhenEmpty.setVisibility(View.VISIBLE);
             facesLayout.getImageView(0).setVisibility(View.INVISIBLE);
+            facesLayout.setImage(1, FTDefaultBitmap.getInstance().getDefaultPicture());
             facesLayout.getImageView(2).setVisibility(View.INVISIBLE);
             addFace.setVisibility(View.GONE);
             allFace.setVisibility(View.GONE);
@@ -294,6 +292,7 @@ public class AccountFragment extends FTFragment implements UserListener.onUserLo
             Log.d("AccountFragment", "displayFriends - there is no friends, an appropriate layout will be setted");
             addFriendWhenEmpty.setVisibility(View.VISIBLE);
             friendsLayout.getImageView(0).setVisibility(View.INVISIBLE);
+            friendsLayout.setImage(1, FTDefaultBitmap.getInstance().getDefaultPicture());
             friendsLayout.getImageView(2).setVisibility(View.INVISIBLE);
             allFriend.setVisibility(View.GONE);
 

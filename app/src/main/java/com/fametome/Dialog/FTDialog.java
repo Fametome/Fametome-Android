@@ -74,11 +74,7 @@ public class FTDialog{
     }
 
     public void cancel(){
-        if(dialog != null) {
-            dialog.cancel();
-        }else{
-            Log.d("FTDialog", "cancel - the dialog is null");
-        }
+        dialog.cancel();
     }
 
 }

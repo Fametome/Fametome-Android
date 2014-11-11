@@ -46,9 +46,7 @@ public class InboxShowFlashPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
 
-        View v;
-
-        v = inflater.inflate(R.layout.item_inbox_show_flash, null);
+        final View v = inflater.inflate(R.layout.item_inbox_show_flash, null);
 
         ImageView picture = (ImageView) v.findViewById(R.id.picture);
         TextView text = (TextView) v.findViewById(R.id.text);
@@ -62,6 +60,7 @@ public class InboxShowFlashPagerAdapter extends PagerAdapter {
         } else if (currentFlash.getType() == Flash.TYPE_PICTURE) {
             picture.setImageBitmap(currentFlash.getPicture().getBitmap());
             text.setVisibility(View.GONE);
+            v.findViewById(R.id.textFrame).setVisibility(View.GONE);
 
         } else if (currentFlash.getType() == Flash.TYPE_FACE) {
             picture.setImageBitmap(currentFlash.getPicture().getBitmap());

@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.fametome.Dialog.DialogManager;
 import com.fametome.Dialog.FTProgressDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
@@ -24,6 +25,7 @@ import com.fametome.activity.member.MainActivity;
 import com.fametome.adapter.FriendsRequestListAdapter;
 import com.fametome.listener.UserListener;
 import com.fametome.object.User;
+import com.fametome.util.FTWifi;
 
 public class FriendsRequestFragment extends FTFragment implements UserListener.onFriendsLoadedListener{
 
@@ -82,12 +84,13 @@ public class FriendsRequestFragment extends FTFragment implements UserListener.o
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == android.R.id.home) {
-            ((MainActivity) getActivity()).showPreviousFragment();
-            return true;
-        }else if(item.getItemId() == R.id.friends_requests_refresh){
-            refreshDialog.show();
-            User.getInstance().refreshFriendsRequests();
+        if(item.getItemId() == R.id.friends_requests_refresh){
+            if(FTWifi.isNetworkAvailable(getActivity().getApplicationContext())) {
+                refreshDialog.show();
+                User.getInstance().refreshFriendsRequests();
+            }else{
+                DialogManager.showDialog(((MainActivity)getActivity()).getContext(), R.string.friends_request_refresh_without_wifi_title, R.string.friends_request_refresh_without_wifi_message);
+            }
         }
 
         return super.onOptionsItemSelected(item);

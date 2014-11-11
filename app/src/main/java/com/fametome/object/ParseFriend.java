@@ -1,5 +1,7 @@
 package com.fametome.object;
 
+import android.content.Context;
+
 import com.fametome.listener.MessageListener;
 import com.parse.ParseObject;
 
@@ -9,12 +11,12 @@ public class ParseFriend extends Friend {
         super();
     }
 
-    public ParseFriend(ParseObject friendObject){
-        super(friendObject);
+    public ParseFriend(Context context, ParseObject friendObject){
+        super(context, friendObject);
     }
 
-    public ParseFriend(String id, MessageListener messageListener){
-        super(id, messageListener);
+    public ParseFriend(Context context, String id, MessageListener messageListener){
+        super(context, id, messageListener);
     }
 
     public void setId(String id){

@@ -74,7 +74,7 @@ public class InboxShowFlashFragment extends FTFragment implements AutoScrollList
 
         final ActionBar actionBar = getActivity().getActionBar();
         actionBar.setIcon(R.drawable.ic_outbox_shadow);
-        actionBar.setTitle("Show flash fragment");
+        actionBar.setTitle("-");
         actionBar.hide();
 
         super.onCreateOptionsMenu(menu, inflater);
@@ -84,7 +84,7 @@ public class InboxShowFlashFragment extends FTFragment implements AutoScrollList
     public void onScrollFinished() {
         Log.d("InboxShowFlashFragment", "onScrollFinished - scroll finished");
         InboxResponseFragment responseFragment = new InboxResponseFragment();
-        responseFragment.setParseMessage(message);
+        responseFragment.setObject(message);
         ((MainActivity)getActivity()).replaceLastFragment(responseFragment);
 
         getActivity().getWindow().getDecorView().setSystemUiVisibility(0);

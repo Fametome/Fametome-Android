@@ -64,6 +64,8 @@ public class User {
         friendsLoadedListeners = new ArrayList<UserListener.onFriendsLoadedListener>();
         messagesLoadedListeners = new ArrayList<UserListener.onMessagesLoadedListener>();
 
+        faces = new ArrayList<ParseFace>();
+
         /* Recupération des infos basiques de l'utilisateur */
 
         username = ParseUser.getCurrentUser().getUsername();
@@ -93,38 +95,7 @@ public class User {
         }
 
         /* Récupération des faces de l'utilisateur */
-        faces = new ArrayList<ParseFace>();
-
-        ParseQuery<ParseObject> faceQuery = ParseQuery.getQuery(ParseConsts.FACE);
-        faceQuery.whereEqualTo(ParseConsts.FACE_USER, ParseUser.getCurrentUser());
-        faceQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
-        faceQuery.orderByDescending(ParseConsts.CREATED_AT);
-        faceQuery.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> facesObjects, ParseException e) {
-                if (e == null) {
-                    facesNumber = facesObjects.size();
-                    facesLoadedNumber = 0;
-                    if(facesNumber != 0) {
-                        for (int i = 0; i < facesNumber; i++) {
-                            faces.add(new ParseFace());
-                            final ParseFace face = new ParseFace(facesObjects.get(i));
-                            face.setFaceListener(onFaceLoaded);
-                            faces.set(i, face);
-
-                        }
-                    }else{
-                        Log.i("User", "User - " + username + " has 0 faces");
-                        for(int i = 0; i < facesLoadedListeners.size(); i++){
-                            facesLoadedListeners.get(i).onFacesLoaded();
-                        }
-                        facesLoadedNumber = 0;
-                        isFacesLoaded = true;
-                    }
-                } else {
-                    Log.e("User", "User - error when getting faces : " + e.getMessage());
-                }
-            }
-        });
+        refreshFaces();
 
         /* Récupération des friends de l'utilisateur */
         refreshFriends();
@@ -224,7 +195,10 @@ public class User {
 
         @Override
         public void onFlashsLoaded() {
-
+            for(int i = 0; i < messagesLoadedListeners.size(); i++){
+                messagesLoadedListeners.get(i).onMessagesLoaded();
+                Log.d("User", "onMessageLoaded - messages listeners are called");
+            }
         }
     };
 
@@ -264,6 +238,48 @@ public class User {
 
 
     /** FONCTIONS SUR LES FACES **/
+
+    public void refreshFaces(){
+
+        ParseQuery<ParseObject> faceQuery = ParseQuery.getQuery(ParseConsts.FACE);
+        faceQuery.whereEqualTo(ParseConsts.FACE_USER, ParseUser.getCurrentUser());
+        if(FTWifi.isNetworkAvailable(context)) {
+            faceQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+        }else {
+            faceQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_ONLY);
+        }
+        faceQuery.orderByDescending(ParseConsts.CREATED_AT);
+        faceQuery.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> facesObjects, ParseException e) {
+                if (e == null) {
+                    facesNumber = facesObjects.size();
+                    facesLoadedNumber = 0;
+                    if (facesNumber != 0) {
+                        for (int i = 0; i < facesNumber; i++) {
+                            if(faces.size() > i) {
+                                faces.set(i, new ParseFace());
+                            }else{
+                                faces.add(i, new ParseFace());
+                            }
+                            final ParseFace face = new ParseFace(context, facesObjects.get(i));
+                            face.setFaceListener(onFaceLoaded);
+                            faces.set(i, face);
+
+                        }
+                    } else {
+                        Log.i("User", "User - " + username + " has 0 faces");
+                        for (int i = 0; i < facesLoadedListeners.size(); i++) {
+                            facesLoadedListeners.get(i).onFacesLoaded();
+                        }
+                        facesLoadedNumber = 0;
+                        isFacesLoaded = true;
+                    }
+                } else {
+                    Log.e("User", "User - error when getting faces : " + e.getMessage());
+                }
+            }
+        });
+    }
 
     public boolean isFacesLoaded(){
         return isFacesLoaded;
@@ -329,7 +345,11 @@ public class User {
         friendsQueries.add(receiverToSenderQuery);
 
         ParseQuery<ParseObject> friendsQuery = ParseQuery.or(friendsQueries);
-        friendsQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+        if(FTWifi.isNetworkAvailable(context)) {
+            friendsQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+        }else {
+            friendsQuery.setCachePolicy(ParseQuery.CachePolicy.CACHE_ONLY);
+        }
         friendsQuery.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> friendsList, ParseException e) {
 
@@ -343,7 +363,7 @@ public class User {
                     friendsLoadedNumber = 0;
                     if(friendsNumber != 0) {
                         for (ParseObject friendObject : friendsList) {
-                            final ParseFriend friend = new ParseFriend(friendObject);
+                            final ParseFriend friend = new ParseFriend(context, friendObject);
                             friend.setFriendListener(onFriendLoaded);
                             friends.add(friend);
 
@@ -424,7 +444,7 @@ public class User {
                         for (int i = 0; i < friendsRequestsNumber; i++) {
                             final FriendRequest friendRequest = new FriendRequest();
                             friendRequest.setFriendListener(onFriendRequestLoaded);
-                            friendRequest.load(friendsRequestsList.get(i));
+                            friendRequest.load(context, friendsRequestsList.get(i));
                             friendsRequests.add(friendRequest);
 
                         }
@@ -492,22 +512,28 @@ public class User {
                         messagesLoadedNumber = 0;
                         isMessagesLoaded = false;
 
+
+                        Log.d("User", "refreshMessages - there is " + messagesNumber + " messages");
+
                         if(messagesNumber != 0){
                             for (int i = 0; i < messagesNumber; i++) {
                                 final ParseMessage message = new ParseMessage();
-                                message.loadMessage(messageList.get(i), onMessageLoaded);
+                                message.loadMessage(context, messageList.get(i), onMessageLoaded);
                                 messages.add(message);
 
                             }
                         }else{
+                            isMessagesLoaded = true;
                             for (int i = 0; i < messagesLoadedListeners.size(); i++) {
                                 messagesLoadedListeners.get(i).onMessagesLoaded();
                                 Log.d("User", "refreshMessages - messages listeners are called");
                             }
+
                         }
 
                     } else {
                         Log.e("User", "refreshMessages - error when getting messages : " + e.getMessage());
+                        isMessagesLoaded = true;
                         for (int i = 0; i < messagesLoadedListeners.size(); i++) {
                             messagesLoadedListeners.get(i).onMessagesLoaded();
                             Log.d("User", "refreshMessages - messages listeners are called for error");
@@ -517,6 +543,7 @@ public class User {
             });
         }else{
             Log.w("User", "refreshMessages - no network");
+            isMessagesLoaded = true;
             for (int i = 0; i < messagesLoadedListeners.size(); i++) {
                 messagesLoadedListeners.get(i).onMessagesLoaded();
                 Log.d("User", "refreshMessages - messages listeners are called");
@@ -533,7 +560,22 @@ public class User {
     }
 
     public ParseMessage getMessage(int index){
-        return messages.get(index);
+        Log.d("User", "getMessages - index : " + index + " || messagesNumber : " + messagesNumber + " || messages.size() : " + messages.size());
+        if(index < messagesNumber) {
+            return messages.get(index);
+        }else{
+            return null;
+        }
+    }
+
+    public void removeMessage(Message message){
+        messagesNumber--;
+        messagesLoadedNumber--;
+        messages.remove(message);
+    }
+
+    public boolean isMessagesLoaded(){
+        return isMessagesLoaded;
     }
 
     /* AJOUT DES LISTENERS */

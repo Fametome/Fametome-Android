@@ -127,16 +127,4 @@ public class SettingsFragment extends FTFragment {
 
         super.onCreateOptionsMenu(menu, inflater);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == android.R.id.home) {
-            AccountFragment accountFragment = new AccountFragment();
-            ((MainActivity) getActivity()).showFragment(accountFragment);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

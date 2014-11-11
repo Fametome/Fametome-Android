@@ -161,7 +161,6 @@ public class NavigationDrawerFragment extends Fragment implements UserListener.o
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public void onUserLoaded() {
         adapter.notifyDataSetChanged();

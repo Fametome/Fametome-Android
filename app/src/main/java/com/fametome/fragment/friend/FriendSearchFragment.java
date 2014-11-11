@@ -223,7 +223,7 @@ public class FriendSearchFragment extends FTFragment {
                             FTPush.sendPushToFriend(findedUser.getObjectId(), titlePush, messagePush);
 
                             sendRequest.setText(getString(R.string.friends_search_request_sended));
-                            User.getInstance().addFriendRequest(new FriendRequest(relation));
+                            User.getInstance().addFriendRequest(new FriendRequest(getActivity().getApplicationContext(), relation));
                         } else {
                             FTDialog dialog = new FTDialog(((MainActivity) getActivity()).getContext());
                             dialog.setMessage(getString(R.string.friends_search_sending_error));
@@ -243,17 +243,5 @@ public class FriendSearchFragment extends FTFragment {
         actionBar.setTitle(R.string.friends_search_title);
 
         super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == android.R.id.home) {
-            FriendsFragment friendsFragment = new FriendsFragment();
-            ((MainActivity) getActivity()).showPreviousFragment();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

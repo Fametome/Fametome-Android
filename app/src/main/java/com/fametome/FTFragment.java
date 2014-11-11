@@ -5,31 +5,34 @@ import android.app.Fragment;
 import com.fametome.object.Flash;
 import com.fametome.object.Friend;
 import com.fametome.object.Message;
+import com.fametome.object.ParseFriend;
 import com.fametome.object.ParseMessage;
 
 import java.util.List;
 
 public class FTFragment extends Fragment {
 
-    private ParseMessage parseMessage;
+    private Object object;
 
-    private Message message;
-
-    private Friend friend;
-
-    public void setParseMessage(ParseMessage parseMessage){
-        this.parseMessage = parseMessage;
+    public Object getObject() {
+        return object;
     }
 
-    public ParseMessage getParseMessage(){
-        return parseMessage;
+    public void setObject(Object object) {
+        this.object = object;
     }
 
-    public void setFriend(Friend friend){
-        this.friend = friend;
+    public ParseMessage getMessage(){
+        if(object instanceof ParseMessage){
+            return (ParseMessage)object;
+        }
+        return null;
     }
 
-    public Friend getFriend(){
-        return friend;
+    public ParseFriend getFriend(){
+        if(object instanceof ParseFriend){
+            return (ParseFriend)object;
+        }
+        return null;
     }
 }

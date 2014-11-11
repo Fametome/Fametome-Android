@@ -1,5 +1,7 @@
 package com.fametome.object;
 
+import android.content.Context;
+
 import com.fametome.util.ParseConsts;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -14,8 +16,8 @@ public class FriendRequest extends ParseFriend{
 
     }
 
-    public FriendRequest(ParseObject relationObject){
-        super(relationObject);
+    public FriendRequest(Context context, ParseObject relationObject){
+        super(context, relationObject);
         this.relationObject = relationObject;
 
         if(relationObject.get(ParseConsts.RELATION_RECEIVER).equals(ParseUser.getCurrentUser().getObjectId())){
@@ -26,9 +28,9 @@ public class FriendRequest extends ParseFriend{
 
     }
 
-    public void load(ParseObject relationObject){
+    public void load(Context context, ParseObject relationObject){
         loadRelation(relationObject);
-        super.doFriendQuery(null);
+        super.doFriendQuery(context, null);
         this.relationObject = relationObject;
 
         if(relationObject.get(ParseConsts.RELATION_RECEIVER).equals(ParseUser.getCurrentUser().getObjectId())){

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.fametome.util.FTBitmap;
+import com.fametome.util.FTDefaultBitmap;
 import com.fametome.util.ParseConsts;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -83,6 +84,7 @@ public class Flash {
 
     public void setFace(ParseFace face){
         this.face = face;
+
         picture = null;
         text = "";
         type = TYPE_FACE;

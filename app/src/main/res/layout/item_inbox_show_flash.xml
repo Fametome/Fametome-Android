@@ -9,15 +9,62 @@
         android:id="@+id/picture"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scaleType="centerCrop"/>
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar_default" />
 
-    <TextView
-        android:id="@+id/text"
+    <LinearLayout
+        android:id="@+id/textFrame"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center"
-        android:padding="8dp"
-        android:textSize="@dimen/classic_text_size"
-        style="@style/gravure"/>
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_above="@+id/text"
+            android:background="@color/gravure" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="fill_parent"
+                android:layout_above="@+id/text"
+                android:background="@color/gravure" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:textStyle="bold|italic"
+                android:textSize="32sp"
+                android:textColor="@color/gravure"
+                android:text="text"
+                android:background="#8FFF" />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="fill_parent"
+                android:layout_above="@+id/text"
+                android:background="@color/gravure" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_above="@+id/text"
+            android:background="@color/gravure" />
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

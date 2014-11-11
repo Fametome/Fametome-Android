@@ -13,11 +13,7 @@ public class FTWifi {
             return true;
         }
 
-        Log.v("Wifi", "start");
-
         ConnectivityManager connectivityManager  = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        Log.v("Wifi", "afterManager");
 
         NetworkInfo[] info = connectivityManager.getAllNetworkInfo();
         if (info != null){
@@ -29,7 +25,7 @@ public class FTWifi {
             }
         }
 
-        Log.v("Wifi", "Wifi is not available");
+        Log.v("FTWifi", "Wifi is not available");
 
         return false;
     }

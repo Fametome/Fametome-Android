@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.fametome.Dialog.FTDialog;
 import com.fametome.FTFragment;
 import com.fametome.R;
 import com.fametome.activity.member.MainActivity;
@@ -25,6 +26,7 @@ import com.fametome.object.Face;
 import com.fametome.object.Friend;
 import com.fametome.object.User;
 import com.fametome.util.FTDefaultBitmap;
+import com.fametome.util.FTWifi;
 import com.fametome.util.ParseConsts;
 import com.fametome.widget.ImageLayout;
 import com.fametome.widget.ProfilView;
@@ -59,6 +61,13 @@ public class FriendProfilFragment extends FTFragment implements UserListener.onF
         emptyFace = (TextView)rootView.findViewById(R.id.emptyFace);
         stats = (StatsView)rootView.findViewById(R.id.stats);
 
+        if(!FTWifi.isNetworkAvailable(((MainActivity)getActivity()).getContext())){
+            final FTDialog dialog = new FTDialog(((MainActivity)getActivity()).getContext());
+            dialog.setTitle(getString(R.string.friends_profil_without_network_title));
+            dialog.setMessage(getString(R.string.friends_profil_without_network_message));
+            dialog.show();
+        }
+
         if(getArguments() != null){
             friend = User.getInstance().getFriend(getArguments().getInt("friendIndex"));
             if(friend.getAvatar()!= null){
@@ -71,10 +80,10 @@ public class FriendProfilFragment extends FTFragment implements UserListener.onF
             stats.setMessageSendNumber(friend.getParseUser().getInt(ParseConsts.USER_STATS_MESSAGE_SEND_NUMBER));
         }
 
-        if(friend.isFacesLoaded()){
-            displayFaces();
-        }else{
-            friend.loadFaces(this);
+        displayFaces();
+
+        if(!friend.isFacesLoaded()){
+            friend.loadFaces(((MainActivity)getActivity()).getContext(), this);
         }
 
         sendMessage.setOnClickListener(clickSendMessage);
@@ -90,7 +99,7 @@ public class FriendProfilFragment extends FTFragment implements UserListener.onF
         public void onClick(View v) {
             OutboxFragment outboxFragment = new OutboxFragment();
             outboxFragment.setMessageType(OutboxFragment.TYPE_MONO_DESTINATAIRE);
-            outboxFragment.setFriend(friend);
+            outboxFragment.setObject(friend);
             ((MainActivity)getActivity()).showFragmentAtRoot(outboxFragment);
         }
     };
@@ -99,7 +108,7 @@ public class FriendProfilFragment extends FTFragment implements UserListener.onF
         @Override
         public void onImageClicked(int index) {
 
-            if(index < friend.getFacesNumber()){
+            if(friend.isFacesLoaded() && index < friend.getFacesNumber()){
 
                 Bundle facePagerBundle = new Bundle();
                 facePagerBundle.putInt("friendIndex", getArguments().getInt("friendIndex"));
@@ -115,26 +124,33 @@ public class FriendProfilFragment extends FTFragment implements UserListener.onF
     private View.OnClickListener clickAllFace = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Bundle friendFaceAlbumBundle = new Bundle();
-            friendFaceAlbumBundle.putInt("friendIndex", getArguments().getInt("friendIndex"));
+            if(friend.isFacesLoaded() && friend.getFacesNumber() > 0) {
+                Bundle friendFaceAlbumBundle = new Bundle();
+                friendFaceAlbumBundle.putInt("friendIndex", getArguments().getInt("friendIndex"));
 
-            FriendFaceAlbumFragment friendFaceAlbumFragment = new FriendFaceAlbumFragment();
-            friendFaceAlbumFragment.setArguments(friendFaceAlbumBundle);
-            ((MainActivity)getActivity()).showFragment(friendFaceAlbumFragment);
+                FriendFaceAlbumFragment friendFaceAlbumFragment = new FriendFaceAlbumFragment();
+                friendFaceAlbumFragment.setArguments(friendFaceAlbumBundle);
+                ((MainActivity) getActivity()).showFragment(friendFaceAlbumFragment);
+            }
         }
     };
 
     private void displayFaces() {
-        if(friend.getFacesNumber() != 0) {
+        if (friend.getFacesNumber() != 0 && friend.isFacesLoaded()) {
             facesLayout.getImageView(0).setVisibility(View.VISIBLE);
             facesLayout.getImageView(2).setVisibility(View.VISIBLE);
             emptyFace.setVisibility(View.GONE);
             allFace.setVisibility(View.VISIBLE);
-            for (int i = 0; i < Math.min(facesLayout.getImageNumber(), friend.getFacesNumber()); i++) {
-                facesLayout.setImage(i, friend.getFace(i).getPicture().getBitmap());
+            for (int i = 0; i < facesLayout.getImageNumber(); i++) {
+                if(i < friend.getFacesNumber()) {
+                    facesLayout.setImage(i, friend.getFace(i).getPicture().getBitmap());
+                }else{
+                    facesLayout.setImage(i, FTDefaultBitmap.getInstance().getDefaultPicture());
+                }
             }
-        }else{
+        } else{
             facesLayout.getImageView(0).setVisibility(View.INVISIBLE);
+            facesLayout.setImage(1, FTDefaultBitmap.getInstance().getDefaultPicture());
             facesLayout.getImageView(2).setVisibility(View.INVISIBLE);
             emptyFace.setVisibility(View.VISIBLE);
             allFace.setVisibility(View.GONE);
@@ -160,15 +176,5 @@ public class FriendProfilFragment extends FTFragment implements UserListener.onF
         actionBar.setTitle(getString(R.string.friends_profil_title, friend.getUsername()));
 
         super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(item.getItemId() == android.R.id.home){
-            ((MainActivity)getActivity()).showPreviousFragment();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

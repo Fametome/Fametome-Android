@@ -74,12 +74,11 @@ public class InboxFragment extends FTFragment implements UserListener.onMessages
         }
 
         listMessages.setEmptyView(emptyView);
-        listMessagesAdapter = new InboxMessagesListAdapter(getActivity().getApplicationContext(), this);
+        listMessagesAdapter = new InboxMessagesListAdapter(((MainActivity) getActivity()).getContext(), this);
         listMessages.setAdapter(listMessagesAdapter);
 
         networklessView.setOnClickListener(clickRefresh);
         emptyView.setOnClickListener(clickRefresh);
-        listMessages.setOnItemClickListener(clickItemListMessages);
 
         if(FTWifi.isNetworkAvailable(getActivity().getApplicationContext())){
             networklessView.setVisibility(View.GONE);
@@ -87,43 +86,25 @@ public class InboxFragment extends FTFragment implements UserListener.onMessages
             networklessView.setVisibility(View.VISIBLE);
         }
 
-        User.getInstance().refreshMessages();
-
         return rootView;
     }
-
-    private AdapterView.OnItemClickListener clickItemListMessages = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            Log.e("InboxFragment", "clickListMessage - a message is clicked");
-
-            if(User.getInstance().getMessage(position) != null) {
-
-                if(User.getInstance().getMessage(position).isFlashsLoaded()) {
-
-                    Bundle showFlashBundle = new Bundle();
-                    showFlashBundle.putInt("messageIndex", position);
-
-                    InboxShowFlashFragment showFlashFragment = new InboxShowFlashFragment();
-                    showFlashFragment.setArguments(showFlashBundle);
-                    ((MainActivity) getActivity()).showFragment(showFlashFragment);
-                }else{
-                    Log.d("InboxFragment", "clickListMessage - the message is not already charged");
-                }
-            }else{
-                Log.e("InboxFragment", "clickListMessage - the message is null ?! WTF ??!!");
-            }
-        }
-    };
 
     private View.OnClickListener clickRefresh = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            refreshDialog.show();
-            User.getInstance().refreshMessages();
+            refreshMessages();
         }
     };
+
+    private void refreshMessages(){
+        refreshDialog.show();
+        User.getInstance().refreshMessages();
+        if(FTWifi.isNetworkAvailable(context)){
+            networklessView.setVisibility(View.GONE);
+        }else{
+            networklessView.setVisibility(View.VISIBLE);
+        }
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -142,8 +123,7 @@ public class InboxFragment extends FTFragment implements UserListener.onMessages
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item.getItemId() == R.id.inbox_refresh){
-            refreshDialog.show();
-            User.getInstance().refreshMessages();
+            refreshMessages();
         }
 
         return super.onOptionsItemSelected(item);
@@ -156,7 +136,9 @@ public class InboxFragment extends FTFragment implements UserListener.onMessages
             listMessagesAdapter.notifyDataSetChanged();
         }
 
-        refreshDialog.cancel();
+        if(User.getInstance().isMessagesLoaded()) {
+            refreshDialog.cancel();
+        }
 
         if(FTWifi.isNetworkAvailable(context)){
             networklessView.setVisibility(View.GONE);

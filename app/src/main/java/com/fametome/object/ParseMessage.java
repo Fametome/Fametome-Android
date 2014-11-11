@@ -1,5 +1,6 @@
 package com.fametome.object;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.fametome.listener.FlashListener;
@@ -31,14 +32,14 @@ public class ParseMessage extends Message {
 
     }
 
-    public ParseMessage(ParseObject messageObject, MessageListener messageListener){
-        loadMessage(messageObject, messageListener);
+    public ParseMessage(Context context, ParseObject messageObject, MessageListener messageListener){
+        loadMessage(context, messageObject, messageListener);
     }
 
-    public void loadMessage(ParseObject messageObject, MessageListener messageListener){
+    public void loadMessage(Context context, ParseObject messageObject, MessageListener messageListener){
         this.messageListener = messageListener;
         this.messageObject = messageObject;
-        this.author = new ParseFriend(messageObject.getString(ParseConsts.MESSAGE_AUTHOR_ID), messageListener);
+        this.author = new ParseFriend(context, messageObject.getString(ParseConsts.MESSAGE_AUTHOR_ID), messageListener);
         loadFlashs();
     }
 

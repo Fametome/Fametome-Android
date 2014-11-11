@@ -15,7 +15,7 @@ android {
         applicationId "com.fametome"
         minSdkVersion 14
         targetSdkVersion 20
-        versionCode 3
+        versionCode 5
         versionName "1.0.2"
     }
     buildTypes {

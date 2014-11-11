@@ -53,15 +53,15 @@ public class InboxResponseFragment extends FTFragment {
 
         handleMessageDestruction();
 
-        if (getParseMessage().getAuthor().getAvatar() != null) {
-            avatar.setImageBitmap(getParseMessage().getAuthor().getAvatar().getBitmap());
+        if (getMessage().getAuthor().getAvatar() != null) {
+            avatar.setImageBitmap(getMessage().getAuthor().getAvatar().getBitmap());
         } else {
             avatar.setImageBitmap(FTDefaultBitmap.getInstance().getDefaultAvatar());
         }
 
-        if(!getParseMessage().getAuthor().getId().equals(ParseConsts.USER_FAMETOME_ID)){
+        if(!getMessage().getAuthor().getId().equals(ParseConsts.USER_FAMETOME_ID)){
 
-            text.setText(getString(R.string.inbox_response_message, getParseMessage().getAuthor().getUsername()));
+            text.setText(getString(R.string.inbox_response_message, getMessage().getAuthor().getUsername()));
             answer.setOnClickListener(clickAnswer);
 
         }else {
@@ -72,13 +72,11 @@ public class InboxResponseFragment extends FTFragment {
 
         }
 
-        User.getInstance().refreshMessages();
-
         return rootView;
     }
 
     private void handleMessageDestruction(){
-        final ParseObject messageObject = getParseMessage().getMessageObject();
+        final ParseObject messageObject = getMessage().getMessageObject();
 
         List<String> recipientsIds = (List<String>)messageObject.get(ParseConsts.MESSAGE_RECIPIENT_ID_ARRAY);
 
@@ -101,7 +99,7 @@ public class InboxResponseFragment extends FTFragment {
                 public void done(ParseException e) {
                     if(e == null) {
 
-                        for(ParseFlash flash : getParseMessage().getFlashs()){
+                        for(ParseFlash flash : getMessage().getFlashs()){
                             flash.getFlashObject().deleteInBackground();
                         }
 
@@ -113,7 +111,7 @@ public class InboxResponseFragment extends FTFragment {
 
         }
 
-        User.getInstance().refreshMessages();
+        User.getInstance().removeMessage(getMessage());
 
     }
 
@@ -122,7 +120,7 @@ public class InboxResponseFragment extends FTFragment {
         public void onClick(View v) {
             OutboxFragment outboxFragment = new OutboxFragment();
             outboxFragment.setMessageType(OutboxFragment.TYPE_MONO_DESTINATAIRE);
-            outboxFragment.setFriend(getParseMessage().getAuthor());
+            outboxFragment.setObject(getMessage().getAuthor());
             ((MainActivity)getActivity()).showFragment(outboxFragment);
             ((MainActivity)getActivity()).setSelectedItem(NavigationDrawerFragment.FRAGMENT_OUTBOX);
         }
@@ -146,15 +144,4 @@ public class InboxResponseFragment extends FTFragment {
 
         super.onCreateOptionsMenu(menu, inflater);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(item.getItemId() == android.R.id.home){
-            ((MainActivity)getActivity()).selectItem(NavigationDrawerFragment.FRAGMENT_INBOX);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 }

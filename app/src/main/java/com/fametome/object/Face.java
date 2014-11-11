@@ -14,7 +14,6 @@ import com.parse.ParseObject;
 
 public class Face {
 
-
     protected FTBitmap picture;
     protected String text;
 
